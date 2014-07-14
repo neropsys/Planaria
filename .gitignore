@@ -1,3 +1,4 @@
 cocos2d/
-proj.win32/
+proj.win32/Debug.win32/
 proj.wp8-xaml/
+proj.win32/Planaria.sdf

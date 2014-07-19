@@ -10,6 +10,8 @@ public:
 
     static Planaria *create();
 
+    void Mainloop(float);
+
 private:
     float x, y;
     float velocity;

@@ -17,6 +17,10 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
+
+    void Mainloop(float);
+
+    int t = 0;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

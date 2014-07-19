@@ -10,3 +10,7 @@ Planaria *Planaria::create() {
 
     return obj;
 }
+
+void Planaria::Mainloop(float t) {
+
+}

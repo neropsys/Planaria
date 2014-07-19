@@ -1,4 +1,5 @@
 #include "HelloWorldScene.h"
+#include "Planaria.h"
 
 USING_NS_CC;
 
@@ -29,6 +30,13 @@ bool HelloWorld::init()
     
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
+    
+    auto Label = LabelTTF::create("Test", "Arial", 64);
+    Label->setPosition(Point(240, 160));
+    Label->setColor(Color3B(255, 255, 255));
+    this->addChild(Label);
+
+    Planaria *pl01 = Planaria::create();
 
     /////////////////////////////
     // 2. add a menu item with "X" image, which is clicked to quit the program
@@ -71,7 +79,7 @@ bool HelloWorld::init()
 
     // add the sprite as a child to this layer
     this->addChild(sprite, 0);
-    
+
     return true;
 }
 

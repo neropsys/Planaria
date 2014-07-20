@@ -1,20 +1,26 @@
 #include "cocos2d.h"
-#include <list>
 
+USING_NS_CC;
 using namespace std;
 
-class Planaria {
+class Planaria : public cocos2d::Node {
+
 public:
     Planaria();
+
+    Planaria(Vector<Planaria *> plas);
+
     virtual ~Planaria();
 
-    static Planaria *create();
+    static Planaria *create(Vector<Planaria *> plas);
 
-    void Mainloop(float);
+    static void Mainloop();
 
-private:
-    float x, y;
-    float velocity;
+protected:
+    static Vector<Planaria *> plas;
 
-    static list<Planaria *> boids;
+    void Init(Layer *);
+    void Run();
+    void Coll();
+    void Dead();
 };

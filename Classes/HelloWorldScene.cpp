@@ -1,5 +1,4 @@
 #include "HelloWorldScene.h"
-#include "Planaria.h"
 
 USING_NS_CC;
 
@@ -19,7 +18,8 @@ Scene* HelloWorld::createScene()
 }
 
 void HelloWorld::Mainloop(float f) {
-    log("fps");
+
+    log("fps..%f", f);
 }
 
 // on "init" you need to initialize your instance
@@ -36,6 +36,8 @@ bool HelloWorld::init()
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
     this->schedule(schedule_selector(HelloWorld::Mainloop));
+
+    auto pl01 = Planaria::create(plas);
 
     /////////////////////////////
     // 2. add a menu item with "X" image, which is clicked to quit the program

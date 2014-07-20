@@ -22,13 +22,10 @@ public:
 
     void Mainloop(float);
 
-    void createPlanaria();
+protected:
 
     int t = 0;
 
-protected:
-    
-    Vector<Planaria *> plas;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

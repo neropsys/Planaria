@@ -18,6 +18,7 @@ Scene* HelloWorld::createScene()
 }
 
 void HelloWorld::Mainloop(float f) {
+    Planaria::Mainloop();
 
     log("fps..%f", f);
 }
@@ -35,9 +36,11 @@ bool HelloWorld::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
+    Planaria::Initialize(this);
+
     this->schedule(schedule_selector(HelloWorld::Mainloop));
 
-    auto pl01 = Planaria::create(plas);
+    auto pl01 = Planaria::create(100, 100, 0);
 
     /////////////////////////////
     // 2. add a menu item with "X" image, which is clicked to quit the program

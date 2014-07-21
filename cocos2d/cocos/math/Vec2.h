@@ -399,16 +399,26 @@ public:
      * @return This vector, after the scale occurs.
      */
     inline Vec2& operator*=(float s);
-    
+
     /**
-     * Returns the components of this vector divided by the given constant
-     *
-     * Note: this does not modify this vector.
-     *
-     * @param s the constant to divide this vector with
-     * @return a smaller vector
-     */
+    * Returns the components of this vector divided by the given constant
+    *
+    * Note: this does not modify this vector.
+    *
+    * @param s the constant to divide this vector with
+    * @return a smaller vector
+    */
     inline const Vec2 operator/(float s) const;
+
+    /**
+    * Returns the components of this vector divided by the given constant
+    *
+    * Note: this does not modify this vector.
+    *
+    * @param s the constant to divide this vector with
+    * @return a smaller vector, after the scale occurs.
+    */
+    inline Vec2& operator/=(float s);
 
     /**
      * Determines if this vector is less than the given vector.

@@ -1,26 +1,26 @@
 #include "cocos2d.h"
-
-USING_NS_CC;
-using namespace std;
+#include <cmath>
 
 class Planaria : public cocos2d::Node {
 
 public:
     Planaria();
 
-    Planaria(Vector<Planaria *> plas);
-
     virtual ~Planaria();
 
     static Planaria *create();
     static Planaria *create(float x, float y, float angle);
 
-    static void Initialize(Layer *);
+    static void Initialize(cocos2d::Layer *);
     static void Mainloop();
+    static void Finalize();
 
 protected:
-    static Vector<Planaria *> plas;
-    static Layer *layer;
+    static cocos2d::Vector<Planaria *> plas;
+    static cocos2d::Vector<Planaria *> newPlas;
+    static cocos2d::Vector<Planaria *> deadPlas;
+
+    static cocos2d::Layer *layer;
 
     void Init();
     void Run();
@@ -30,9 +30,9 @@ protected:
 
     virtual void moveBody();
 
-    DrawNode *plHead, *plBody;
+    cocos2d::DrawNode *plHead;
 
-    float x = 0.f, y = 0.f;
+    cocos2d::Vec2 position;
     float angle = 0.f;
     float velocity = 0.f, vx = 0.f, vy = 0.f;
 };

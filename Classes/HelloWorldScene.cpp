@@ -19,8 +19,6 @@ Scene* HelloWorld::createScene()
 
 void HelloWorld::Mainloop(float f) {
     Planaria::Mainloop();
-
-    log("fps..%f", f);
 }
 
 // on "init" you need to initialize your instance

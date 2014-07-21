@@ -1,16 +1,22 @@
 #include "Planaria.h"
-#include <cmath>
+
+USING_NS_CC;
 
 Vector<Planaria *> Planaria::plas;
+Vector<Planaria *> Planaria::newPlas;
+Vector<Planaria *> Planaria::deadPlas;
+
 Layer *Planaria::layer;
 
 Planaria::Planaria() {
 }
 
-Planaria::Planaria(Vector<Planaria *> plas) {
+Planaria::~Planaria() {
 }
 
-Planaria::~Planaria() {
+// static method
+void Planaria::Initialize(Layer *parent) {
+    layer = parent;
 }
 
 void Planaria::Mainloop() {
@@ -27,9 +33,7 @@ void Planaria::Mainloop() {
     }
 }
 
-// static method
-void Planaria::Initialize(Layer *parent) {
-    layer = parent;
+void Planaria::Finalize() {
 }
 
 // each object's method
@@ -50,14 +54,30 @@ void Planaria::Init() {
 }
 
 void Planaria::Run() {
-    x += 0.5f; y += 0.5f;
+    moveBody();
+}
+
+void Planaria::moveBody() {
+    int neighborDist = 25, count = 0;
+    Vec2 steer = Vec2(0, 0);
+
+    for (auto other : plas) {
+        float distance = position.getDistance(other->position);
+
+        if (distance > 0 && distance < neighborDist) {
+            steer += other->position;
+
+            count++;
+        }
+    }
+
+    if (count > 0) {
+        steer = steer / count;
+    }
 }
 
 void Planaria::Render() {
-    auto headPos = plHead->getPosition();
-    headPos.setPoint(x, y);
-
-    plHead->setPosition(headPos);
+    plHead->setPosition(position);
     plHead->setRotation(angle);
 }
 

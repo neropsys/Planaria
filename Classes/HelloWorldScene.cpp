@@ -40,7 +40,7 @@ bool HelloWorld::init()
 
     this->schedule(schedule_selector(HelloWorld::Mainloop));
 
-    auto pl01 = Planaria::create(100, 100, 0);
+    auto pl01 = Planaria::create(0, 0, 0);
 
     /////////////////////////////
     // 2. add a menu item with "X" image, which is clicked to quit the program

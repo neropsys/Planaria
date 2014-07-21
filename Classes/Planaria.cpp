@@ -1,4 +1,5 @@
 #include "Planaria.h"
+#include <cmath>
 
 Vector<Planaria *> Planaria::plas;
 Layer *Planaria::layer;
@@ -37,13 +38,27 @@ void Planaria::Init() {
 
     layer->addChild(plHead);
 
-    plHead->drawTriangle(Vec2(10, 10), Vec2(10, 20), Vec2(20, 20), Color4F(1.0f, 1.0f, 1.0f, 1.0f));
+    Vec2 pt[3];
+
+    for (int i = 0; i < 3; i++) {
+        pt[i] = Vec2(cosf(angle * M_PI / 180) * 20, sinf(angle * M_PI / 180) * 20);
+        angle += 120;
+    }
+
+    plHead->drawTriangle(pt[2], pt[1], pt[0], Color4F(1.0f, 1.0f, 1.0f, 1.0f));
+    plHead->setScale(1.0f);
 }
 
 void Planaria::Run() {
+    x += 0.5f; y += 0.5f;
 }
 
 void Planaria::Render() {
+    auto headPos = plHead->getPosition();
+    headPos.setPoint(x, y);
+
+    plHead->setPosition(headPos);
+    plHead->setRotation(angle);
 }
 
 void Planaria::Coll() {

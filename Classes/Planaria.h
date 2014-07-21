@@ -28,6 +28,8 @@ protected:
     void Coll();
     void Dead();
 
+    virtual void moveBody();
+
     DrawNode *plHead, *plBody;
 
     float x = 0.f, y = 0.f;

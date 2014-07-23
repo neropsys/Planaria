@@ -6,6 +6,21 @@
 
 using namespace std;
 
+class PlanariaBox {
+public:
+
+    PlanariaBox();
+    PlanariaBox(float left, float top, float right, float bottom);
+
+    ~PlanariaBox();
+
+    float left;
+    float top;
+    float right;
+    float bottom;
+protected:
+};
+
 class Planaria : public cocos2d::Node {
 
 public:
@@ -25,8 +40,10 @@ public:
     void setMove(const cocos2d::Vec2&);
 
     void setPlanariaZone(float top, float bottom, float left, float right);
-    Vec4 getPlanariaZone();
+    void setPlanariaZone(const PlanariaBox&);
     void extendZone(float top, float bottom, float left, float right);
+    void extendZone(const PlanariaBox&);
+    PlanariaBox getPlanariaZone();
 
 protected:
     static cocos2d::Vector<Planaria *> plas;
@@ -58,17 +75,7 @@ protected:
     int tailSegments = 10, tailEx = 0;
 
     cocos2d::Vec2 position, velocity;
-    float angle = 0.f;
-    float maxSpeed = 20.f, maxForce = 0.5f;
+    float angle = 0.f, speed = 0.f;
 
     PlanariaBox plZone;
-};
-
-class PlanariaBox {
-public:
-    float left;
-    float top;
-    float right;
-    float bottom;
-protected:
 };

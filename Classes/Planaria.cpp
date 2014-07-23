@@ -65,10 +65,11 @@ void Planaria::Finalize() {
 // each object's method
 void Planaria::Init() {
     Size screen = Director::getInstance()->getVisibleSize();
+    float baseMargin = 30.f;
 
+    // this is fucking why I blame the coordinate system of cocos2dx....
     setPlanariaZone(screen.height, 0, 0, screen.width);
-
-    extendZone(-15, -15, -15, -15);
+    extendZone(-baseMargin, baseMargin, baseMargin, -baseMargin);
 
     velocity = Vec2(0, 0);
     tailEx = getNext() * 1000;
@@ -86,9 +87,7 @@ void Planaria::Init() {
     }
 
     if (velocity.isZero()) {
-        velocity.setPoint(cosf(RAD(angle)), -sinf(RAD(angle)));
-        velocity.setLength(maxSpeed);
-
+        setMove(angle, 4);
 
         log("%f, %f", velocity.x, velocity.y);
 
@@ -106,16 +105,45 @@ void Planaria::Run() {
 
 void Planaria::moveBody() {
     Vec2 pre = position + velocity;
+
+    float reflectAngle = 140.f;
+
+    if (pre.x < plZone.left) {
+        pre.x = plZone.left;
+        angle += getNext() * reflectAngle - reflectAngle / 2;
+    }
+    if (pre.x > plZone.right) {
+        pre.x = plZone.right;
+        angle += getNext() * reflectAngle - reflectAngle / 2;
+    }
+    if (pre.y > plZone.top) {
+        pre.y = plZone.top;
+        angle += getNext() * reflectAngle - reflectAngle / 2;
+    }
+    if (pre.y < plZone.bottom) {
+        pre.y = plZone.bottom;
+        angle += getNext() * reflectAngle - reflectAngle / 2;
+    }
+
+    /*Vec2 steer = align();
+
+    if (!steer.isZero()) {
+        setMove(steer);
+    }*/
+
+    setMove(angle, speed);
+
+    position = pre;
 }
 
 void Planaria::calulateTail() {
-    float speed = velocity.getLength();
-    float pieceLength = 2 + speed / 4;
+    float acceleration = this->speed * this->speed;
+    float pieceLength = 5 + speed / 4;
     Vec2 lastVel = -velocity;
     Vec2 pt = position;
     
     // 꼬리를 휘두르는 정도를 결정함
-    float rotateAngle = 45;
+    float rotateAngle = 10;
 
     int i = 0;
 
@@ -124,10 +152,10 @@ void Planaria::calulateTail() {
         Vec2 oVector = pos - pt;
         Vec2 rotatedVec = lastVel;
 
-        tailEx += speed * 10;
+        tailEx += acceleration;
         rotatedVec.rotate(Vec2(0 , 0), rotateAngle);
         rotatedVec.normalize();
-        rotatedVec.setLength(-sinf((tailEx + i * 5) / 300) * 0.6);
+        rotatedVec.setLength(-sinf((tailEx + i * 3) / 300) * 1);
 
         pt += lastVel.getNormalized() * pieceLength + rotatedVec;
         //pt += lastVel.getNormalized() * pieceLength;
@@ -153,7 +181,7 @@ Vec2 Planaria::align() {
         float distance = position.getDistance(other->position);
 
         if (distance > 0 && distance < neighborDist) {
-            steer += other->position;
+            steer += other->velocity;
 
             count++;
         }
@@ -164,9 +192,9 @@ Vec2 Planaria::align() {
     }
 
     if (!steer.isZero()) {
-        steer.setLength(maxSpeed);
-        steer -= position;
-        steer.setLength(min(steer.getLength(), maxForce));
+        steer.setLength(speed);
+        steer -= velocity;
+        steer.setLength(speed);
     }
 
     return steer;
@@ -218,20 +246,63 @@ void Planaria::setMove(float angle, float speed) {
     velocity.setPoint(cosf(RAD(angle)) * speed, -sinf(RAD(angle)) * speed);
 
     this->angle = angle;
+    this->speed = speed;
 }
 
 void Planaria::setMove(const Vec2 &velocity) {
     this->velocity = velocity;
 
     angle = atan2f(velocity.y - this->velocity.y, velocity.x - this->velocity.x) * 180 / M_PI;
+    speed = velocity.getLength();
 }
 
 void Planaria::setPlanariaZone(float top, float bottom, float left, float right) {
+    plZone.top = top;
+    plZone.bottom = bottom;
+    plZone.left = left;
+    plZone.right = right;
+}
+
+void Planaria::setPlanariaZone(const PlanariaBox &box) {
+    plZone.top = box.top;
+    plZone.bottom = box.bottom;
+    plZone.left = box.left;
+    plZone.right = box.right;
 }
 
 void Planaria::extendZone(float top, float bottom, float left, float right) {
+    plZone.top += top;
+    plZone.bottom += bottom;
+    plZone.left += left;
+    plZone.right += right;
 }
 
-Vec4 Planaria::getPlanariaZone() {
+void Planaria::extendZone(const PlanariaBox &box) {
+    plZone.top += box.top;
+    plZone.bottom += box.bottom;
+    plZone.left += box.left;
+    plZone.right += box.right;
+}
+
+PlanariaBox Planaria::getPlanariaZone() {
     return plZone;
+}
+
+////////////////////////////////////////////////////
+
+PlanariaBox::PlanariaBox() {
+    left = 0;
+    top = 0;
+    right = 0;
+    bottom = 0;
+}
+
+PlanariaBox::PlanariaBox(float left, float top, float right, float bottom) {
+    this->left = left;
+    this->top = top;
+    this->right = right;
+    this->bottom = bottom;
+}
+
+PlanariaBox::~PlanariaBox() {
 }

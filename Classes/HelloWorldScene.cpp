@@ -17,6 +17,10 @@ Scene* HelloWorld::createScene()
     return scene;
 }
 
+float HelloWorld::getNext() {
+    return (float)rand() / RAND_MAX;
+}
+
 void HelloWorld::Mainloop(float f) {
     Planaria::Mainloop();
 }
@@ -24,6 +28,7 @@ void HelloWorld::Mainloop(float f) {
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
 {
+    srand(time(NULL));
     //////////////////////////////
     // 1. super init first
     if ( !Layer::init() )
@@ -38,7 +43,13 @@ bool HelloWorld::init()
 
     this->schedule(schedule_selector(HelloWorld::Mainloop));
 
-    auto pl01 = Planaria::create(0, 0, 0);
+    Planaria *test[100];
+
+    for (int i = 0; i < 20; i++) {
+        test[i] = Planaria::create(visibleSize.width * getNext(), visibleSize.height * getNext(), getNext() * 360);
+
+        //log("%f, %f, %f", getNext(), visibleSize.height * getNext(), getNext() * 360);
+    }
 
     /////////////////////////////
     // 2. add a menu item with "X" image, which is clicked to quit the program

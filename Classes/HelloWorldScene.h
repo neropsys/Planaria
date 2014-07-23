@@ -22,6 +22,8 @@ public:
 
     void Mainloop(float);
 
+    float getNext();
+
 protected:
 
     int t = 0;

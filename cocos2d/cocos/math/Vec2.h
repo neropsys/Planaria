@@ -98,6 +98,10 @@ public:
      */
     ~Vec2();
 
+    static Vec2 *create();
+    static Vec2 *create(float x, float y);
+    static Vec2 *create(Vec2&);
+
     /**
      * Indicates whether this vector contains all zeros.
      *
@@ -485,6 +489,8 @@ public:
     inline float getLengthSq() const {
         return dot(*this); //x*x + y*y;
     };
+
+    void setLength(float);
 
     /** Calculates the square distance between two points (not calling sqrt() )
      @return float

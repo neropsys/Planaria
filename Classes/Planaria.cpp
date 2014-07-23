@@ -64,6 +64,11 @@ void Planaria::Finalize() {
 
 // each object's method
 void Planaria::Init() {
+    Size screen = Director::getInstance()->getVisibleSize();
+
+    setPlanariaZone(screen.height, 0, 0, screen.width);
+
+    extendZone(-15, -15, -15, -15);
 
     velocity = Vec2(0, 0);
     tailEx = getNext() * 1000;
@@ -100,6 +105,7 @@ void Planaria::Run() {
 }
 
 void Planaria::moveBody() {
+    Vec2 pre = position + velocity;
 }
 
 void Planaria::calulateTail() {
@@ -107,6 +113,9 @@ void Planaria::calulateTail() {
     float pieceLength = 2 + speed / 4;
     Vec2 lastVel = -velocity;
     Vec2 pt = position;
+    
+    // 꼬리를 휘두르는 정도를 결정함
+    float rotateAngle = 45;
 
     int i = 0;
 
@@ -116,9 +125,9 @@ void Planaria::calulateTail() {
         Vec2 rotatedVec = lastVel;
 
         tailEx += speed * 10;
-        rotatedVec.rotate(Vec2(0 , 0), 40);
+        rotatedVec.rotate(Vec2(0 , 0), rotateAngle);
         rotatedVec.normalize();
-        rotatedVec.setLength(-sinf((tailEx + i * 3) / 300) * 0.5);
+        rotatedVec.setLength(-sinf((tailEx + i * 5) / 300) * 0.6);
 
         pt += lastVel.getNormalized() * pieceLength + rotatedVec;
         //pt += lastVel.getNormalized() * pieceLength;
@@ -206,8 +215,23 @@ void Planaria::Dead() {
 }
 
 void Planaria::setMove(float angle, float speed) {
+    velocity.setPoint(cosf(RAD(angle)) * speed, -sinf(RAD(angle)) * speed);
+
+    this->angle = angle;
 }
 
 void Planaria::setMove(const Vec2 &velocity) {
+    this->velocity = velocity;
 
+    angle = atan2f(velocity.y - this->velocity.y, velocity.x - this->velocity.x) * 180 / M_PI;
+}
+
+void Planaria::setPlanariaZone(float top, float bottom, float left, float right) {
+}
+
+void Planaria::extendZone(float top, float bottom, float left, float right) {
+}
+
+Vec4 Planaria::getPlanariaZone() {
+    return plZone;
 }

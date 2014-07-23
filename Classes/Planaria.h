@@ -24,6 +24,10 @@ public:
     void setMove(float angle, float speed);
     void setMove(const cocos2d::Vec2&);
 
+    void setPlanariaZone(float top, float bottom, float left, float right);
+    Vec4 getPlanariaZone();
+    void extendZone(float top, float bottom, float left, float right);
+
 protected:
     static cocos2d::Vector<Planaria *> plas;
     static cocos2d::Vector<Planaria *> newPlas;
@@ -56,4 +60,15 @@ protected:
     cocos2d::Vec2 position, velocity;
     float angle = 0.f;
     float maxSpeed = 20.f, maxForce = 0.5f;
+
+    PlanariaBox plZone;
+};
+
+class PlanariaBox {
+public:
+    float left;
+    float top;
+    float right;
+    float bottom;
+protected:
 };

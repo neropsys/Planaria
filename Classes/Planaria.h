@@ -34,6 +34,9 @@ protected:
     void Coll();
     void Dead();
 
+    void renderHead();
+    void renderTail();
+
     void createTail();
 
     virtual void moveBody();

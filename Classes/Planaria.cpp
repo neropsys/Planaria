@@ -91,7 +91,7 @@ void Planaria::Init() {
     }
 
     if (velocity.isZero()) {
-        velocity.setPoint(cosf(angle * M_PI / 180), sinf(angle * M_PI / 180));
+        velocity.setPoint(cosf(angle * M_PI / 180), -sinf(angle * M_PI / 180));
         velocity.setLength(maxSpeed);
 
 
@@ -129,7 +129,7 @@ void Planaria::calulateTail() {
         rotatedVec.rotate(pos, 40);
         rotatedVec.normalize();
 
-        pt += lastVel.getNormalized() * pieceLength + rotatedVec * sinf((tailEx + i * 3) / 300) * 5;
+        pt += lastVel.getNormalized() * pieceLength + Vec2(1.f, 1.f) * sinf((tailEx + i * 3) / 300) * 5;
         //pt += lastVel.getNormalized() * pieceLength;
 
         //pt += lastVel.getNormalized() * 5;
@@ -173,9 +173,17 @@ Vec2 Planaria::align() {
 }
 
 void Planaria::Render() {
+    renderTail();
+    renderHead();
+}
+
+void Planaria::renderHead() {
+    plHead->clear();
     plHead->setPosition(position);
     plHead->setRotation(angle);
+}
 
+void Planaria::renderTail() {
     calulateTail();
 
     plBody->clear();

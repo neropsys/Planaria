@@ -64,7 +64,11 @@ void Planaria::Finalize() {
 
 // each object's method
 void Planaria::Init() {
+
     velocity = Vec2(0, 0);
+    tailEx = getNext() * 1000;
+
+    log("%d", tailEx);
 
     plHead = DrawNode::create();
     plBody = DrawNode::create();
@@ -72,26 +76,12 @@ void Planaria::Init() {
     layer->addChild(plHead);
     layer->addChild(plBody);
 
-    Vec2 pt[3];
-
-    float ptAngle = 0;
-
-    for (int i = 0; i < 3; i++) {
-        pt[i] = Vec2(cosf(ptAngle * M_PI / 180) * 10, sinf(ptAngle * M_PI / 180) * 10);
-        ptAngle += 120;
-    }
-
-    plHead->setScale(1.0f);
-    plHead->setPosition(position);
-    plHead->setRotation(angle * M_PI / 180);
-    plHead->drawTriangle(pt[0], pt[1], pt[2], Color4F(1.0f, 1.0f, 1.0f, 1.0f));
-
     for (int i = 0; i < tailSegments; i++) {
         plTail.push_back(new Vec2(position));
     }
 
     if (velocity.isZero()) {
-        velocity.setPoint(cosf(angle * M_PI / 180), -sinf(angle * M_PI / 180));
+        velocity.setPoint(cosf(RAD(angle)), -sinf(RAD(angle)));
         velocity.setLength(maxSpeed);
 
 
@@ -114,7 +104,7 @@ void Planaria::moveBody() {
 
 void Planaria::calulateTail() {
     float speed = velocity.getLength();
-    float pieceLength = 5 + speed / 3;
+    float pieceLength = 2 + speed / 4;
     Vec2 lastVel = -velocity;
     Vec2 pt = position;
 
@@ -126,10 +116,11 @@ void Planaria::calulateTail() {
         Vec2 rotatedVec = lastVel;
 
         tailEx += speed * 10;
-        rotatedVec.rotate(pos, 40);
+        rotatedVec.rotate(Vec2(0 , 0), 40);
         rotatedVec.normalize();
+        rotatedVec.setLength(-sinf((tailEx + i * 3) / 300) * 0.5);
 
-        pt += lastVel.getNormalized() * pieceLength + Vec2(1.f, 1.f) * sinf((tailEx + i * 3) / 300) * 5;
+        pt += lastVel.getNormalized() * pieceLength + rotatedVec;
         //pt += lastVel.getNormalized() * pieceLength;
 
         //pt += lastVel.getNormalized() * 5;
@@ -178,9 +169,21 @@ void Planaria::Render() {
 }
 
 void Planaria::renderHead() {
+    Vec2 pt[3];
+    float ptAngle = 0;
+
+    for (int i = 0; i < 3; i++) {
+        pt[i] = Vec2(cosf(RAD(ptAngle)) * 10, sinf(RAD(ptAngle)) * 10);
+        ptAngle += 120;
+    }
+
     plHead->clear();
+
+    plHead->setScale(1.0f);
     plHead->setPosition(position);
     plHead->setRotation(angle);
+
+    plHead->drawTriangle(pt[0], pt[1], pt[2], Color4F(1.0f, 1.0f, 1.0f, 1.0f));
 }
 
 void Planaria::renderTail() {
@@ -200,4 +203,11 @@ void Planaria::Coll() {
 }
 
 void Planaria::Dead() {
+}
+
+void Planaria::setMove(float angle, float speed) {
+}
+
+void Planaria::setMove(const Vec2 &velocity) {
+
 }

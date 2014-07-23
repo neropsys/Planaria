@@ -21,6 +21,9 @@ public:
     static void Mainloop();
     static void Finalize();
 
+    void setMove(float angle, float speed);
+    void setMove(const cocos2d::Vec2&);
+
 protected:
     static cocos2d::Vector<Planaria *> plas;
     static cocos2d::Vector<Planaria *> newPlas;

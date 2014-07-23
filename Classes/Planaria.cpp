@@ -83,7 +83,7 @@ void Planaria::Init() {
 
     plHead->setScale(1.0f);
     plHead->setPosition(position);
-    plHead->setRotation(angle);
+    plHead->setRotation(angle * M_PI / 180);
     plHead->drawTriangle(pt[0], pt[1], pt[2], Color4F(1.0f, 1.0f, 1.0f, 1.0f));
 
     for (int i = 0; i < tailSegments; i++) {
@@ -91,10 +91,11 @@ void Planaria::Init() {
     }
 
     if (velocity.isZero()) {
-        log("test");
-        velocity.setPoint(cosf(angle), sinf(angle));
-        velocity.subtract(Vec2(0.5f, 0.5f));
+        velocity.setPoint(cosf(angle * M_PI / 180), sinf(angle * M_PI / 180));
         velocity.setLength(maxSpeed);
+
+
+        log("%f, %f", velocity.x, velocity.y);
 
         //log("%f, %f", velocity.x, velocity.y);
     }
@@ -130,6 +131,8 @@ void Planaria::calulateTail() {
 
         pt += lastVel.getNormalized() * pieceLength + rotatedVec * sinf((tailEx + i * 3) / 300) * 5;
         //pt += lastVel.getNormalized() * pieceLength;
+
+        //pt += lastVel.getNormalized() * 5;
 
         lastVel = oVector;
 

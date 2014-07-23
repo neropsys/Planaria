@@ -208,7 +208,7 @@ void Vec2::setLength(float length) {
     if (isZero()) {
         float _angle = this->getAngle();
 
-        this->setPoint(cosf(_angle) * length, sinf(_angle) * length);
+        this->setPoint(cosf(_angle * M_PI / 180) * length, sinf(_angle * M_PI / 180) * length);
     }
     else {
         float scale = length / this->getLength();

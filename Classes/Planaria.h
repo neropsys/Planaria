@@ -76,6 +76,9 @@ protected:
 
     cocos2d::Vec2 position, velocity;
     float angle = 0.f, speed = 0.f;
+    float exAngle = 0.f;
+
+    int t = 0;
 
     PlanariaBox plZone;
 };

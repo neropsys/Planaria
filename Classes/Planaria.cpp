@@ -56,6 +56,8 @@ void Planaria::Mainloop() {
 
     for (auto child : plas) {
         child->Render();
+
+        child->t++;
     }
 }
 
@@ -87,7 +89,7 @@ void Planaria::Init() {
     }
 
     if (velocity.isZero()) {
-        setMove(angle, 4);
+        setMove(angle, 2 + getNext() * 3);
 
         log("%f, %f", velocity.x, velocity.y);
 
@@ -131,14 +133,18 @@ void Planaria::moveBody() {
         setMove(steer);
     }*/
 
-    setMove(angle, speed);
+    if (t % 50 == 0 && t > 0) {
+        exAngle = 6 * getNext() - 3;
+    }
+
+    setMove(angle + exAngle, speed);
 
     position = pre;
 }
 
 void Planaria::calulateTail() {
     float acceleration = this->speed * this->speed;
-    float pieceLength = 5 + speed / 4;
+    float pieceLength = 5 + speed / 3;
     Vec2 lastVel = -velocity;
     Vec2 pt = position;
     

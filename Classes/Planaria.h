@@ -72,11 +72,13 @@ protected:
     cocos2d::DrawNode *plHead, *plBody;
 
     vector<cocos2d::Vec2 *> plTail;
-    int tailSegments = 10, tailEx = 0;
+    int tailSegments = 20, tailEx = 0;
 
     cocos2d::Vec2 position, velocity;
     float angle = 0.f, speed = 0.f;
-    float exAngle = 0.f;
+    float exAngle = 0.f, exSpeed = 0.f;
+    float maxSpeed = 6.f, minSpeed = 2.f;
+    float bodyLength = 120.f, bodySize = 4.5f;
 
     int t = 0;
 

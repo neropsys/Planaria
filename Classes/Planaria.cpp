@@ -89,12 +89,14 @@ void Planaria::Init() {
     }
 
     if (velocity.isZero()) {
-        setMove(angle, 2 + getNext() * 3);
+        setMove(angle, 1 + getNext() * 3);
 
         log("%f, %f", velocity.x, velocity.y);
 
         //log("%f, %f", velocity.x, velocity.y);
     }
+
+    Render();
 }
 
 float Planaria::getNext() {
@@ -137,19 +139,43 @@ void Planaria::moveBody() {
         exAngle = 6 * getNext() - 3;
     }
 
-    setMove(angle + exAngle, speed);
+    if (t % 70 == 0 && t > 0) {
+        exSpeed = 3 * getNext() - 1.5;
+    }
+    
+    speed -= exSpeed;
+
+    if (t % 90 == 0) {
+        exSpeed = 0;
+    }
+
+    float realSpeed = speed + exSpeed;
+
+    if (realSpeed > maxSpeed) {
+        realSpeed = maxSpeed;
+    }
+    if (realSpeed < minSpeed) {
+        realSpeed = minSpeed;
+    }
+
+    setMove(angle + exAngle, realSpeed);
 
     position = pre;
 }
 
 void Planaria::calulateTail() {
     float acceleration = this->speed * this->speed;
-    float pieceLength = 5 + speed / 3;
+    float pieceLength = bodyLength / tailSegments + speed / 5;
     Vec2 lastVel = -velocity;
     Vec2 pt = position;
     
-    // 꼬리를 휘두르는 정도를 결정함
-    float rotateAngle = 10;
+    // 꼬리를 휘두르는 정도를 결정함 (amount of planaria's tail snap increases if this value is small)
+    float rotateAngle = 40;
+
+    // 너무 낮으면 애가 흔드는지 안흔드는지....
+    if (acceleration < pieceLength) {
+        acceleration = pieceLength - this->speed;
+    }
 
     int i = 0;
 
@@ -158,10 +184,10 @@ void Planaria::calulateTail() {
         Vec2 oVector = pos - pt;
         Vec2 rotatedVec = lastVel;
 
-        tailEx += acceleration;
-        rotatedVec.rotate(Vec2(0 , 0), rotateAngle);
+        tailEx += this->speed;
+        rotatedVec.rotate(pos, rotateAngle);
         rotatedVec.normalize();
-        rotatedVec.setLength(-sinf((tailEx + i * 3) / 300) * 1);
+        rotatedVec.setLength(-sinf((tailEx + i * 2) / 300) * 0.05);
 
         pt += lastVel.getNormalized() * pieceLength + rotatedVec;
         //pt += lastVel.getNormalized() * pieceLength;
@@ -226,10 +252,14 @@ void Planaria::renderHead() {
     plHead->setPosition(position);
     plHead->setRotation(angle);
 
-    plHead->drawTriangle(pt[0], pt[1], pt[2], Color4F(1.0f, 1.0f, 1.0f, 1.0f));
+    //plHead->drawTriangle(pt[0], pt[1], pt[2], Color4F(1.0f, 1.0f, 1.0f, 1.0f));
 }
 
 void Planaria::renderTail() {
+    int i = 0;
+    float tailSize = 3;
+    Vec2 lastPos;
+
     calulateTail();
 
     plBody->clear();
@@ -237,8 +267,20 @@ void Planaria::renderTail() {
     for (auto segment : plTail) {
         Vec2 pos = Vec2(segment->x, segment->y);
 
-        plBody->drawDot(pos, 1, Color4F(1, 1, 1, 1));
+        //plBody->drawDot(pos, 1, Color4F(1, 1, 1, 1));
         //log("%f, %f", segment.x, segment.y);
+
+        if (i < tailSegments) {
+            if (i > 0) {
+                plBody->drawSegment(lastPos, pos, bodySize + bodySize * sinf((float)i * 3 / tailSegments), Color4F(1, 1, 1, 1));
+
+                //tailSize -= 0.15;
+            }
+
+            lastPos = pos;
+        }
+
+        i++;
     }
 }
 

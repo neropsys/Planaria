@@ -17,6 +17,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto glview = director->getOpenGLView();
     if(!glview) {
         glview = GLView::create("Planaria ~ Lesson 5");
+        glview->setFrameSize(1280.f, 760.f);
         director->setOpenGLView(glview);
     }
 

@@ -17,9 +17,18 @@ Scene* HelloWorld::createScene()
     return scene;
 }
 
+float HelloWorld::getNext() {
+    return (float)rand() / RAND_MAX;
+}
+
+void HelloWorld::Mainloop(float f) {
+    Planaria::Mainloop();
+}
+
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
 {
+    srand(time(NULL));
     //////////////////////////////
     // 1. super init first
     if ( !Layer::init() )
@@ -30,12 +39,24 @@ bool HelloWorld::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
+    Planaria::Initialize(this);
+
+    this->schedule(schedule_selector(HelloWorld::Mainloop));
+
+    Planaria *test[100];
+
+    for (int i = 0; i < 50; i++) {
+        test[i] = Planaria::create(visibleSize.width * getNext(), visibleSize.height * getNext(), getNext() * 360);
+
+        //log("%f, %f, %f", getNext(), visibleSize.height * getNext(), getNext() * 360);
+    }
+
     /////////////////////////////
     // 2. add a menu item with "X" image, which is clicked to quit the program
     //    you may modify it.
 
     // add a "close" icon to exit the progress. it's an autorelease object
-    auto closeItem = MenuItemImage::create(
+    /*auto closeItem = MenuItemImage::create(
                                            "CloseNormal.png",
                                            "CloseSelected.png",
                                            CC_CALLBACK_1(HelloWorld::menuCloseCallback, this));
@@ -70,7 +91,7 @@ bool HelloWorld::init()
     sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
 
     // add the sprite as a child to this layer
-    this->addChild(sprite, 0);
+    this->addChild(sprite, 0);*/
     
     return true;
 }

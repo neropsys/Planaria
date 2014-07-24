@@ -371,9 +371,9 @@ bool Planaria::isCrash(float x, float y, float radius) {
 
     for (auto segment : plTail) {
         float distX = x - segment->x, distY = y - segment->y;
-        float size = getSegmentSize(i), realSize = size + radius;
+        float size = getSegmentSize(i);
 
-        if ((distX * distX + distY * distY) < (realSize * realSize)) {
+        if (sqrtf(distX * distX + distY + distY) < size + radius) {
             return true;
         }
 

@@ -64,10 +64,36 @@ void Planaria::Mainloop() {
 void Planaria::Finalize() {
 }
 
+bool Planaria::onTouchBegan(Touch* touch, Event* event) {
+    Vec2 pos = touch->getLocation();
+
+    return true;
+}
+
+void Planaria::onTouchMoved(Touch* touch, Event* event) {
+    Vec2 pos = touch->getLocation();
+
+    for (auto child : plas) {
+        if (child->isCrash(pos)) {
+            child->bodyColor = Color4F(1.f, 0.f, 0.f, 1.f);
+        }
+    }
+}
+
+void Planaria::onTouchEnded(Touch* touch, Event* event) {
+    Vec2 pos = touch->getLocation();
+}
+
+void Planaria::onTouchCancelled(Touch* touch, Event* event) {
+    Vec2 pos = touch->getLocation();
+}
+
 // each object's method
 void Planaria::Init() {
     Size screen = Director::getInstance()->getVisibleSize();
     float baseMargin = 30.f;
+
+    bodyColor = Color4F(1, 1, 1, 1);
 
     // this is fucking why I blame the coordinate system of cocos2dx....
     setPlanariaZone(screen.height, 0, 0, screen.width);
@@ -89,7 +115,7 @@ void Planaria::Init() {
     }
 
     if (velocity.isZero()) {
-        setMove(angle, 1 + getNext() * 3);
+        setMove(angle, 1 + getNext() * 1);
 
         log("%f, %f", velocity.x, velocity.y);
 
@@ -165,7 +191,7 @@ void Planaria::moveBody() {
 
 void Planaria::calulateTail() {
     float acceleration = this->speed * this->speed;
-    float pieceLength = bodyLength / tailSegments + speed / 5;
+    float pieceLength = bodyLength / tailSegments + speed / 3;
     Vec2 lastVel = -velocity;
     Vec2 pt = position;
     
@@ -253,7 +279,11 @@ void Planaria::renderHead() {
     plHead->setPosition(position);
     plHead->setRotation(angle);
 
-    plHead->drawTriangle(pt[0], pt[1], pt[2], Color4F(1.0f, 1.0f, 1.0f, 1.0f));
+    plHead->drawTriangle(pt[0], pt[1], pt[2], bodyColor);
+}
+
+inline float Planaria::getSegmentSize(int n) {
+    return bodySize + bodySize * sinf((float)n * 3 / tailSegments);
 }
 
 void Planaria::renderTail() {
@@ -272,7 +302,7 @@ void Planaria::renderTail() {
 
         if (i < tailSegments) {
             if (i > 0) {
-                plBody->drawSegment(lastPos, pos, bodySize + bodySize * sinf((float)i * 3 / tailSegments), Color4F(1, 1, 1, 1));
+                plBody->drawSegment(lastPos, pos, getSegmentSize(i), bodyColor);
 
                 //tailSize -= 0.15;
             }
@@ -330,6 +360,27 @@ void Planaria::extendZone(const PlanariaBox &box) {
     plZone.bottom += box.bottom;
     plZone.left += box.left;
     plZone.right += box.right;
+}
+
+bool Planaria::isCrash(const Vec2 &pt) {
+    return isCrash(pt.x, pt.y, 1);
+}
+
+bool Planaria::isCrash(float x, float y, float radius) {
+    int i = 0;
+
+    for (auto segment : plTail) {
+        float distX = x - segment->x, distY = y - segment->y;
+        float size = getSegmentSize(i);
+
+        if (sqrtf(distX * distX + distY + distY) < size + radius) {
+            return true;
+        }
+
+        i++;
+    }
+
+    return false;
 }
 
 PlanariaBox Planaria::getPlanariaZone() {

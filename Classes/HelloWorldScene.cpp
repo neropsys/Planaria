@@ -25,6 +25,48 @@ void HelloWorld::Mainloop(float f) {
     Planaria::Mainloop();
 }
 
+void HelloWorld::onEnter() {
+    Layer::onEnter();
+
+    auto listener = EventListenerTouchOneByOne::create();
+
+    listener->setSwallowTouches(true);
+
+    listener->onTouchBegan = CC_CALLBACK_2(HelloWorld::onTouchBegan, this);
+    listener->onTouchMoved = CC_CALLBACK_2(HelloWorld::onTouchMoved, this);
+    listener->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
+    listener->onTouchCancelled = CC_CALLBACK_2(HelloWorld::onTouchCancelled, this);
+
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
+
+    auto mouseBinder = EventListenerMouse::create();
+}
+
+void HelloWorld::onExit() {
+    _eventDispatcher->removeEventListenersForType(EventListener::Type::TOUCH_ONE_BY_ONE);
+    
+    Layer::onExit();
+}
+
+bool HelloWorld::onTouchBegan(Touch* touch, Event* event) {
+    Planaria::onTouchBegan(touch, event);
+
+    return true;
+}
+
+void HelloWorld::onTouchMoved(Touch* touch, Event* event) {
+    Planaria::onTouchMoved(touch, event);
+
+}
+
+void HelloWorld::onTouchEnded(Touch* touch, Event* event) {
+    Planaria::onTouchEnded(touch, event);
+}
+
+void HelloWorld::onTouchCancelled(Touch* touch, Event* event) {
+    Planaria::onTouchCancelled(touch, event);
+}
+
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
 {

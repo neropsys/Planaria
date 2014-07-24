@@ -36,6 +36,15 @@ public:
     static void Mainloop();
     static void Finalize();
 
+    /*static std::function<void(cocos2d::Event* event)> onMouseDown();
+    static std::function<void(cocos2d::Event* event)> onMouseUp();
+    static std::function<void(cocos2d::Event* event)> onMouseMove();*/
+
+    static bool onTouchBegan(cocos2d::Touch*, cocos2d::Event*);
+    static void onTouchMoved(cocos2d::Touch*, cocos2d::Event*);
+    static void onTouchEnded(cocos2d::Touch*, cocos2d::Event*);
+    static void onTouchCancelled(cocos2d::Touch*, cocos2d::Event*);
+
     void setMove(float angle, float speed);
     void setMove(const cocos2d::Vec2&);
 
@@ -44,6 +53,11 @@ public:
     void extendZone(float top, float bottom, float left, float right);
     void extendZone(const PlanariaBox&);
     PlanariaBox getPlanariaZone();
+
+    bool isCrash(const cocos2d::Vec2&);
+    bool isCrash(float x, float y, float radius);
+
+    cocos2d::Color4F bodyColor;
 
 protected:
     static cocos2d::Vector<Planaria *> plas;
@@ -63,6 +77,8 @@ protected:
 
     void createTail();
 
+    inline float getSegmentSize(int);
+
     virtual void moveBody();
 
     cocos2d::Vec2 align();
@@ -72,7 +88,7 @@ protected:
     cocos2d::DrawNode *plHead, *plBody;
 
     vector<cocos2d::Vec2 *> plTail;
-    int tailSegments = 20, tailEx = 0;
+    int tailSegments = 17, tailEx = 0;
 
     cocos2d::Vec2 position, velocity;
     float angle = 0.f, speed = 0.f;

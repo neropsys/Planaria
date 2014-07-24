@@ -240,9 +240,10 @@ void Planaria::Render() {
 void Planaria::renderHead() {
     Vec2 pt[3];
     float ptAngle = 0;
+    float headSize = bodySize + bodySize / 2;
 
     for (int i = 0; i < 3; i++) {
-        pt[i] = Vec2(cosf(RAD(ptAngle)) * 10, sinf(RAD(ptAngle)) * 10);
+        pt[i] = Vec2(cosf(RAD(ptAngle)) * headSize, sinf(RAD(ptAngle)) * headSize);
         ptAngle += 120;
     }
 
@@ -252,12 +253,11 @@ void Planaria::renderHead() {
     plHead->setPosition(position);
     plHead->setRotation(angle);
 
-    //plHead->drawTriangle(pt[0], pt[1], pt[2], Color4F(1.0f, 1.0f, 1.0f, 1.0f));
+    plHead->drawTriangle(pt[0], pt[1], pt[2], Color4F(1.0f, 1.0f, 1.0f, 1.0f));
 }
 
 void Planaria::renderTail() {
     int i = 0;
-    float tailSize = 3;
     Vec2 lastPos;
 
     calulateTail();

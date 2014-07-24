@@ -344,7 +344,11 @@ bool Planaria::isCrash(float x, float y, float radius) {
         float distX = x - segment->x, distY = y - segment->y;
         float size = getSegmentSize(i);
 
+<<<<<<< HEAD
         if (sqrtf(distX * distX + distY * distY) < size + radius) {
+=======
+        if (sqrtf(distX * distX + distY + distY) < size + radius) {
+>>>>>>> parent of 738f94a... the mistake of calulating collision is cleared.
             return true;
         }
 

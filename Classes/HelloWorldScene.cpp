@@ -67,7 +67,6 @@ void HelloWorld::onTouchCancelled(Touch* touch, Event* event) {
     Planaria::onTouchCancelled(touch, event);
 }
 
->>>>>>> parent of 3307072... something was wrong
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
 {

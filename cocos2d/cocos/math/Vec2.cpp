@@ -96,6 +96,22 @@ Vec2::~Vec2()
 {
 }
 
+Vec2 *Vec2::create() {
+    return Vec2::create(0.f, 0.f);
+}
+
+Vec2 *Vec2::create(float x, float y) {
+    Vec2 *pt = new Vec2(x, y);
+
+    return pt;
+}
+
+Vec2 *Vec2::create(Vec2 &p) {
+    Vec2 *pt = new Vec2(p.x, p.y);
+
+    return pt;
+}
+
 bool Vec2::isZero() const
 {
     return x == 0.0f && y == 0.0f;
@@ -186,6 +202,19 @@ float Vec2::dot(const Vec2& v) const
 float Vec2::dot(const Vec2& v1, const Vec2& v2)
 {
     return (v1.x * v2.x + v1.y * v2.y);
+}
+
+void Vec2::setLength(float length) {
+    if (isZero()) {
+        float _angle = this->getAngle();
+
+        this->setPoint(cosf(_angle * M_PI / 180) * length, sinf(_angle * M_PI / 180) * length);
+    }
+    else {
+        float scale = length / this->getLength();
+
+        this->setPoint(this->x * scale, this->y * scale);
+    }
 }
 
 float Vec2::length() const

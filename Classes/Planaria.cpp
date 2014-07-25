@@ -332,7 +332,6 @@ void Planaria::extendZone(const PlanariaBox &box) {
     plZone.right += box.right;
 }
 
-<<<<<<< HEAD
 bool Planaria::isCrash(const Vec2 &pt) {
     return isCrash(pt.x, pt.y, 1);
 }
@@ -354,8 +353,6 @@ bool Planaria::isCrash(float x, float y, float radius) {
     return false;
 }
 
-=======
->>>>>>> parent of 00ce1c8... touch event & realizing collision
 PlanariaBox Planaria::getPlanariaZone() {
     return plZone;
 }

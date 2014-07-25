@@ -73,6 +73,13 @@ inline const Vec2 Vec2::operator/(const float s) const
     return Vec2(this->x / s, this->y / s);
 }
 
+inline Vec2& Vec2::operator/=(float s) {
+    this->x /= s;
+    this->y /= s;
+
+    return *this;
+}
+
 inline bool Vec2::operator<(const Vec2& v) const
 {
     if (x == v.x)

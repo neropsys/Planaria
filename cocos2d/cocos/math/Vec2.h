@@ -98,6 +98,10 @@ public:
      */
     ~Vec2();
 
+    static Vec2 *create();
+    static Vec2 *create(float x, float y);
+    static Vec2 *create(Vec2&);
+
     /**
      * Indicates whether this vector contains all zeros.
      *
@@ -399,16 +403,26 @@ public:
      * @return This vector, after the scale occurs.
      */
     inline Vec2& operator*=(float s);
-    
+
     /**
-     * Returns the components of this vector divided by the given constant
-     *
-     * Note: this does not modify this vector.
-     *
-     * @param s the constant to divide this vector with
-     * @return a smaller vector
-     */
+    * Returns the components of this vector divided by the given constant
+    *
+    * Note: this does not modify this vector.
+    *
+    * @param s the constant to divide this vector with
+    * @return a smaller vector
+    */
     inline const Vec2 operator/(float s) const;
+
+    /**
+    * Returns the components of this vector divided by the given constant
+    *
+    * Note: this does not modify this vector.
+    *
+    * @param s the constant to divide this vector with
+    * @return a smaller vector, after the scale occurs.
+    */
+    inline Vec2& operator/=(float s);
 
     /**
      * Determines if this vector is less than the given vector.
@@ -475,6 +489,8 @@ public:
     inline float getLengthSq() const {
         return dot(*this); //x*x + y*y;
     };
+
+    void setLength(float);
 
     /** Calculates the square distance between two points (not calling sqrt() )
      @return float

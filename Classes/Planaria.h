@@ -30,7 +30,8 @@ public:
 
     static Planaria *create();
     static Planaria *create(float x, float y, float angle);
-    float getNext();
+
+    void Die();
 
     static void Initialize(cocos2d::Layer *);
     static void Mainloop();
@@ -56,6 +57,11 @@ public:
 
     bool isCrash(const cocos2d::Vec2&);
     bool isCrash(float x, float y, float radius);
+
+    int getCrashedSegment(const cocos2d::Vec2&);
+    int getCrashedSegment(float x, float y, float radius);
+
+    float getNext();
 
     cocos2d::Color4F bodyColor;
 

@@ -24,11 +24,10 @@ void Planaria::onTouchMoved(Touch* touch, Event* event) {
 
     for (auto child : plas) {
         if (child->isCrash(tPos)) {
-            child->bodyColor = Color4F(1.f, 0.f, 0.f, 1.f);
+
+            child->Die();
         }
     }
-
-    log("%f, %f", tPos.x, tPos.y);
 }
 
 void Planaria::onTouchEnded(Touch* touch, Event* event) {
@@ -56,11 +55,13 @@ Planaria *Planaria::create(float x, float y, float angle) {
     ret->position.setPoint(x, y);
     ret->angle = angle;
 
-    plas.pushBack(ret);
-
-    ret->Init();
+    newPlas.pushBack(ret);
 
     return ret;
+}
+
+void Planaria::Die() {
+    deadPlas.pushBack(this);
 }
 
 // static method
@@ -69,19 +70,29 @@ void Planaria::Initialize(Layer *parent) {
 }
 
 void Planaria::Mainloop() {
+    // create planarias
+    for (auto child : newPlas) {
+        plas.pushBack(child);
+
+        child->Init();
+    }
+    newPlas.clear();
+
     for (auto child : plas) {
         child->Run();
-    }
 
-    for (auto child : plas) {
-        child->Dead();
-    }
-
-    for (auto child : plas) {
         child->Render();
 
         child->t++;
     }
+
+    // kill planarias
+    for (auto child : deadPlas) {
+        child->Dead();
+
+        plas.eraseObject(child, false);
+    }
+    deadPlas.clear();
 }
 
 void Planaria::Finalize() {
@@ -158,6 +169,7 @@ void Planaria::moveBody() {
         setMove(steer);
     }*/
 
+    // later, these is gonna be changed to display natural Planaria
     if (t % 50 == 0 && t > 0) {
         exAngle = 6 * getNext() - 3;
     }
@@ -188,7 +200,7 @@ void Planaria::moveBody() {
 
 void Planaria::calulateTail() {
     float acceleration = this->speed * this->speed;
-    float pieceLength = bodyLength / tailSegments + speed / 5;
+    float pieceLength = bodyLength / tailSegments + speed / 3;
     Vec2 lastVel = -velocity;
     Vec2 pt = position;
     
@@ -263,7 +275,7 @@ void Planaria::Render() {
 void Planaria::renderHead() {
     Vec2 pt[3];
     float ptAngle = 0;
-    float headSize = bodySize + bodySize / 2;
+    float headSize = bodySize + bodySize / 1.2;
 
     for (int i = 0; i < 3; i++) {
         pt[i] = Vec2(cosf(RAD(ptAngle)) * headSize, sinf(RAD(ptAngle)) * headSize);
@@ -311,6 +323,8 @@ void Planaria::Coll() {
 }
 
 void Planaria::Dead() {
+    layer->removeChild(plHead, true);
+    layer->removeChild(plBody, true);
 }
 
 void Planaria::setMove(float angle, float speed) {
@@ -374,6 +388,37 @@ bool Planaria::isCrash(float x, float y, float radius) {
     }
 
     return false;
+}
+
+int Planaria::getCrashedSegment(const Vec2 &pt) {
+    return getCrashedSegment(pt.x, pt.y, 1);
+}
+
+int Planaria::getCrashedSegment(float x, float y, float radius) {
+    int i = 0;
+    int nearestSegment = -1;
+    float minDist = -1;
+
+    for (auto segment : plTail) {
+        float distX = x - segment->x, distY = y - segment->y;
+        float dist = distX * distX + distY * distY;
+        float size = getSegmentSize(i), realSize = size + radius;
+
+        if (dist < realSize * realSize) {
+            if (minDist < 0) {
+                minDist = dist;
+            }
+
+            if (dist <= minDist) {
+                minDist = dist;
+                nearestSegment = i;
+            }
+        }
+
+        i++;
+    }
+
+    return nearestSegment;
 }
 
 inline float Planaria::getSegmentSize(int n) {

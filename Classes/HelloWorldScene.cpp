@@ -85,14 +85,12 @@ bool HelloWorld::init()
 
     this->schedule(schedule_selector(HelloWorld::Mainloop));
 
+
     Planaria *test[100];
 
-    for (int i = 0; i < 50; i++) {
+    for (int i = 0; i < 1; i++) {
         test[i] = Planaria::create(visibleSize.width * getNext(), visibleSize.height * getNext(), getNext() * 360);
-
-        //log("%f, %f, %f", getNext(), visibleSize.height * getNext(), getNext() * 360);
     }
-
     /////////////////////////////
     // 2. add a menu item with "X" image, which is clicked to quit the program
     //    you may modify it.

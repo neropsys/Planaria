@@ -24,6 +24,12 @@ void Planaria::onTouchMoved(Touch* touch, Event* event) {
 
     for (auto child : plas) {
         if (child->isCrash(tPos)) {
+            Planaria::create(child->position.x, child->position.y, child->angle);
+            
+            int crashedSegment = child->getCrashedSegment(tPos);
+            Vec2 *crashedPos = child->plTail[crashedSegment];
+
+            Planaria::create(crashedPos->x, crashedPos->y, atan2f(crashedPos->y, crashedPos->x) / M_PI * 180);
 
             child->Die();
         }
@@ -67,6 +73,8 @@ void Planaria::Die() {
 // static method
 void Planaria::Initialize(Layer *parent) {
     layer = parent;
+
+    Size visibleSize = Director::getInstance()->getVisibleSize();
 }
 
 void Planaria::Mainloop() {

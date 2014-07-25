@@ -14,6 +14,29 @@ Planaria::Planaria() {
 Planaria::~Planaria() {
 }
 
+bool Planaria::onTouchBegan(Touch* touch, Event* event) {
+
+    return true;
+}
+
+void Planaria::onTouchMoved(Touch* touch, Event* event) {
+    Vec2 tPos = touch->getLocation();
+
+    for (auto child : plas) {
+        if (child->isCrash(tPos)) {
+            child->bodyColor = Color4F(1.f, 0.f, 0.f, 1.f);
+        }
+    }
+
+    log("%f, %f", tPos.x, tPos.y);
+}
+
+void Planaria::onTouchEnded(Touch* touch, Event* event) {
+}
+
+void Planaria::onTouchCancelled(Touch* touch, Event* event) {
+}
+
 Planaria *Planaria::create() {
     return create(0, 0, 0);
 }
@@ -69,14 +92,14 @@ void Planaria::Init() {
     Size screen = Director::getInstance()->getVisibleSize();
     float baseMargin = 30.f;
 
+    bodyColor = Color4F(1.f, 1.f, 1.f, 1.f);
+
     // this is fucking why I blame the coordinate system of cocos2dx....
     setPlanariaZone(screen.height, 0, 0, screen.width);
     extendZone(-baseMargin, baseMargin, baseMargin, -baseMargin);
 
     velocity = Vec2(0, 0);
     tailEx = getNext() * 1000;
-
-    log("%d", tailEx);
 
     plHead = DrawNode::create();
     plBody = DrawNode::create();
@@ -253,7 +276,7 @@ void Planaria::renderHead() {
     plHead->setPosition(position);
     plHead->setRotation(angle);
 
-    plHead->drawTriangle(pt[0], pt[1], pt[2], Color4F(1.0f, 1.0f, 1.0f, 1.0f));
+    plHead->drawTriangle(pt[0], pt[1], pt[2], bodyColor);
 }
 
 void Planaria::renderTail() {
@@ -272,7 +295,7 @@ void Planaria::renderTail() {
 
         if (i < tailSegments) {
             if (i > 0) {
-                plBody->drawSegment(lastPos, pos, bodySize + bodySize * sinf((float)i * 3 / tailSegments), Color4F(1, 1, 1, 1));
+                plBody->drawSegment(lastPos, pos, getSegmentSize(i), bodyColor);
 
                 //tailSize -= 0.15;
             }
@@ -341,9 +364,9 @@ bool Planaria::isCrash(float x, float y, float radius) {
 
     for (auto segment : plTail) {
         float distX = x - segment->x, distY = y - segment->y;
-        float size = getSegmentSize(i);
+        float size = getSegmentSize(i), realSize = size + radius;
 
-        if (sqrtf(distX * distX + distY * distY) < size + radius) {
+        if ((distX * distX + distY * distY) < (realSize * realSize)) {
             return true;
         }
 
@@ -351,6 +374,10 @@ bool Planaria::isCrash(float x, float y, float radius) {
     }
 
     return false;
+}
+
+inline float Planaria::getSegmentSize(int n) {
+    return bodySize + bodySize * sinf((float)n * 3 / tailSegments);
 }
 
 PlanariaBox Planaria::getPlanariaZone() {

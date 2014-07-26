@@ -15,6 +15,13 @@ Planaria::~Planaria() {
 }
 
 bool Planaria::onTouchBegan(Touch* touch, Event* event) {
+    Vec2 tPos = touch->getLocation();
+
+    for (auto child : plas) {
+        if (child->isCrash(tPos)) {
+            child->cutBody(tPos);
+        }
+    }
 
     return true;
 }
@@ -24,14 +31,7 @@ void Planaria::onTouchMoved(Touch* touch, Event* event) {
 
     for (auto child : plas) {
         if (child->isCrash(tPos)) {
-            Planaria::create(child->position.x, child->position.y, child->angle);
-            
-            int crashedSegment = child->getCrashedSegment(tPos);
-            Vec2 *crashedPos = child->plTail[crashedSegment];
-
-            Planaria::create(crashedPos->x, crashedPos->y, atan2f(crashedPos->y, crashedPos->x) / M_PI * 180);
-
-            child->Die();
+            child->cutBody(tPos);
         }
     }
 }
@@ -43,10 +43,18 @@ void Planaria::onTouchCancelled(Touch* touch, Event* event) {
 }
 
 Planaria *Planaria::create() {
-    return create(0, 0, 0);
+    return create(0, 0, 0, 0, 120);
 }
 
 Planaria *Planaria::create(float x, float y, float angle) {
+    return create(x, y, angle, 0, 120);
+}
+
+Planaria *Planaria::create(float x, float y, float angle, float speed) {
+    return create(x, y, angle, 0, 120);
+}
+
+Planaria *Planaria::create(float x, float y, float angle, float speed, float length) {
     Planaria *ret = new Planaria();
 
     if (ret)
@@ -60,6 +68,8 @@ Planaria *Planaria::create(float x, float y, float angle) {
 
     ret->position.setPoint(x, y);
     ret->angle = angle;
+    ret->speed = speed;
+    ret->bodyLength = length;
 
     newPlas.pushBack(ret);
 
@@ -100,6 +110,7 @@ void Planaria::Mainloop() {
 
         plas.eraseObject(child, false);
     }
+
     deadPlas.clear();
 }
 
@@ -131,7 +142,7 @@ void Planaria::Init() {
     }
 
     if (velocity.isZero()) {
-        setMove(angle, 1 + getNext() * 3);
+        setMove(angle, 1);
 
         log("%f, %f", velocity.x, velocity.y);
 
@@ -206,9 +217,13 @@ void Planaria::moveBody() {
     position = pre;
 }
 
+float Planaria::getSegmentLength() {
+    return bodyLength / tailSegments;
+}
+
 void Planaria::calulateTail() {
     float acceleration = this->speed * this->speed;
-    float pieceLength = bodyLength / tailSegments + speed / 3;
+    float pieceLength = this->getSegmentLength() + speed / 3;
     Vec2 lastVel = -velocity;
     Vec2 pt = position;
     
@@ -295,6 +310,10 @@ void Planaria::renderHead() {
     plHead->setScale(1.0f);
     plHead->setPosition(position);
     plHead->setRotation(angle);
+
+    if (isHurted) {
+        bodyColor = Color4F(1.f, 0.f, 0.f, 1.f);
+    }
 
     plHead->drawTriangle(pt[0], pt[1], pt[2], bodyColor);
 }
@@ -431,6 +450,26 @@ int Planaria::getCrashedSegment(float x, float y, float radius) {
 
 inline float Planaria::getSegmentSize(int n) {
     return bodySize + bodySize * sinf((float)n * 3 / tailSegments);
+}
+
+void Planaria::cutBody(const Vec2 &pos) {
+    if (bodyLength < 80 || isHurted) {
+        return;
+    }
+
+    int crashedSegment = getCrashedSegment(pos);
+    Vec2 *crashedPos = plTail[crashedSegment];
+    float dividedLength = crashedSegment * getSegmentLength();
+
+    auto pl = Planaria::create(position.x, position.y, angle, 0.5, dividedLength);
+    auto pl2 = Planaria::create(crashedPos->x, crashedPos->y, angle - 20 + getNext() * 40, 0.5, bodyLength - dividedLength);
+
+    pl->isHurted = true;
+    pl2->isHurted = true;
+
+    isHurted = true;
+
+    Die();
 }
 
 PlanariaBox Planaria::getPlanariaZone() {

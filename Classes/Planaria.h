@@ -30,6 +30,8 @@ public:
 
     static Planaria *create();
     static Planaria *create(float x, float y, float angle);
+    static Planaria *create(float x, float y, float angle, float speed);
+    static Planaria *create(float x, float y, float angle, float speed, float length);
 
     void Die();
 
@@ -60,6 +62,10 @@ public:
 
     int getCrashedSegment(const cocos2d::Vec2&);
     int getCrashedSegment(float x, float y, float radius);
+
+    void cutBody(const cocos2d::Vec2 &pos);
+
+    float getSegmentLength();
 
     float getNext();
 
@@ -101,6 +107,9 @@ protected:
     float exAngle = 0.f, exSpeed = 0.f;
     float maxSpeed = 6.f, minSpeed = 2.f;
     float bodyLength = 120.f, bodySize = 4.5f;
+    float bodyMaxLength = 120.f;
+
+    bool isHurted = false;
 
     int t = 0;
 

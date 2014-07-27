@@ -88,7 +88,7 @@ bool HelloWorld::init()
 
     Planaria *test[100];
 
-    for (int i = 0; i < 25; i++) {
+    for (int i = 0; i < 1; i++) {
         test[i] = Planaria::create(visibleSize.width * getNext(), visibleSize.height * getNext(), getNext() * 360);
     }
     /////////////////////////////

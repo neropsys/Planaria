@@ -8,6 +8,8 @@ Vector<Planaria *> Planaria::deadPlas;
 
 Layer *Planaria::layer;
 
+int Planaria::callCount;
+
 Planaria::Planaria() {
 }
 
@@ -96,6 +98,8 @@ void Planaria::Mainloop() {
     }
     newPlas.clear();
 
+    callCount = 0;
+
     for (auto child : plas) {
         child->Run();
 
@@ -104,11 +108,20 @@ void Planaria::Mainloop() {
         child->t++;
     }
 
+    log("%d", callCount);
+
     // kill planarias
+    int i = 0;
     for (auto child : deadPlas) {
         child->Dead();
 
         plas.eraseObject(child, false);
+
+        //CC_SAFE_DELETE(child);
+
+        child->childrenAlloc();
+
+        log("%d", i++);
     }
 
     deadPlas.clear();
@@ -144,7 +157,7 @@ void Planaria::Init() {
     if (velocity.isZero()) {
         setMove(angle, 1);
 
-        log("%f, %f", velocity.x, velocity.y);
+        //log("%f, %f", velocity.x, velocity.y);
 
         //log("%f, %f", velocity.x, velocity.y);
     }
@@ -315,6 +328,8 @@ void Planaria::renderHead() {
         bodyColor = Color4F(1.f, 0.f, 0.f, 1.f);
     }
 
+    callCount++;
+
     plHead->drawTriangle(pt[0], pt[1], pt[2], bodyColor);
 }
 
@@ -352,6 +367,8 @@ void Planaria::Coll() {
 void Planaria::Dead() {
     layer->removeChild(plHead, true);
     layer->removeChild(plBody, true);
+    //plHead->autorelease();
+    //plBody->autorelease();
 }
 
 void Planaria::setMove(float angle, float speed) {

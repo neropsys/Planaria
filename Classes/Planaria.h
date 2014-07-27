@@ -109,6 +109,8 @@ protected:
     float bodyLength = 120.f, bodySize = 4.5f;
     float bodyMaxLength = 120.f;
 
+    static int callCount;
+
     bool isHurted = false;
 
     int t = 0;

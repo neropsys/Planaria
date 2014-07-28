@@ -84,8 +84,8 @@ protected:
     void Coll();
     void Dead();
 
-    void renderHead();
-    void renderTail();
+    virtual void renderHead();
+    virtual void renderTail();
 
     void createTail();
 

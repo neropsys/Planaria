@@ -288,7 +288,7 @@ Vec2 Planaria::align() {
 
             count++;
         }
-    }
+    } 
 
     if (count > 0) {
         steer /= count;

@@ -51,6 +51,15 @@ public:
     void setMove(float angle, float speed);
     void setMove(const cocos2d::Vec2&);
 
+    void setPosition(float x, float y);
+    cocos2d::Vec2 getPosition();
+
+    void setAngle(float angle);
+    float getAngle();
+
+    void setSpeed(float speed);
+    float getSpeed();
+
     void setPlanariaZone(float top, float bottom, float left, float right);
     void setPlanariaZone(const PlanariaBox&);
     void extendZone(float top, float bottom, float left, float right);
@@ -63,7 +72,7 @@ public:
     int getCrashedSegment(const cocos2d::Vec2&);
     int getCrashedSegment(float x, float y, float radius);
 
-    void cutBody(const cocos2d::Vec2 &pos);
+    virtual void cutBody(const cocos2d::Vec2 &pos);
 
     float getSegmentLength();
 
@@ -78,11 +87,11 @@ protected:
 
     static cocos2d::Layer *layer;
 
-    void Init();
-    void Run();
-    void Render();
-    void Coll();
-    void Dead();
+    virtual void Init();
+    virtual void Run();
+    virtual void Render();
+    virtual void Coll();
+    virtual void Dead();
 
     virtual void renderHead();
     virtual void renderTail();
@@ -96,6 +105,8 @@ protected:
     cocos2d::Vec2 align();
     void flock();
     void calulateTail();
+
+    void setVelocity();
 
     cocos2d::DrawNode *plHead, *plBody;
 

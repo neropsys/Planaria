@@ -33,9 +33,6 @@
     <ClCompile Include="..\Classes\Planaria.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\unit.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\PlanariaUnits.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
@@ -51,9 +48,6 @@
       <Filter>Classes</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Planaria.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\unit.h">
       <Filter>Classes</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\PlanariaUnits.h">

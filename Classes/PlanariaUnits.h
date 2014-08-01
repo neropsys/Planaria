@@ -18,6 +18,7 @@ public:
     ~RainbowPlanaria();
 
     static RainbowPlanaria *create();
+    virtual void cutBody(const cocos2d::Vec2 &pos);
 protected:
 
     void Run();

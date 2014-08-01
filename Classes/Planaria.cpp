@@ -78,39 +78,6 @@ Planaria *Planaria::create(float x, float y, float angle, float speed, float len
     return ret;
 }
 
-void Planaria::setPosition(float x, float y) {
-    this->position.x = x;
-    this->position.y = y;
-}
-
-Vec2 Planaria::getPosition() {
-    return position;
-}
-
-void Planaria::setAngle(float angle) {
-    this->angle = angle;
-
-    setVelocity();
-}
-
-float Planaria::getAngle() {
-    return angle;
-}
-
-void Planaria::setSpeed(float speed) {
-    this->speed = speed;
-
-    setVelocity();
-}
-
-float Planaria::getSpeed() {
-    return speed;
-}
-
-void Planaria::setVelocity() {
-    velocity.setPoint(cosf(RAD(angle)) * speed, -sinf(RAD(angle)) * speed);
-}
-
 void Planaria::Die() {
     deadPlas.pushBack(this);
 }
@@ -134,7 +101,6 @@ void Planaria::Mainloop() {
     callCount = 0;
 
     for (auto child : plas) {
-        
         child->Run();
 
         child->Render();
@@ -142,7 +108,7 @@ void Planaria::Mainloop() {
         child->t++;
     }
 
-    //log("%d", callCount);
+    log("%d", callCount);
 
     // kill planarias
     int i = 0;
@@ -153,7 +119,7 @@ void Planaria::Mainloop() {
 
         //CC_SAFE_DELETE(child);
 
-        //child->childrenAlloc();
+        child->childrenAlloc();
 
         log("%d", i++);
     }
@@ -204,8 +170,6 @@ float Planaria::getNext() {
 }
 
 void Planaria::Run() {
-    log("test");
-
     moveBody();
 }
 
@@ -359,6 +323,10 @@ void Planaria::renderHead() {
     plHead->setScale(1.0f);
     plHead->setPosition(position);
     plHead->setRotation(angle);
+
+    if (isHurted) {
+        bodyColor = Color4F(1.f, 0.f, 0.f, 1.f);
+    }
 
     callCount++;
 

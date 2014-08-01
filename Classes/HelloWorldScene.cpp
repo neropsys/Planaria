@@ -85,16 +85,11 @@ bool HelloWorld::init()
 
     this->schedule(schedule_selector(HelloWorld::Mainloop));
 
+
+    Planaria *test[100];
+
     for (int i = 0; i < 1; i++) {
-        RainbowPlanaria *pl = RainbowPlanaria::create();
-        NormalPlanaria *pl2 = NormalPlanaria::create();
-        ExtendedPlanaria *pl3 = ExtendedPlanaria::create();
-        pl->setMove(getNext() * 360, 1);
-        pl->setPosition(visibleSize.width * getNext(), visibleSize.height * getNext());
-        pl2->setMove(getNext() * 360, 1);
-        pl2->setPosition(visibleSize.width * getNext(), visibleSize.height * getNext());
-        pl3->setMove(getNext() * 360, 1);
-        pl3->setPosition(visibleSize.width * getNext(), visibleSize.height * getNext());
+        test[i] = Planaria::create(visibleSize.width * getNext(), visibleSize.height * getNext(), getNext() * 360);
     }
     /////////////////////////////
     // 2. add a menu item with "X" image, which is clicked to quit the program

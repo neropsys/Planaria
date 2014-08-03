@@ -521,10 +521,12 @@ void Planaria::cutBody(const Vec2 &pos) {
     Die();
 }
 
+float Planaria::getPollutionThreshold(){ return pollutionThreshold; }
+void Planaria::setPollutionThreshold(float pollutionThreshold){ this->pollutionThreshold = pollutionThreshold; }
+
 PlanariaBox Planaria::getPlanariaZone() {
     return plZone;
 }
-
 ////////////////////////////////////////////////////
 
 PlanariaBox::PlanariaBox() {

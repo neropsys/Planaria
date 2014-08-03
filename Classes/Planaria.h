@@ -78,6 +78,8 @@ public:
 
     float getNext();
 
+	float getPollutionThreshold();
+	void setPollutionThreshold(float pollutionThreshold);
     cocos2d::Color4F bodyColor;
 
 protected:

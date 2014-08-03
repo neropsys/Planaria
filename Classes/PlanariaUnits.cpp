@@ -84,7 +84,7 @@ void RainbowPlanaria::Run() {
 
     this->bodyColor = Color4F(getNext(), getNext(), getNext(), 1.f);
 
-    log("ew");
+    //log("ew");
 }
 
 //////////////////////

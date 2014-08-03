@@ -126,5 +126,6 @@ protected:
 
     int t = 0;
 
+	float pollutionThreshold = 50.0f;
     PlanariaBox plZone;
 };

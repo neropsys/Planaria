@@ -31,6 +31,7 @@ public:
 
     float getNext();
 
+	void eachSecond(float f);
 protected:
 
     int t = 0;

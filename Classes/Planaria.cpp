@@ -204,7 +204,7 @@ float Planaria::getNext() {
 }
 
 void Planaria::Run() {
-    log("test");
+    //log("test");
 
     moveBody();
 }

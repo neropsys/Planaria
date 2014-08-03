@@ -1,7 +1,8 @@
 #include "HelloWorldScene.h"
 
 USING_NS_CC;
-
+using namespace cocos2d;
+float pollutionRate = 0.0f;
 Scene* HelloWorld::createScene()
 {
     // 'scene' is an autorelease object
@@ -70,6 +71,7 @@ void HelloWorld::onTouchCancelled(Touch* touch, Event* event) {
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
 {
+	Vector<Planaria*> planarias;
     srand(time(NULL));
     //////////////////////////////
     // 1. super init first
@@ -84,60 +86,26 @@ bool HelloWorld::init()
     Planaria::Initialize(this);
 
     this->schedule(schedule_selector(HelloWorld::Mainloop));
+	this->schedule(schedule_selector(HelloWorld::eachSecond), 1.0f);
 
-    for (int i = 0; i < 1; i++) {
+    //for (int i = 0; i < 1; i++) {
         RainbowPlanaria *pl = RainbowPlanaria::create();
         NormalPlanaria *pl2 = NormalPlanaria::create();
         ExtendedPlanaria *pl3 = ExtendedPlanaria::create();
-        pl->setMove(getNext() * 360, 1);
+        /*pl->setMove(getNext() * 360, 1);
         pl->setPosition(visibleSize.width * getNext(), visibleSize.height * getNext());
         pl2->setMove(getNext() * 360, 1);
         pl2->setPosition(visibleSize.width * getNext(), visibleSize.height * getNext());
         pl3->setMove(getNext() * 360, 1);
-        pl3->setPosition(visibleSize.width * getNext(), visibleSize.height * getNext());
-    }
-    /////////////////////////////
-    // 2. add a menu item with "X" image, which is clicked to quit the program
-    //    you may modify it.
-
-    // add a "close" icon to exit the progress. it's an autorelease object
-    /*auto closeItem = MenuItemImage::create(
-                                           "CloseNormal.png",
-                                           "CloseSelected.png",
-                                           CC_CALLBACK_1(HelloWorld::menuCloseCallback, this));
-    
-	closeItem->setPosition(Vec2(origin.x + visibleSize.width - closeItem->getContentSize().width/2 ,
-                                origin.y + closeItem->getContentSize().height/2));
-
-    // create menu, it's an autorelease object
-    auto menu = Menu::create(closeItem, NULL);
-    menu->setPosition(Vec2::ZERO);
-    this->addChild(menu, 1);
-
- 
-    // 3. add your codes below...
-
-    // add a label shows "Hello World"
-    // create and initialize a label
-    
-    auto label = LabelTTF::create("Hello World", "Arial", 24);
-    
-    // position the label on the center of the screen
-    label->setPosition(Vec2(origin.x + visibleSize.width/2,
-                            origin.y + visibleSize.height - label->getContentSize().height));
-
-    // add the label as a child to this layer
-    this->addChild(label, 1);
-
-    // add "HelloWorld" splash screen"
-    auto sprite = Sprite::create("HelloWorld.png");
-
-    // position the sprite on the center of the screen
-    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-
-    // add the sprite as a child to this layer
-    this->addChild(sprite, 0);*/
-    
+        pl3->setPosition(visibleSize.width * getNext(), visibleSize.height * getNext());*/
+   // }
+		planarias.pushBack(pl);
+		planarias.pushBack(pl2);
+		planarias.pushBack(pl3);
+		for (Vector<Planaria*>::iterator it = planarias.begin(); it != planarias.end(); it++){
+			(*it)->setMove(getNext()*360, 1);
+			(*it)->setPosition(visibleSize.width*getNext(), visibleSize.height*getNext());
+		}
     return true;
 }
 
@@ -154,4 +122,10 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     exit(0);
 #endif
+}
+
+void HelloWorld::eachSecond(float f){
+	pollutionRate += 1.0f;
+	log("pollutionRate :%f", pollutionRate);
+	
 }

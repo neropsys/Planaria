@@ -70,8 +70,6 @@ void HelloWorld::onTouchCancelled(Touch* touch, Event* event) {
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
 {
-	g_scenePollution = 0.0f;
-	g_pollutionIncreaseRate = 10.0f;
 	Vector<Planaria*> planarias;
     srand(time(NULL));
     //////////////////////////////

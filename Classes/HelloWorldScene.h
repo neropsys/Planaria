@@ -4,8 +4,8 @@
 #include "cocos2d.h"
 #include "PlanariaUnits.h"
 namespace{
-	float g_scenePollution;
-	float g_pollutionIncreaseRate;
+	float g_scenePollution = 0.0f;
+	float g_pollutionIncreaseRate = 10.0f;
 }
 class HelloWorld : public cocos2d::Layer
 {

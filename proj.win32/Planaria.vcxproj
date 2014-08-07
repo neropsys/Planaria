@@ -139,6 +139,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\Planaria.cpp" />
     <ClCompile Include="..\Classes\PlanariaUnits.cpp" />
+    <ClCompile Include="CustomVector.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +147,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\Planaria.h" />
     <ClInclude Include="..\Classes\PlanariaUnits.h" />
+    <ClInclude Include="CustomVector.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>

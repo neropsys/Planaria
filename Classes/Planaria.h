@@ -1,3 +1,5 @@
+#ifndef _PLANARIA_H_
+#define _PLANARIA_H_
 #include "cocos2d.h"
 #include <cmath>
 #include <iostream>
@@ -80,7 +82,9 @@ public:
 
 	float getPollutionThreshold();
 	void setPollutionThreshold(float pollutionThreshold);
-    cocos2d::Color4F bodyColor;
+
+	cocos2d::Color4F getColor();
+	void setColor(cocos2d::Color4F bodyColor);
 
 protected:
     static cocos2d::Vector<Planaria *> plas;
@@ -112,6 +116,8 @@ protected:
 
     cocos2d::DrawNode *plHead, *plBody;
 
+	cocos2d::Color4F bodyColor;
+
     vector<cocos2d::Vec2 *> plTail;
     int tailSegments = 17, tailEx = 0;
 
@@ -131,3 +137,4 @@ protected:
 	float pollutionThreshold = 50.0f;
     PlanariaBox plZone;
 };
+#endif

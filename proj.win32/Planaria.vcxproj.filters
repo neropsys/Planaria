@@ -36,6 +36,9 @@
     <ClCompile Include="..\Classes\PlanariaUnits.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
+    <ClCompile Include="CustomVector.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -51,6 +54,9 @@
       <Filter>Classes</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\PlanariaUnits.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomVector.h">
       <Filter>Classes</Filter>
     </ClInclude>
   </ItemGroup>

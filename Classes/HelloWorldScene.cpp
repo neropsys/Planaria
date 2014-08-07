@@ -2,7 +2,7 @@
 
 USING_NS_CC;
 using namespace cocos2d;
-float pollutionRate = 0.0f;
+Vector<Planaria*> planarias;
 Scene* HelloWorld::createScene()
 {
     // 'scene' is an autorelease object
@@ -71,7 +71,7 @@ void HelloWorld::onTouchCancelled(Touch* touch, Event* event) {
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
 {
-	Vector<Planaria*> planarias;
+
     srand(time(NULL));
     //////////////////////////////
     // 1. super init first
@@ -125,7 +125,6 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 }
 
 void HelloWorld::eachSecond(float f){
-	pollutionRate += 1.0f;
-	log("pollutionRate :%f", pollutionRate);
-	
+	g_scenePollution += g_pollutionIncreaseRate;
+	log("current pollution of this scene :%f, increaseRate = %f", g_scenePollution, g_pollutionIncreaseRate);	
 }

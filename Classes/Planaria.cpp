@@ -138,10 +138,9 @@ void Planaria::Mainloop() {
         child->Run();
 
         child->Render();
-
         child->t++;
     }
-
+	
     //log("%d", callCount);
 
     // kill planarias
@@ -155,7 +154,7 @@ void Planaria::Mainloop() {
 
         //child->childrenAlloc();
 
-        log("%d", i++);
+        //log("%d", i++);
     }
 
     deadPlas.clear();
@@ -515,7 +514,8 @@ void Planaria::cutBody(const Vec2 &pos) {
 
     pl->isHurted = true;
     pl2->isHurted = true;
-
+	
+	
     isHurted = true;
 
     Die();
@@ -523,6 +523,14 @@ void Planaria::cutBody(const Vec2 &pos) {
 
 float Planaria::getPollutionThreshold(){ return pollutionThreshold; }
 void Planaria::setPollutionThreshold(float pollutionThreshold){ this->pollutionThreshold = pollutionThreshold; }
+
+cocos2d::Color4F Planaria::getColor(){
+	return bodyColor;
+}
+
+void Planaria::setColor(cocos2d::Color4F bodyColor){
+	this->bodyColor = bodyColor;
+}
 
 PlanariaBox Planaria::getPlanariaZone() {
     return plZone;

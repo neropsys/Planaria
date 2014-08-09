@@ -1,12 +1,12 @@
 #include "CustomVector.h"
-Node::~Node(){
+Element::~Element(){
 	delete planaria;
 }
-void PlanariaList::initList(){
+PlanariaList::PlanariaList(){
 	front = NULL;
 }
 void PlanariaList::push(Planaria* newPlanaria){
-	Node* newNode = new Node(newPlanaria);
+	Element* newNode = new Element(newPlanaria);
 	if (newNode == NULL){
 		return;
 	}
@@ -21,9 +21,9 @@ void PlanariaList::push(Planaria* newPlanaria){
 	size++;
 }
 void PlanariaList::remove(float pollutionRate){
-	Node* currentNode;
-	Node* removeThis;
-	Node* previousNode;
+	Element* currentNode;
+	Element* removeThis;
+	Element* previousNode;
 	currentNode = front;
 	while (currentNode != NULL){
 		removeThis = NULL;
@@ -54,3 +54,4 @@ void PlanariaList::remove(float pollutionRate){
 }
 
 int PlanariaList::listSize(){ return size; }
+int PlanariaList::begin(){}

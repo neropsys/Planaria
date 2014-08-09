@@ -86,6 +86,7 @@ public:
 	cocos2d::Color4F getColor();
 	void setColor(cocos2d::Color4F bodyColor);
 
+	virtual void Dead();
 protected:
     static cocos2d::Vector<Planaria *> plas;
     static cocos2d::Vector<Planaria *> newPlas;
@@ -97,7 +98,6 @@ protected:
     virtual void Run();
     virtual void Render();
     virtual void Coll();
-    virtual void Dead();
 
     virtual void renderHead();
     virtual void renderTail();

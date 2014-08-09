@@ -2,6 +2,7 @@
 
 USING_NS_CC;
 using namespace cocos2d;
+PlanariaList *plList = new PlanariaList();
 Scene* HelloWorld::createScene()
 {
     // 'scene' is an autorelease object
@@ -70,7 +71,6 @@ void HelloWorld::onTouchCancelled(Touch* touch, Event* event) {
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
 {
-	PlanariaList *plList = new PlanariaList();
     srand(time(NULL));
     //////////////////////////////
     // 1. super init first
@@ -79,6 +79,7 @@ bool HelloWorld::init()
         return false;
     }
     
+
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
@@ -94,7 +95,12 @@ bool HelloWorld::init()
 		plList->push(dynamic_cast<Planaria*>(pl));
 		plList->push(dynamic_cast<Planaria*>(pl2));
 		plList->push(dynamic_cast<Planaria*>(pl3));
-		
+		Element* node = plList->front;
+		while (node != NULL){
+			node->planaria->setMove(getNext()*360, 1);
+			node->planaria->setPosition(visibleSize.width*getNext(), visibleSize.height*getNext());
+			node = node->next;
+		}
 			//(*it)->setMove(getNext()*360, 1);
 			//(*it)->setPosition(visibleSize.width*getNext(), visibleSize.height*getNext());
 		
@@ -119,4 +125,9 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 void HelloWorld::eachSecond(float f){
 	g_scenePollution += g_pollutionIncreaseRate;
 	log("current pollution of this scene :%f, increaseRate = %f", g_scenePollution, g_pollutionIncreaseRate);
+	plList->remove(g_scenePollution);
+
+}
+void HelloWorld::goEquipmentScene(Object* pSender){
+
 }

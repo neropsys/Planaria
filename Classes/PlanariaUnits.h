@@ -2,7 +2,7 @@
 #define _PLANARIA_UNITS_H_
 
 #include "cocos2d.h"
-#include "Planaria.h"
+#include "CustomVector.h"
 
 class NormalPlanaria : public Planaria {
 public:

@@ -2,37 +2,38 @@
 Node::~Node(){
 	delete planaria;
 }
-void PlanariaList::initList(PlanariaList* list){
-	list->front = NULL;
+void PlanariaList::initList(){
+	front = NULL;
 }
-void PlanariaList::push(PlanariaList* list, Planaria newPlanaria){
-	Node* newNode = new Node(&newPlanaria);
+void PlanariaList::push(Planaria* newPlanaria){
+	Node* newNode = new Node(newPlanaria);
 	if (newNode == NULL){
 		return;
 	}
 	newNode->next = NULL;
-	if (list->front == NULL){
-		list->front = newNode;
+	if (front == NULL){
+		front = newNode;
 	}
 	else{
-		newNode->next = list->front;
-		list->front = newNode;
+		newNode->next = front;
+		front = newNode;
 	}
+	size++;
 }
-void PlanariaList::remove(PlanariaList* list, float pollutionRate){
+void PlanariaList::remove(float pollutionRate){
 	Node* currentNode;
 	Node* removeThis;
 	Node* previousNode;
-	currentNode = list->front;
+	currentNode = front;
 	while (currentNode != NULL){
 		removeThis = NULL;
 		if(currentNode->planaria->getPollutionThreshold() <= pollutionRate){
-			if (currentNode == list->front){
-				list->front = currentNode->next;
+			if (currentNode == front){
+				front = currentNode->next;
 				removeThis = currentNode;
 				delete removeThis;//is this appropriate way to delete planaria node? feedback & test required
 				currentNode = NULL;
-				currentNode = list->front;
+				currentNode = front;
 			}
 			else{
 				removeThis = currentNode;
@@ -40,9 +41,10 @@ void PlanariaList::remove(PlanariaList* list, float pollutionRate){
 				previousNode->next = currentNode;
 				delete removeThis;
 			}
+			size--;
 		}
 		else{
-			if (list->front == currentNode)
+			if (front == currentNode)
 				previousNode = currentNode;
 			else
 				previousNode = previousNode->next;
@@ -50,3 +52,5 @@ void PlanariaList::remove(PlanariaList* list, float pollutionRate){
 		}
 	}
 }
+
+int PlanariaList::listSize(){ return size; }

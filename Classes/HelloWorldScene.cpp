@@ -70,7 +70,7 @@ void HelloWorld::onTouchCancelled(Touch* touch, Event* event) {
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
 {
-	Vector<Planaria*> planarias;
+	PlanariaList *plList = new PlanariaList();
     srand(time(NULL));
     //////////////////////////////
     // 1. super init first
@@ -87,24 +87,17 @@ bool HelloWorld::init()
     this->schedule(schedule_selector(HelloWorld::Mainloop));
 	this->schedule(schedule_selector(HelloWorld::eachSecond), 1.0f);
 
-    //for (int i = 0; i < 1; i++) {
         RainbowPlanaria *pl = RainbowPlanaria::create();
         NormalPlanaria *pl2 = NormalPlanaria::create();
         ExtendedPlanaria *pl3 = ExtendedPlanaria::create();
-        /*pl->setMove(getNext() * 360, 1);
-        pl->setPosition(visibleSize.width * getNext(), visibleSize.height * getNext());
-        pl2->setMove(getNext() * 360, 1);
-        pl2->setPosition(visibleSize.width * getNext(), visibleSize.height * getNext());
-        pl3->setMove(getNext() * 360, 1);
-        pl3->setPosition(visibleSize.width * getNext(), visibleSize.height * getNext());*/
-   // }
-		planarias.pushBack(pl);
-		planarias.pushBack(pl2);
-		planarias.pushBack(pl3);
-		for (Vector<Planaria*>::iterator it = planarias.begin(); it != planarias.end(); it++){
-			(*it)->setMove(getNext()*360, 1);
-			(*it)->setPosition(visibleSize.width*getNext(), visibleSize.height*getNext());
-		}
+  
+		plList->push(dynamic_cast<Planaria*>(pl));
+		plList->push(dynamic_cast<Planaria*>(pl2));
+		plList->push(dynamic_cast<Planaria*>(pl3));
+		
+			//(*it)->setMove(getNext()*360, 1);
+			//(*it)->setPosition(visibleSize.width*getNext(), visibleSize.height*getNext());
+		
     return true;
 }
 
@@ -125,5 +118,5 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 
 void HelloWorld::eachSecond(float f){
 	g_scenePollution += g_pollutionIncreaseRate;
-	log("current pollution of this scene :%f, increaseRate = %f", g_scenePollution, g_pollutionIncreaseRate);	
+	log("current pollution of this scene :%f, increaseRate = %f", g_scenePollution, g_pollutionIncreaseRate);
 }

@@ -17,9 +17,12 @@ public:
 	PlanariaList();
 	~PlanariaList();
 	Node* front;
-	void initList(PlanariaList* list);
-	void push(PlanariaList* list, Planaria newPlanaria);
-	void remove(PlanariaList* list, float pollutionRate);//removal algorithm can be reused, 
-														 //only need to overload & override the part where removal condition is different
+	void initList();
+	int listSize();
+	void push(Planaria* newPlanaria);
+	void remove(float pollutionRate);//removal algorithm can be reused, 
+									//only need to overload & override the part where removal condition is different
+private:
+	int size=0;
 };
 #endif

@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 #include "PlanariaUnits.h"
+#include "CustomVector.h"
 namespace{
 	float g_scenePollution = 0.0f;
 	float g_pollutionIncreaseRate = 10.0f;

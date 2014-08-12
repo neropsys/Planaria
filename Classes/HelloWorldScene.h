@@ -31,7 +31,7 @@ public:
     CREATE_FUNC(HelloWorld);
 
     void Mainloop(float);
-
+	void gotoSkillUpgradeScene(cocos2d::Ref* pSender);
     float getNext();
 
 	void eachSecond(float f);

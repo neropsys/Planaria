@@ -1,5 +1,5 @@
 #include "HelloWorldScene.h"
-
+#include "SkillUpgradeScene.h"
 USING_NS_CC;
 using namespace cocos2d;
 Scene* HelloWorld::createScene()
@@ -82,22 +82,21 @@ bool HelloWorld::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
+	auto skillButton = MenuItemImage::create("skillbutton.png", "skillbutton.png", CC_CALLBACK_1(HelloWorld::gotoSkillUpgradeScene, this));
+	skillButton->setPosition(Point(500, -300));//hard-coded, needs to be changed
+
+	auto Menu = Menu::create(skillButton, NULL);
+	this->addChild(Menu);
+
+
     Planaria::Initialize(this);
 
     this->schedule(schedule_selector(HelloWorld::Mainloop));
 	this->schedule(schedule_selector(HelloWorld::eachSecond), 1.0f);
 
-    //for (int i = 0; i < 1; i++) {
         RainbowPlanaria *pl = RainbowPlanaria::create();
         NormalPlanaria *pl2 = NormalPlanaria::create();
         ExtendedPlanaria *pl3 = ExtendedPlanaria::create();
-        /*pl->setMove(getNext() * 360, 1);
-        pl->setPosition(visibleSize.width * getNext(), visibleSize.height * getNext());
-        pl2->setMove(getNext() * 360, 1);
-        pl2->setPosition(visibleSize.width * getNext(), visibleSize.height * getNext());
-        pl3->setMove(getNext() * 360, 1);
-        pl3->setPosition(visibleSize.width * getNext(), visibleSize.height * getNext());*/
-   // }
 		planarias.pushBack(pl);
 		planarias.pushBack(pl2);
 		planarias.pushBack(pl3);
@@ -126,4 +125,9 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 void HelloWorld::eachSecond(float f){
 	g_scenePollution += g_pollutionIncreaseRate;
 	log("current pollution of this scene :%f, increaseRate = %f", g_scenePollution, g_pollutionIncreaseRate);	
+}
+
+void HelloWorld::gotoSkillUpgradeScene(Ref* pSender){
+	auto skillScene = SkillUpgradeScene::createScene();
+	Director::getInstance()->pushScene(skillScene);
 }

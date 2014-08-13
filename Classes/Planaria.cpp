@@ -8,8 +8,6 @@ Vector<Planaria *> Planaria::deadPlas;
 
 Layer *Planaria::layer;
 
-int Planaria::callCount;
-
 Planaria::Planaria() {
 }
 
@@ -73,7 +71,7 @@ Planaria *Planaria::create(float x, float y, float angle, float speed, float len
     ret->speed = speed;
     ret->bodyLength = length;
 
-    newPlas.pushBack(ret);
+    UnitBase::newUnit.pushBack(ret);
 
     return ret;
 }
@@ -112,7 +110,7 @@ void Planaria::setVelocity() {
 }
 
 void Planaria::Die() {
-    deadPlas.pushBack(this);
+    deadUnit.pushBack(this);
 }
 
 // static method
@@ -131,15 +129,10 @@ void Planaria::Mainloop() {
     }
     newPlas.clear();
 
-    callCount = 0;
-
     for (auto child : plas) {
         
         child->Run();
 
-        child->Render();
-
-        child->t++;
     }
 
     //log("%d", callCount);
@@ -155,7 +148,7 @@ void Planaria::Mainloop() {
 
         //child->childrenAlloc();
 
-        log("%d", i++);
+        //log("%d", i++);
     }
 
     deadPlas.clear();
@@ -181,8 +174,8 @@ void Planaria::Init() {
     plHead = DrawNode::create();
     plBody = DrawNode::create();
 
-    layer->addChild(plHead);
-    layer->addChild(plBody);
+    UnitBase::layer->addChild(plHead);
+    UnitBase::layer->addChild(plBody);
 
     for (int i = 0; i < tailSegments; i++) {
         plTail.push_back(new Vec2(position));
@@ -204,9 +197,16 @@ float Planaria::getNext() {
 }
 
 void Planaria::Run() {
-    log("test");
+    //log("test");
+    if (this->isCrash(Mouse::getPoint()) && Mouse::isDown()) {
+        cutBody(Mouse::getPoint());
+    }
 
     moveBody();
+
+    Render();
+
+    t++;
 }
 
 void Planaria::moveBody() {
@@ -243,7 +243,7 @@ void Planaria::moveBody() {
     }
 
     if (t % 70 == 0 && t > 0) {
-        exSpeed = 3 * getNext() - 1.5;
+        exSpeed = 6 * getNext() - 3;
     }
     
     speed -= exSpeed;
@@ -360,8 +360,6 @@ void Planaria::renderHead() {
     plHead->setPosition(position);
     plHead->setRotation(angle);
 
-    callCount++;
-
     plHead->drawTriangle(pt[0], pt[1], pt[2], bodyColor);
 }
 
@@ -397,8 +395,8 @@ void Planaria::Coll() {
 }
 
 void Planaria::Dead() {
-    layer->removeChild(plHead, true);
-    layer->removeChild(plBody, true);
+    UnitBase::layer->removeChild(plHead, true);
+    UnitBase::layer->removeChild(plBody, true);
     //plHead->autorelease();
     //plBody->autorelease();
 }
@@ -510,15 +508,14 @@ void Planaria::cutBody(const Vec2 &pos) {
     Vec2 *crashedPos = plTail[crashedSegment];
     float dividedLength = crashedSegment * getSegmentLength();
 
-    auto pl = Planaria::create(position.x, position.y, angle, 0.5, dividedLength);
     auto pl2 = Planaria::create(crashedPos->x, crashedPos->y, angle - 20 + getNext() * 40, 0.5, bodyLength - dividedLength);
+    this->bodyLength = dividedLength;
+    this->isHurted = true;
 
-    pl->isHurted = true;
+    //pl->isHurted = true;
     pl2->isHurted = true;
 
     isHurted = true;
-
-    Die();
 }
 
 PlanariaBox Planaria::getPlanariaZone() {

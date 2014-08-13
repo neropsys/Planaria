@@ -1,4 +1,6 @@
 #include "cocos2d.h"
+#include "UnitBase.h"
+#include "Mouse.h"
 #include <cmath>
 #include <iostream>
 
@@ -21,7 +23,7 @@ public:
 protected:
 };
 
-class Planaria : public cocos2d::Node {
+class Planaria : public UnitBase {
 
 public:
     Planaria();
@@ -113,14 +115,10 @@ protected:
     vector<cocos2d::Vec2 *> plTail;
     int tailSegments = 17, tailEx = 0;
 
-    cocos2d::Vec2 position, velocity;
-    float angle = 0.f, speed = 0.f;
     float exAngle = 0.f, exSpeed = 0.f;
     float maxSpeed = 6.f, minSpeed = 2.f;
     float bodyLength = 120.f, bodySize = 4.5f;
     float bodyMaxLength = 120.f;
-
-    static int callCount;
 
     bool isHurted = false;
 

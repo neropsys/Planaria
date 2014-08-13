@@ -22,7 +22,7 @@ float HelloWorld::getNext() {
 }
 
 void HelloWorld::Mainloop(float f) {
-    Planaria::Mainloop();
+    UnitBase::Mainloop();
 }
 
 void HelloWorld::onEnter() {
@@ -49,22 +49,22 @@ void HelloWorld::onExit() {
 }
 
 bool HelloWorld::onTouchBegan(Touch* touch, Event* event) {
-    Planaria::onTouchBegan(touch, event);
+    Mouse::onTouchBegan(touch, event);
 
     return true;
 }
 
 void HelloWorld::onTouchMoved(Touch* touch, Event* event) {
-    Planaria::onTouchMoved(touch, event);
+    Mouse::onTouchMoved(touch, event);
 
 }
 
 void HelloWorld::onTouchEnded(Touch* touch, Event* event) {
-    Planaria::onTouchEnded(touch, event);
+    Mouse::onTouchEnded(touch, event);
 }
 
 void HelloWorld::onTouchCancelled(Touch* touch, Event* event) {
-    Planaria::onTouchCancelled(touch, event);
+    Mouse::onTouchCancelled(touch, event);
 }
 
 // on "init" you need to initialize your instance
@@ -81,11 +81,11 @@ bool HelloWorld::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-    Planaria::Initialize(this);
+    UnitBase::Initialize(this);
 
     this->schedule(schedule_selector(HelloWorld::Mainloop));
 
-    for (int i = 0; i < 1; i++) {
+    for (int i = 0; i < 5; i++) {
         RainbowPlanaria *pl = RainbowPlanaria::create();
         NormalPlanaria *pl2 = NormalPlanaria::create();
         ExtendedPlanaria *pl3 = ExtendedPlanaria::create();

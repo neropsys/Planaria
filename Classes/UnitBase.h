@@ -2,8 +2,6 @@
 #include <cmath>
 #include <iostream>
 
-#pragma once
-
 #define RAD(angle) angle * M_PI / 180
 
 using namespace std;
@@ -28,22 +26,6 @@ public:
     static void onTouchEnded(cocos2d::Touch*, cocos2d::Event*);
     static void onTouchCancelled(cocos2d::Touch*, cocos2d::Event*);
 
-    // base
-    virtual void setAngle(float angle);
-    float getAngle();
-
-    virtual void setSpeed(float speed);
-    float getSpeed();
-
-    virtual void setPosition(float x, float y);
-    cocos2d::Vec2 &getPosition();
-
-    virtual void setMove(float angle, float speed);
-    virtual void setMove(const cocos2d::Vec2&);
-
-    virtual bool isCrash(const cocos2d::Vec2& point, float radius);
-    virtual bool isCrash(float x, float y, float radius);
-
     void Die();
 
 protected:
@@ -62,9 +44,6 @@ protected:
     virtual void Dead();
     virtual void Final();
 
-    // calculate velocity from angle and speed of itself
-    void setVelocity();
-
     // is being existed?
     bool isDead = false;
 
@@ -72,9 +51,10 @@ protected:
     bool canCrash = false;
 
     // current position, velocity, acceleration
-    cocos2d::Vec2 position, velocity;
+    cocos2d::Vec2 position, velocity, accel;
 
     // basic status
     float angle = 0.f, speed = 0.f;
-    float bodySize = 0.f;
+    
+
 };

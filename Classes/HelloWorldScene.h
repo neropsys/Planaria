@@ -3,10 +3,10 @@
 
 #include "cocos2d.h"
 #include "PlanariaUnits.h"
-namespace{
-	float g_scenePollution = 0.0f;
-	float g_pollutionIncreaseRate = 10.0f;
-}
+#include "PlayerSkill.h"
+
+#define _WEAPON_ 100
+
 class HelloWorld : public cocos2d::Layer
 {
 public:
@@ -26,15 +26,16 @@ public:
     
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);
+
+    void weaponMenuCallback(cocos2d::Ref *pSender);
     
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
 
     void Mainloop(float);
-	void gotoSkillUpgradeScene(cocos2d::Ref* pSender);
+
     float getNext();
 
-	void eachSecond(float f);
 protected:
 
     int t = 0;

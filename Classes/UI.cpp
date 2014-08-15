@@ -19,26 +19,24 @@ void QuickSlot::Init() {
 }
 
 void QuickSlot::Run() {
-    if (coolTime <= 0) {
-        if (Mouse::isDown()) {
-            float distX = Mouse::getPoint().x - position.x, distY = Mouse::getPoint().y - position.y;
-            float realSize = btnRadius + 1;
+    if (Mouse::isDown() && coolTime <= 0) {
+        float distX = Mouse::getPoint().x - position.x, distY = Mouse::getPoint().y - position.y;
+        float realSize = btnRadius + 1;
 
-            if ((distX * distX + distY * distY) < (realSize * realSize)) {
-                if (isActivated()) {
-                    this->turnOff();
-                }
-                else {
-                    this->turnOn();
-                }
-
-                coolTime = 0.5f;
+        if ((distX * distX + distY * distY) < (realSize * realSize)) {
+            if (isActivated()) {
+                this->turnOff();
             }
-        }
+            else {
+                this->turnOn();
+            }
 
-        if (this->isActivated()) {
-            skillSet();
+            coolTime = 0.5f;
         }
+    }
+
+    if (this->isActivated() && coolTime <= 0) {
+        skillSet();
     }
 
     if (coolTime > 0) {
@@ -58,7 +56,17 @@ void QuickSlot::skillSet() {
 void QuickSlot::Render() {
     btnModel->clear();
 
-    btnModel->drawDot(this->position, this->btnRadius, Color4F(1, 1, 1, 1));
+    Color4F btnColor = Color4F(1.f, 1.f, 1.f, 1.f);
+
+    if (this->isActivated()) {
+        btnColor = Color4F(1.f, 0.f, 0.f, 1.f);
+    }
+
+    if (coolTime > 0) {
+        btnColor = Color4F(0.3f, 0.3f, 0.3f, 1.f);
+    }
+
+    btnModel->drawDot(this->position, this->btnRadius, btnColor);
 }
 
 void QuickSlot::Dead() {

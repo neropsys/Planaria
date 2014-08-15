@@ -5,6 +5,7 @@ USING_NS_CC;
 Vec2 Mouse::point;
 bool Mouse::isTouching;
 bool Mouse::isStart;
+float Mouse::cursorSize = 5.f;
 
 bool Mouse::isDown() {
     return Mouse::isTouching;
@@ -37,4 +38,8 @@ void Mouse::onTouchCancelled(Touch* touch, Event* event) {
     Mouse::isTouching = false;
     Mouse::isStart = false;
     Mouse::point = touch->getLocation();
+}
+
+float Mouse::getSize() {
+    return Mouse::cursorSize;
 }

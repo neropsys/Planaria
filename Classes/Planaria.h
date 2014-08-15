@@ -6,6 +6,8 @@
 
 #define RAD(angle) angle * M_PI / 180
 
+#pragma once
+
 using namespace std;
 
 class PlanariaBox {
@@ -82,9 +84,9 @@ public:
 
     cocos2d::Color4F bodyColor;
 
-protected:
     static cocos2d::Vector<Planaria *> Plas;
 
+protected:
     static cocos2d::Layer *layer;
 
     virtual void Init();
@@ -95,6 +97,8 @@ protected:
 
     virtual void renderHead();
     virtual void renderTail();
+
+    virtual void Recovery();
 
     void createTail();
 

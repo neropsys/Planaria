@@ -167,15 +167,28 @@ float Planaria::getNext() {
 
 void Planaria::Run() {
     //log("test");
-    if (this->isCrash(Mouse::getPoint(), 5) && Mouse::isDown()) {
+    /*if (this->isCrash(Mouse::getPoint(), Mouse::getSize()) && Mouse::isDown()) {
         cutBody(Mouse::getPoint());
-    }
+    }*/
+
+    Recovery();
 
     moveBody();
 
     Render();
 
     t++;
+}
+
+void Planaria::Recovery() {
+    if (bodyLength < bodyMaxLength) {
+        bodyLength += 0.8f;
+    }
+
+    if (bodyLength > bodyMaxLength) {
+        isHurted = false;
+        bodyLength = bodyMaxLength;
+    }
 }
 
 void Planaria::moveBody() {
@@ -436,7 +449,7 @@ bool Planaria::isCrash(float x, float y, float radius) {
 }
 
 int Planaria::getCrashedSegment(const Vec2 &pt) {
-    return getCrashedSegment(pt.x, pt.y, 1);
+    return getCrashedSegment(pt.x, pt.y, Mouse::getSize());
 }
 
 int Planaria::getCrashedSegment(float x, float y, float radius) {
@@ -476,6 +489,7 @@ void Planaria::cutBody(const Vec2 &pos) {
     }
 
     int crashedSegment = getCrashedSegment(pos);
+    log("%d", crashedSegment);
     Vec2 *crashedPos = plTail[crashedSegment];
     float dividedLength = crashedSegment * getSegmentLength();
 

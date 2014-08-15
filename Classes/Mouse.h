@@ -6,6 +6,8 @@ class Mouse {
 public:
     static cocos2d::Vec2 &getPoint();
     static bool isDown();
+
+    static float getSize();
     
     static bool onTouchBegan(cocos2d::Touch*, cocos2d::Event*);
     static void onTouchMoved(cocos2d::Touch*, cocos2d::Event*);
@@ -17,4 +19,6 @@ protected:
 
     static bool isTouching;
     static bool isStart;
+
+    static float cursorSize;
 };

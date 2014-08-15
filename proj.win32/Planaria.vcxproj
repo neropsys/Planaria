@@ -140,8 +140,6 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\Mouse.cpp" />
     <ClCompile Include="..\Classes\Planaria.cpp" />
     <ClCompile Include="..\Classes\PlanariaUnits.cpp" />
-    <ClCompile Include="..\Classes\PlayerSkill.cpp" />
-    <ClCompile Include="..\Classes\UI.cpp" />
     <ClCompile Include="..\Classes\UnitBase.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -151,8 +149,6 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\Mouse.h" />
     <ClInclude Include="..\Classes\Planaria.h" />
     <ClInclude Include="..\Classes\PlanariaUnits.h" />
-    <ClInclude Include="..\Classes\PlayerSkill.h" />
-    <ClInclude Include="..\Classes\UI.h" />
     <ClInclude Include="..\Classes\UnitBase.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>

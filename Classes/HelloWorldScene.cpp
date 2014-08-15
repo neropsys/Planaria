@@ -56,8 +56,7 @@ bool HelloWorld::onTouchBegan(Touch* touch, Event* event) {
 
 void HelloWorld::onTouchMoved(Touch* touch, Event* event) {
     Mouse::onTouchMoved(touch, event);
-    auto test = ParticleFlower::create();
-    test->setPosition(touch->getLocation());
+
 }
 
 void HelloWorld::onTouchEnded(Touch* touch, Event* event) {
@@ -97,56 +96,25 @@ bool HelloWorld::init()
         pl3->setMove(getNext() * 360, 1);
         pl3->setPosition(visibleSize.width * getNext(), visibleSize.height * getNext());
     }
-
-    auto skill1 = roseKnife::create();
-
-    skill1->setPosition(32, 32);
-
     /////////////////////////////
     // 2. add a menu item with "X" image, which is clicked to quit the program
     //    you may modify it.
 
     // add a "close" icon to exit the progress. it's an autorelease object
-    /*auto knifeSkillOff = MenuItemImage::create(
-        "weapon/rose-knife-off.png",
-        "weapon/rose-knife-off.png",
-        NULL,
-        NULL);
-
-    auto knifeSkillOn = MenuItemImage::create(
-        "weapon/rose-knife-on.png",
-        "weapon/rose-knife-on.png",
-        NULL,
-        NULL);
-
-    auto roseKnife = MenuItemToggle::createWithCallback(CC_CALLBACK_1(HelloWorld::weaponMenuCallback, this), knifeSkillOff, knifeSkillOn, NULL);
-    roseKnife->setName("roseKnife");
-
-    auto scoopOff = MenuItemImage::create(
-        "weapon/scoop-pot-off.png",
-        "weapon/scoop-pot-off.png",
-        NULL,
-        NULL);
-
-    auto scoopOn = MenuItemImage::create(
-        "weapon/scoop-pot-on.png",
-        "weapon/scoop-pot-on.png",
-        NULL,
-        NULL);
-
-    auto scoopPot = MenuItemToggle::createWithCallback(CC_CALLBACK_1(HelloWorld::weaponMenuCallback, this), scoopOff, scoopOn, NULL);
-    scoopPot->setName("scoopPot");
+    /*auto closeItem = MenuItemImage::create(
+                                           "CloseNormal.png",
+                                           "CloseSelected.png",
+                                           CC_CALLBACK_1(HelloWorld::menuCloseCallback, this));
+    
+	closeItem->setPosition(Vec2(origin.x + visibleSize.width - closeItem->getContentSize().width/2 ,
+                                origin.y + closeItem->getContentSize().height/2));
 
     // create menu, it's an autorelease object
-    auto menu = Menu::create(roseKnife, scoopPot, NULL);
-    menu->setPosition(128, 64);
+    auto menu = Menu::create(closeItem, NULL);
+    menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1);
-    menu->setTag(_WEAPON_);
-    menu->alignItemsHorizontally();
 
-    roseKnife->activate();*/
-
-    /*
+ 
     // 3. add your codes below...
 
     // add a label shows "Hello World"
@@ -186,18 +154,4 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     exit(0);
 #endif
-}
-
-void HelloWorld::weaponMenuCallback(Ref *pSender) {
-    MenuItemToggle *pMenu = (MenuItemToggle *)pSender;
-    Menu *menuParent = (Menu *)getChildByTag(_WEAPON_);
-
-    for (auto child : menuParent->getChildren()) {
-        MenuItemImage *realChild = (MenuItemImage *)child;
-
-        if (pMenu == child) {
-        }
-        else {
-        }
-    }
 }

@@ -20,7 +20,7 @@ NormalPlanaria *NormalPlanaria::create() {
         CC_SAFE_DELETE(ret);
     }
 
-    newPlas.pushBack(ret);
+    UnitBase::newUnit.pushBack(ret);
 
     return ret;
 }
@@ -47,7 +47,7 @@ RainbowPlanaria *RainbowPlanaria::create() {
         CC_SAFE_DELETE(ret);
     }
 
-    newPlas.pushBack(ret);
+    UnitBase::newUnit.pushBack(ret);
 
     return ret;
 }
@@ -61,22 +61,20 @@ void RainbowPlanaria::cutBody(const Vec2 &pos) {
     Vec2 *crashedPos = plTail[crashedSegment];
     float dividedLength = crashedSegment * getSegmentLength();
 
-    auto pl = RainbowPlanaria::create();
+    //auto pl = RainbowPlanaria::create();
     auto pl2 = RainbowPlanaria::create();
 
-    pl->position.setPoint(position.x, position.y);
-    pl->setMove(angle, 0.5);
-    pl->bodyLength = dividedLength;
     pl2->position.setPoint(crashedPos->x, crashedPos->y);
     pl2->setMove(angle - 20 + getNext() * 40, 0.5);
     pl2->bodyLength = bodyLength - dividedLength;
 
-    pl->isHurted = true;
     pl2->isHurted = true;
 
+    this->isHurted = true;
+    this->bodyLength = dividedLength;
     isHurted = true;
 
-    Die();
+    //Die();
 }
 
 void RainbowPlanaria::Run() {
@@ -109,7 +107,7 @@ ExtendedPlanaria *ExtendedPlanaria::create() {
         CC_SAFE_DELETE(ret);
     }
 
-    newPlas.pushBack(ret);
+    UnitBase::newUnit.pushBack(ret);
 
     return ret;
 }

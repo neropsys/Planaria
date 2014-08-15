@@ -187,3 +187,6 @@ UpgradeLog*.htm
 FakesAssemblies/
 
 cocos2d/
+proj.win32/Planaria.v12.suo
+proj.win32/Planaria.v12.suo
+*.suo

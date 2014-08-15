@@ -58,7 +58,7 @@ void RainbowPlanaria::cutBody(const Vec2 &pos) {
     }
 
     int crashedSegment = getCrashedSegment(pos);
-    log("%d", crashedSegment);
+    //log("%d", crashedSegment);
     Vec2 *crashedPos = plTail[crashedSegment];
     float dividedLength = crashedSegment * getSegmentLength();
 

@@ -6,6 +6,9 @@
 
 #define RAD(angle) angle * M_PI / 180
 
+#define CREATE_FUNC2(__TYPE_NAME__) __TYPE_NAME__() {}; ~__TYPE_NAME__() {}; static __TYPE_NAME__ *create() { auto unit = new __TYPE_NAME__(); if (unit) { unit->autorelease(); } else { CC_SAFE_DELETE(unit); } UnitBase::newUnit.pushBack(unit); return unit; };
+#define DELETE_OBJ(__OBJECT__) if ( __OBJECT__ ) { __OBJECT__->release(); __OBJECT__ = NULL; }
+
 using namespace std;
 
 // the root of unit class
@@ -30,13 +33,16 @@ public:
 
     // base
     virtual void setAngle(float angle);
-    float getAngle();
+    virtual float getAngle();
 
     virtual void setSpeed(float speed);
-    float getSpeed();
+    virtual float getSpeed();
+
+    virtual void setSize(float size);
+    virtual float getSize();
 
     virtual void setPosition(float x, float y);
-    cocos2d::Vec2 &getPosition();
+    virtual cocos2d::Vec2 &getPosition();
 
     virtual void setMove(float angle, float speed);
     virtual void setMove(const cocos2d::Vec2&);

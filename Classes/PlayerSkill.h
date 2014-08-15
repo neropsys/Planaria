@@ -9,9 +9,18 @@ public:
 
     static roseKnife *create();
 protected:
-    virtual void skillSet();
+    virtual void activeSkill();
 
     virtual void Render();
 
     int t = 0;
+};
+
+class scoopPot : public QuickSlot {
+public:
+    CREATE_FUNC2(scoopPot);
+protected:
+
+    virtual void activeSkill();
+    virtual void Render();
 };

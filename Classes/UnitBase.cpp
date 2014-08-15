@@ -108,6 +108,14 @@ float UnitBase::getAngle() {
     return angle;
 }
 
+void UnitBase::setSize(float size) {
+    bodySize = size;
+}
+
+float UnitBase::getSize() {
+    return bodySize;
+}
+
 void UnitBase::setSpeed(float speed) {
     this->speed = speed;
 

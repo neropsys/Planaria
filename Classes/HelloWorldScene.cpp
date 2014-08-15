@@ -99,8 +99,30 @@ bool HelloWorld::init()
     }
 
     auto skill1 = roseKnife::create();
+    auto skill2 = scoopPot::create();
 
-    skill1->setPosition(32, 32);
+    auto skillGroup = RadioSlot::create();
+
+    skillGroup->addChild(skill1);
+    skillGroup->addChild(skill2);
+
+    skillGroup->setPosition(256, 48);
+
+    skillGroup->alignItems();
+
+    /*for (auto child : skill1->getGroup()->getChildren()) {
+        log("%f", ((UnitBase *)child)->getPosition().x);
+    }*/
+
+    //skill1->setPosition(256, 32);
+
+    //skill2->setPosition(320, 32);
+
+    Area::coinLabel = LabelTTF::create("0", "Segoe UI", 36);
+    Area::coinLabel->setPosition(128, visibleSize.height - 32);
+    Area::coinLabel->setHorizontalAlignment(TextHAlignment::LEFT);
+
+    this->addChild(Area::coinLabel);
 
     /////////////////////////////
     // 2. add a menu item with "X" image, which is clicked to quit the program

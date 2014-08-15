@@ -29,7 +29,7 @@ void roseKnife::Render() {
     QuickSlot::Render();
 }
 
-void roseKnife::skillSet() {
+void roseKnife::activeSkill() {
     if (!Mouse::isDown()) return;
 
     auto particle = ParticleFlower::create();
@@ -53,4 +53,20 @@ void roseKnife::skillSet() {
             child->cutBody(tPos);
         }
     }
+}
+
+void scoopPot::activeSkill() {
+    if (!Mouse::isDown()) return;
+
+    Vec2 tPos = Mouse::getPoint();
+
+    for (auto child : Planaria::Plas) {
+        if (child->isCrash(tPos, 5)) {
+            child->becomeCoin();
+        }
+    }
+}
+
+void scoopPot::Render() {
+    QuickSlot::Render();
 }

@@ -79,7 +79,7 @@ void Planaria::setPosition(float x, float y) {
     this->position.y = y;
 }
 
-Vec2 Planaria::getPosition() {
+Vec2 &Planaria::getPosition() {
     return position;
 }
 
@@ -127,7 +127,7 @@ void Planaria::Finalize() {
 // each object's method
 void Planaria::Init() {
     Size screen = Director::getInstance()->getVisibleSize();
-    float baseMargin = 30.f;
+    float baseMargin = 128.f;
 
     bodyColor = Color4F(1.f, 1.f, 1.f, 1.f);
 
@@ -489,7 +489,6 @@ void Planaria::cutBody(const Vec2 &pos) {
     }
 
     int crashedSegment = getCrashedSegment(pos);
-    log("%d", crashedSegment);
     Vec2 *crashedPos = plTail[crashedSegment];
     float dividedLength = crashedSegment * getSegmentLength();
 
@@ -501,6 +500,29 @@ void Planaria::cutBody(const Vec2 &pos) {
     pl2->isHurted = true;
 
     isHurted = true;
+}
+
+void Planaria::becomeCoin() {
+    Area::humanCoin += 10;
+
+    Area::coinLabel->setString(std::to_string((int)Area::humanCoin) + " Coin");
+
+    for (auto segment : plTail) {
+        auto particle = ParticleFlower::create();
+        auto texture = Director::getInstance()->getTextureCache()->addImage("stars.png");
+        particle->setTexture(texture);
+
+        if (particle != NULL) {
+            particle->setScale(0.5f);
+            particle->setPosition(segment->x, segment->y);
+
+            particle->setDuration(0.3f);
+
+            UnitBase::layer->addChild(particle);
+        }
+    }
+
+    Die();
 }
 
 PlanariaBox Planaria::getPlanariaZone() {

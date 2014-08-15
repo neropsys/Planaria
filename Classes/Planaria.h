@@ -1,6 +1,7 @@
 #include "cocos2d.h"
 #include "UnitBase.h"
 #include "Mouse.h"
+#include "Area.h"
 #include <cmath>
 #include <iostream>
 
@@ -18,10 +19,10 @@ public:
 
     ~PlanariaBox();
 
-    float left;
-    float top;
-    float right;
-    float bottom;
+    float left = 50.f;
+    float top = 100.f;
+    float right = 50.f;
+    float bottom = 100.f;
 protected:
 };
 
@@ -56,7 +57,7 @@ public:
     void setMove(const cocos2d::Vec2&);
 
     void setPosition(float x, float y);
-    cocos2d::Vec2 getPosition();
+    cocos2d::Vec2 &getPosition();
 
     void setAngle(float angle);
     float getAngle();
@@ -75,6 +76,8 @@ public:
 
     int getCrashedSegment(const cocos2d::Vec2&);
     int getCrashedSegment(float x, float y, float radius);
+
+    void becomeCoin();
 
     virtual void cutBody(const cocos2d::Vec2 &pos);
 

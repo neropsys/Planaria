@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "PlanariaUnits.h"
 #include "PlayerSkill.h"
+#include "Area.h"
 
 #define _WEAPON_ 100
 

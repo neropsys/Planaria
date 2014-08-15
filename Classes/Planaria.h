@@ -68,7 +68,7 @@ public:
     void extendZone(const PlanariaBox&);
     PlanariaBox getPlanariaZone();
 
-    bool isCrash(const cocos2d::Vec2&);
+    bool isCrash(const cocos2d::Vec2& point, float radius);
     bool isCrash(float x, float y, float radius);
 
     int getCrashedSegment(const cocos2d::Vec2&);
@@ -83,9 +83,7 @@ public:
     cocos2d::Color4F bodyColor;
 
 protected:
-    static cocos2d::Vector<Planaria *> plas;
-    static cocos2d::Vector<Planaria *> newPlas;
-    static cocos2d::Vector<Planaria *> deadPlas;
+    static cocos2d::Vector<Planaria *> Plas;
 
     static cocos2d::Layer *layer;
 

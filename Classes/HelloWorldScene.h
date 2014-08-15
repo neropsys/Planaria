@@ -3,6 +3,9 @@
 
 #include "cocos2d.h"
 #include "PlanariaUnits.h"
+#include "PlayerSkill.h"
+
+#define _WEAPON_ 100
 
 class HelloWorld : public cocos2d::Layer
 {
@@ -23,6 +26,8 @@ public:
     
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);
+
+    void weaponMenuCallback(cocos2d::Ref *pSender);
     
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);

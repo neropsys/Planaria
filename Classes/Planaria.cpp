@@ -2,9 +2,7 @@
 
 USING_NS_CC;
 
-Vector<Planaria *> Planaria::plas;
-Vector<Planaria *> Planaria::newPlas;
-Vector<Planaria *> Planaria::deadPlas;
+Vector<Planaria *> Planaria::Plas;
 
 Layer *Planaria::layer;
 
@@ -17,8 +15,8 @@ Planaria::~Planaria() {
 bool Planaria::onTouchBegan(Touch* touch, Event* event) {
     Vec2 tPos = touch->getLocation();
 
-    for (auto child : plas) {
-        if (child->isCrash(tPos)) {
+    for (auto child : Plas) {
+        if (child->isCrash(tPos, 5)) {
             child->cutBody(tPos);
         }
     }
@@ -29,8 +27,8 @@ bool Planaria::onTouchBegan(Touch* touch, Event* event) {
 void Planaria::onTouchMoved(Touch* touch, Event* event) {
     Vec2 tPos = touch->getLocation();
 
-    for (auto child : plas) {
-        if (child->isCrash(tPos)) {
+    for (auto child : Plas) {
+        if (child->isCrash(tPos, 5)) {
             child->cutBody(tPos);
         }
     }
@@ -121,37 +119,6 @@ void Planaria::Initialize(Layer *parent) {
 }
 
 void Planaria::Mainloop() {
-    // create planarias
-    for (auto child : newPlas) {
-        plas.pushBack(child);
-
-        child->Init();
-    }
-    newPlas.clear();
-
-    for (auto child : plas) {
-        
-        child->Run();
-
-    }
-
-    //log("%d", callCount);
-
-    // kill planarias
-    int i = 0;
-    for (auto child : deadPlas) {
-        child->Dead();
-
-        plas.eraseObject(child, false);
-
-        //CC_SAFE_DELETE(child);
-
-        //child->childrenAlloc();
-
-        //log("%d", i++);
-    }
-
-    deadPlas.clear();
 }
 
 void Planaria::Finalize() {
@@ -189,6 +156,8 @@ void Planaria::Init() {
         //log("%f, %f", velocity.x, velocity.y);
     }
 
+    Plas.pushBack(this);
+
     Render();
 }
 
@@ -198,7 +167,7 @@ float Planaria::getNext() {
 
 void Planaria::Run() {
     //log("test");
-    if (this->isCrash(Mouse::getPoint()) && Mouse::isDown()) {
+    if (this->isCrash(Mouse::getPoint(), 5) && Mouse::isDown()) {
         cutBody(Mouse::getPoint());
     }
 
@@ -316,7 +285,7 @@ Vec2 Planaria::align() {
     int neighborDist = 25, count = 0;
     Vec2 steer = Vec2(0, 0);
 
-    for (auto other : plas) {
+    for (auto other : Plas) {
         float distance = position.getDistance(other->position);
 
         if (distance > 0 && distance < neighborDist) {
@@ -395,6 +364,8 @@ void Planaria::Coll() {
 }
 
 void Planaria::Dead() {
+    Plas.eraseObject(this, false);
+
     UnitBase::layer->removeChild(plHead, true);
     UnitBase::layer->removeChild(plBody, true);
     //plHead->autorelease();
@@ -443,8 +414,8 @@ void Planaria::extendZone(const PlanariaBox &box) {
     plZone.right += box.right;
 }
 
-bool Planaria::isCrash(const Vec2 &pt) {
-    return isCrash(pt.x, pt.y, 1);
+bool Planaria::isCrash(const Vec2 &pt, float radius) {
+    return isCrash(pt.x, pt.y, radius);
 }
 
 bool Planaria::isCrash(float x, float y, float radius) {

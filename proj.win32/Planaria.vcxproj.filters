@@ -42,15 +42,12 @@
     <ClCompile Include="..\Classes\Mouse.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
-<<<<<<< HEAD
     <ClCompile Include="..\Classes\PlayerSkill.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\UI.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
-=======
->>>>>>> origin/Planaria
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -74,15 +71,12 @@
     <ClInclude Include="..\Classes\Mouse.h">
       <Filter>Classes</Filter>
     </ClInclude>
-<<<<<<< HEAD
     <ClInclude Include="..\Classes\PlayerSkill.h">
       <Filter>Classes</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\UI.h">
       <Filter>Classes</Filter>
     </ClInclude>
-=======
->>>>>>> origin/Planaria
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">

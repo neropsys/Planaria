@@ -4,11 +4,8 @@ USING_NS_CC;
 
 Vec2 Mouse::point;
 bool Mouse::isTouching;
-<<<<<<< HEAD
 bool Mouse::isStart;
 float Mouse::cursorSize = 5.f;
-=======
->>>>>>> origin/Planaria
 
 bool Mouse::isDown() {
     return Mouse::isTouching;
@@ -20,22 +17,26 @@ Vec2 &Mouse::getPoint() {
 
 bool Mouse::onTouchBegan(Touch* touch, Event* event) {
     Mouse::isTouching = true;
+    Mouse::isStart = true;
     Mouse::point = touch->getLocation();
 
     return true;
 }
 
 void Mouse::onTouchMoved(Touch* touch, Event* event) {
+    Mouse::isStart = false;
     Mouse::point = touch->getLocation();
 }
 
 void Mouse::onTouchEnded(Touch* touch, Event* event) {
     Mouse::isTouching = false;
+    Mouse::isStart = false;
     Mouse::point = touch->getLocation();
 }
 
 void Mouse::onTouchCancelled(Touch* touch, Event* event) {
     Mouse::isTouching = false;
+    Mouse::isStart = false;
     Mouse::point = touch->getLocation();
 }
 

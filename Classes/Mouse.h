@@ -1,5 +1,7 @@
 #include "cocos2d.h"
 
+#pragma once
+
 class Mouse {
 public:
     static cocos2d::Vec2 &getPoint();
@@ -16,10 +18,7 @@ protected:
     static cocos2d::Vec2 point;
 
     static bool isTouching;
-<<<<<<< HEAD
     static bool isStart;
 
     static float cursorSize;
-=======
->>>>>>> origin/Planaria
 };

@@ -1,3 +1,6 @@
+#ifndef _PLANARIA_UNITS_H_
+#define _PLANARIA_UNITS_H_
+
 #include "cocos2d.h"
 #include "Planaria.h"
 
@@ -34,3 +37,4 @@ protected:
 
     void Init();
 };
+#endif

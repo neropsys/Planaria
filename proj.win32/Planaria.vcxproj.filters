@@ -19,6 +19,15 @@
     <Filter Include="Content">
       <UniqueIdentifier>{3e7a35cb-b781-470b-bed3-174a66daee64}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\Planaria">
+      <UniqueIdentifier>{1ec4193a-6b98-4de7-8b0c-3836492301ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Scenes">
+      <UniqueIdentifier>{f8bf598e-c1b6-4dfc-8879-8a678ee8ebc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\CustomPlanariaVector">
+      <UniqueIdentifier>{5e2c5a54-3ada-47a2-8e9f-9555b45e92f7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -27,14 +36,20 @@
     <ClCompile Include="..\Classes\AppDelegate.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Planaria.cpp">
-      <Filter>Classes</Filter>
+      <Filter>Classes\Planaria</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\PlanariaUnits.cpp">
-      <Filter>Classes</Filter>
+      <Filter>Classes\Planaria</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomVector.cpp">
+      <Filter>Classes\CustomPlanariaVector</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
+      <Filter>Classes\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SkillUpgradeScene.cpp">
+      <Filter>Classes\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\UnitBase.cpp">
       <Filter>Classes</Filter>
@@ -59,14 +74,20 @@
     <ClInclude Include="..\Classes\AppDelegate.h">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\HelloWorldScene.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Planaria.h">
-      <Filter>Classes</Filter>
+      <Filter>Classes\Planaria</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\PlanariaUnits.h">
-      <Filter>Classes</Filter>
+      <Filter>Classes\Planaria</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomVector.h">
+      <Filter>Classes\CustomPlanariaVector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HelloWorldScene.h">
+      <Filter>Classes\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SkillUpgradeScene.h">
+      <Filter>Classes\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\UnitBase.h">
       <Filter>Classes</Filter>

@@ -38,6 +38,11 @@ void UnitBase::Mainloop() {
         child->Dead();
 
         crtUnit.eraseObject(child, false);
+
+        //child->autorelease();
+
+
+        //child->release();
     }
 
     deadUnit.clear();

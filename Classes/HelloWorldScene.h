@@ -28,11 +28,8 @@ public:
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);
 
-    void weaponMenuCallback(cocos2d::Ref* pSender);
+    void weaponMenuCallback(cocos2d::Ref *pSender);
     
-	void decreasePollutionCallback(cocos2d::Ref* pSender);
-
-	void pollutionIncrease(float f);
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
 

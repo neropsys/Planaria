@@ -1,11 +1,15 @@
 #include "cocos2d.h"
 #include <cmath>
 #include <iostream>
+#define _CRTDBG_MAP_ALLOC
+#include <stdlib.h>
+#include <crtdbg.h>
 
 #pragma once
 
 #define RAD(angle) angle * M_PI / 180
 
+// this is inline function to realize static create* method
 #define CREATE_FUNC2(__TYPE_NAME__) __TYPE_NAME__() {}; ~__TYPE_NAME__() {}; static __TYPE_NAME__ *create() { auto unit = new __TYPE_NAME__(); if (unit) { unit->autorelease(); } else { CC_SAFE_DELETE(unit); } UnitBase::newUnit.pushBack(unit); return unit; };
 #define DELETE_OBJ(__OBJECT__) if ( __OBJECT__ ) { __OBJECT__->release(); __OBJECT__ = NULL; }
 

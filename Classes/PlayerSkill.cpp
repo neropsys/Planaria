@@ -32,7 +32,7 @@ void roseKnife::Render() {
 void roseKnife::activeSkill() {
     if (!Mouse::isDown()) return;
 
-    auto particle = ParticleFlower::create();
+    /*auto particle = ParticleFlower::create();
 
     auto texture = Director::getInstance()->getTextureCache()->addImage("stars.png");
     particle->setTexture(texture);
@@ -44,7 +44,7 @@ void roseKnife::activeSkill() {
         particle->setDuration(0.1f);
 
         UnitBase::layer->addChild(particle);
-    }
+    }*/
 
     Vec2 tPos = Mouse::getPoint();
 

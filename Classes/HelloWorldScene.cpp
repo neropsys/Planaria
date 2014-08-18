@@ -56,8 +56,6 @@ bool HelloWorld::onTouchBegan(Touch* touch, Event* event) {
 
 void HelloWorld::onTouchMoved(Touch* touch, Event* event) {
     Mouse::onTouchMoved(touch, event);
-    auto test = ParticleFlower::create();
-    test->setPosition(touch->getLocation());
 }
 
 void HelloWorld::onTouchEnded(Touch* touch, Event* event) {
@@ -85,7 +83,7 @@ bool HelloWorld::init()
     UnitBase::Initialize(this);
 
     this->schedule(schedule_selector(HelloWorld::Mainloop));
-	this->schedule(schedule_selector(HelloWorld::pollutionIncrease), 1.0f);
+
     for (int i = 0; i < 5; i++) {
         RainbowPlanaria *pl = RainbowPlanaria::create();
         NormalPlanaria *pl2 = NormalPlanaria::create();
@@ -122,18 +120,8 @@ bool HelloWorld::init()
     Area::coinLabel->setPosition(128, visibleSize.height - 32);
     Area::coinLabel->setHorizontalAlignment(TextHAlignment::LEFT);
 
-	Area::pollutionLabel = LabelTTF::create("0", "Segoe UI", 36);
-	Area::pollutionLabel->setPosition(128, visibleSize.height - 64);
-	Area::pollutionLabel->setHorizontalAlignment(TextHAlignment::LEFT);
     this->addChild(Area::coinLabel);
-	this->addChild(Area::pollutionLabel);
 
-
-	auto decreasePollutionButton = MenuItemImage::create("skillbutton.png", "skillbutton.png", CC_CALLBACK_1(HelloWorld::decreasePollutionCallback, this));
-	auto tempMenu = Menu::create(decreasePollutionButton, NULL);
-	tempMenu->alignItemsHorizontally();
-	tempMenu->setPosition(visibleSize.width-200, visibleSize.height - 64);
-	this->addChild(tempMenu);
     /////////////////////////////
     // 2. add a menu item with "X" image, which is clicked to quit the program
     //    you may modify it.
@@ -220,7 +208,7 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 #endif
 }
 
-void HelloWorld::weaponMenuCallback(Ref* pSender) {
+void HelloWorld::weaponMenuCallback(Ref *pSender) {
     MenuItemToggle *pMenu = (MenuItemToggle *)pSender;
     Menu *menuParent = (Menu *)getChildByTag(_WEAPON_);
 
@@ -232,15 +220,4 @@ void HelloWorld::weaponMenuCallback(Ref* pSender) {
         else {
         }
     }
-}
-void HelloWorld::pollutionIncrease(float f){
-	Area::pollutionRate += 10.0f;
-	Area::pollutionLabel->setString(std::to_string((int)Area::pollutionRate) + "ppm");
-}
-void HelloWorld::decreasePollutionCallback(Ref* pSender){
-	if (Area::pollutionRate < 50.0f || Area::humanCoin < 30.0f) return;
-	Area::pollutionRate -= 50.0f;
-	Area::pollutionLabel->setString(std::to_string((int)Area::pollutionRate) + "ppm");
-	Area::humanCoin -= 30.0f;
-	Area::coinLabel->setString(std::to_string((int)Area::humanCoin) + " Coin");
 }

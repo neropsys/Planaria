@@ -56,8 +56,6 @@ bool HelloWorld::onTouchBegan(Touch* touch, Event* event) {
 
 void HelloWorld::onTouchMoved(Touch* touch, Event* event) {
     Mouse::onTouchMoved(touch, event);
-    auto test = ParticleFlower::create();
-    test->setPosition(touch->getLocation());
 }
 
 void HelloWorld::onTouchEnded(Touch* touch, Event* event) {

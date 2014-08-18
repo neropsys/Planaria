@@ -1,6 +1,9 @@
 #include "cocos2d.h"
 #include <cmath>
 #include <iostream>
+#define _CRTDBG_MAP_ALLOC
+#include <stdlib.h>
+#include <crtdbg.h>
 
 #pragma once
 

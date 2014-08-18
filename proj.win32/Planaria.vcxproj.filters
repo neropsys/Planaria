@@ -42,13 +42,7 @@
     <ClCompile Include="..\Classes\PlanariaUnits.cpp">
       <Filter>Classes\Planaria</Filter>
     </ClCompile>
-    <ClCompile Include="CustomVector.cpp">
-      <Filter>Classes\CustomPlanariaVector</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\HelloWorldScene.cpp">
-      <Filter>Classes\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\SkillUpgradeScene.cpp">
       <Filter>Classes\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\UnitBase.cpp">
@@ -80,13 +74,7 @@
     <ClInclude Include="..\Classes\PlanariaUnits.h">
       <Filter>Classes\Planaria</Filter>
     </ClInclude>
-    <ClInclude Include="CustomVector.h">
-      <Filter>Classes\CustomPlanariaVector</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\HelloWorldScene.h">
-      <Filter>Classes\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\SkillUpgradeScene.h">
       <Filter>Classes\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\UnitBase.h">

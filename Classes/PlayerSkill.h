@@ -8,7 +8,13 @@ public:
     ~roseKnife();
 
     static roseKnife *create();
+
 protected:
+    static cocos2d::Texture2D *starGraphic;
+    cocos2d::Vector<cocos2d::ParticleFlower *> parts;
+
+    virtual void Init();
+
     virtual void activeSkill();
 
     virtual void Render();

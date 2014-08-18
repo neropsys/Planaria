@@ -2,6 +2,8 @@
 
 USING_NS_CC;
 
+Texture2D *roseKnife::starGraphic;
+
 roseKnife::roseKnife() {
 }
 
@@ -25,6 +27,12 @@ roseKnife *roseKnife::create() {
     return unit;
 }
 
+void roseKnife::Init() {
+    UnitBase::Init();
+    QuickSlot::Init();
+    starGraphic = Director::getInstance()->getTextureCache()->addImage("stars.png");
+}
+
 void roseKnife::Render() {
     QuickSlot::Render();
 }
@@ -32,10 +40,9 @@ void roseKnife::Render() {
 void roseKnife::activeSkill() {
     if (!Mouse::isDown()) return;
 
-    /*auto particle = ParticleFlower::create();
-
-    auto texture = Director::getInstance()->getTextureCache()->addImage("stars.png");
-    particle->setTexture(texture);
+    auto particle = ParticleFlower::create();
+    //log("%d", particle->getReferenceCount());
+    particle->setTexture(starGraphic);
 
     if (particle != NULL) {
         particle->setScale(0.2f);
@@ -44,7 +51,7 @@ void roseKnife::activeSkill() {
         particle->setDuration(0.1f);
 
         UnitBase::layer->addChild(particle);
-    }*/
+    }
 
     Vec2 tPos = Mouse::getPoint();
 

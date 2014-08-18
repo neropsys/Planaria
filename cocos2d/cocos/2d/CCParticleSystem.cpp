@@ -833,6 +833,10 @@ void ParticleSystem::update(float dt)
     }
 
     CC_PROFILER_STOP_CATEGORY(kProfilerCategoryParticles , "CCParticleSystem - update");
+
+    if (_elapsed >= _duration * 2) {
+        this->removeFromParentAndCleanup(true);
+    }
 }
 
 void ParticleSystem::updateWithNoTime(void)

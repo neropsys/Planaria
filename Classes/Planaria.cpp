@@ -511,7 +511,7 @@ void Planaria::becomeCoin() {
 
     Area::coinLabel->setString(std::to_string((int)Area::humanCoin) + " Coin");
 
-    /*for (auto segment : plTail) {
+    for (auto segment : plTail) {
         auto particle = ParticleFlower::create();
         auto texture = Director::getInstance()->getTextureCache()->addImage("stars.png");
         particle->setTexture(texture);
@@ -520,11 +520,11 @@ void Planaria::becomeCoin() {
             particle->setScale(0.5f);
             particle->setPosition(segment->x, segment->y);
 
-            particle->setDuration(0.3f);
+            particle->setDuration(0.1f);
 
             UnitBase::layer->addChild(particle);
         }
-    }*/
+    }
 
     Die();
 }

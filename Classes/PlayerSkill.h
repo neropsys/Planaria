@@ -20,8 +20,6 @@ protected:
     virtual void activeSkill();
 
     virtual void Render();
-
-    int t = 0;
 };
 
 class scoopPot : public QuickSlot {

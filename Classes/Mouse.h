@@ -8,6 +8,10 @@ public:
     static bool isDown();
 
     static float getSize();
+
+    static int getTouchID();
+
+    static bool isFirst();
     
     static bool onTouchBegan(cocos2d::Touch*, cocos2d::Event*);
     static void onTouchMoved(cocos2d::Touch*, cocos2d::Event*);
@@ -19,6 +23,7 @@ protected:
 
     static bool isTouching;
     static bool isStart;
+    static int touchID;
 
     static float cursorSize;
 };

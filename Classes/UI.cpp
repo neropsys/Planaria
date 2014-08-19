@@ -63,7 +63,7 @@ void QuickSlot::Init() {
 }
 
 void QuickSlot::Run() {
-    if (Mouse::isDown() && coolTime <= 0) {
+    if (Mouse::isDown() && coolTime <= 0 && Mouse::isFirst()) {
         float distX = Mouse::getPoint().x - position.x, distY = Mouse::getPoint().y - position.y;
         float realSize = btnRadius + 1;
 

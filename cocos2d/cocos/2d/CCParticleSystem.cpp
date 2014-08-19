@@ -679,9 +679,16 @@ void ParticleSystem::update(float dt)
         }
 
         _elapsed += dt;
+
         if (_duration != -1 && _duration < _elapsed)
         {
             this->stopSystem();
+        }
+    }
+    else {
+        if (_particleCount <= 0) {
+            this->retain();
+            this->removeFromParentAndCleanup(true);
         }
     }
 

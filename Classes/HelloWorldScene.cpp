@@ -80,6 +80,26 @@ bool HelloWorld::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
+    auto bgimage = Sprite::create("background.png");
+    bgimage->setPosition(visibleSize / 2);
+    bgimage->setScale(1.6);
+    //bgimage->runAction(Liquid::create(2, Size(32, 32), 1, 20));
+    // create a Lens3D action
+    ActionInterval* lens = Lens3D::create(60, Size(32, 24), Vec2(100, 180), 150);
+
+        // create a Waved3D action
+    ActionInterval* waves = Waves3D::create(60, Size(15, 10), 18, 15);
+
+    // create a sequence an repeat it forever
+    //bgimage->runAction(RepeatForever::create((Sequence*)Sequence::create(waves, lens, NULL)));
+    
+    auto nodeGrid = NodeGrid::create();
+    nodeGrid->addChild(bgimage);
+    //nodeGrid->runAction(Liquid::create(2, Size(32, 32), 1, 20));
+    nodeGrid->runAction(RepeatForever::create((Sequence*)Sequence::create(waves, lens, NULL)));
+
+    this->addChild(nodeGrid);
+
     UnitBase::Initialize(this);
 
     this->schedule(schedule_selector(HelloWorld::Mainloop));
@@ -107,6 +127,8 @@ bool HelloWorld::init()
     skillGroup->setPosition(256, 48);
 
     skillGroup->alignItems();
+
+    skill1->turnOn();
 
     /*for (auto child : skill1->getGroup()->getChildren()) {
         log("%f", ((UnitBase *)child)->getPosition().x);

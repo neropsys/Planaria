@@ -517,10 +517,11 @@ void Planaria::becomeCoin() {
         particle->setTexture(texture);
 
         if (particle != NULL) {
-            particle->setScale(0.5f);
+            particle->setScale(0.4f);
             particle->setPosition(segment->x, segment->y);
 
-            particle->setDuration(0.3f);
+            particle->setDuration(0.2f);
+            particle->setLife(1.f);
 
             UnitBase::layer->addChild(particle);
         }

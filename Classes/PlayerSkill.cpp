@@ -49,8 +49,10 @@ void roseKnife::activeSkill() {
         lastPoint = tPos;
     }
 
+    float segInterval = 10;
+
     float dist = tPos.getDistance(lastPoint);
-    int segCount = dist / 15;
+    int segCount = dist / segInterval;
     float segDist = dist / segCount;
     Vec2 segAlign = (lastPoint - tPos).getNormalized();
 
@@ -58,7 +60,11 @@ void roseKnife::activeSkill() {
         segCount = 1;
     }
 
-    for (int i = 0; i < segCount; i++) {
+    if (dist < segInterval) {
+        segAlign = Vec2::ZERO;
+    }
+
+    for (int i = 1; i <= segCount; i++) {
 
         auto particle = ParticleFlower::create();
         //log("%d", particle->getReferenceCount());
@@ -66,7 +72,15 @@ void roseKnife::activeSkill() {
         
         if (particle != NULL) {
             particle->setScale(0.2f);
-            particle->setPosition(Mouse::getPoint() + (segAlign * (segDist * i)));
+            if (segAlign.isZero()) {
+                particle->setPosition(Mouse::getPoint());
+            }
+            else {
+                particle->setPosition(Mouse::getPoint() + (segAlign * (segDist * i)));
+            }
+
+            //log("%f, %f", segAlign.x, segAlign.y);
+            log("%f, %f", particle->getPositionX(), particle->getPositionY());
 
             particle->setDuration(0.05f);
 

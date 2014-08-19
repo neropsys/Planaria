@@ -687,7 +687,6 @@ void ParticleSystem::update(float dt)
     }
     else {
         if (_particleCount <= 0) {
-            log("tst");
             this->retain();
             this->removeFromParentAndCleanup(true);
         }

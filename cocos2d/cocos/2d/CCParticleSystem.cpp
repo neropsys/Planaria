@@ -679,9 +679,17 @@ void ParticleSystem::update(float dt)
         }
 
         _elapsed += dt;
+
         if (_duration != -1 && _duration < _elapsed)
         {
             this->stopSystem();
+        }
+    }
+    else {
+        if (_particleCount <= 0) {
+            log("tst");
+            this->retain();
+            this->removeFromParentAndCleanup(true);
         }
     }
 
@@ -833,10 +841,6 @@ void ParticleSystem::update(float dt)
     }
 
     CC_PROFILER_STOP_CATEGORY(kProfilerCategoryParticles , "CCParticleSystem - update");
-
-    if (_elapsed >= _duration * 2) {
-        this->removeFromParentAndCleanup(true);
-    }
 }
 
 void ParticleSystem::updateWithNoTime(void)

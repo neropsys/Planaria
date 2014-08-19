@@ -13,6 +13,8 @@ protected:
     static cocos2d::Texture2D *starGraphic;
     cocos2d::Vector<cocos2d::ParticleFlower *> parts;
 
+    cocos2d::Vec2 lastPoint;
+
     virtual void Init();
 
     virtual void activeSkill();

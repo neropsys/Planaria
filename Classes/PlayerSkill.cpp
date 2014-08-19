@@ -43,11 +43,7 @@ void roseKnife::activeSkill() {
         return;
     }
 
-<<<<<<< HEAD
-    /*auto particle = ParticleFlower::create();
-=======
     Vec2 tPos = Mouse::getPoint();
->>>>>>> origin/Planaria-Redesign
 
     if (lastPoint.isZero()) {
         lastPoint = tPos;
@@ -60,14 +56,9 @@ void roseKnife::activeSkill() {
     float segDist = dist / segCount;
     Vec2 segAlign = (lastPoint - tPos).getNormalized();
 
-<<<<<<< HEAD
-        UnitBase::layer->addChild(particle);
-    }*/
-=======
     if (segCount <= 1) {
         segCount = 1;
     }
->>>>>>> origin/Planaria-Redesign
 
     if (dist < segInterval) {
         segAlign = Vec2::ZERO;
@@ -78,7 +69,7 @@ void roseKnife::activeSkill() {
         auto particle = ParticleFlower::create();
         //log("%d", particle->getReferenceCount());
         particle->setTexture(starGraphic);
-        
+
         if (particle != NULL) {
             particle->setScale(0.2f);
             if (segAlign.isZero()) {

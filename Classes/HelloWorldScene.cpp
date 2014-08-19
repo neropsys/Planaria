@@ -80,7 +80,7 @@ bool HelloWorld::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-    auto bgimage = Sprite::create("background.png");
+    auto bgimage = Sprite::create("top.png");
     bgimage->setPosition(visibleSize / 2);
     bgimage->setScale(1.6);
     //bgimage->runAction(Liquid::create(2, Size(32, 32), 1, 20));

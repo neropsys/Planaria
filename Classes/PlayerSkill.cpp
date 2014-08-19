@@ -80,7 +80,7 @@ void roseKnife::activeSkill() {
             }
 
             //log("%f, %f", segAlign.x, segAlign.y);
-            log("%f, %f", particle->getPositionX(), particle->getPositionY());
+            //log("%f, %f", particle->getPositionX(), particle->getPositionY());
 
             particle->setDuration(0.05f);
 

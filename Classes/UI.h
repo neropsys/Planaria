@@ -59,7 +59,7 @@ protected:
 
     float coolTime = 0.f;
 
-    float btnRadius = 32.f;
+    float btnRadius = 40.f;
 
     cocos2d::Director *oDir;
 

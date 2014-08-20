@@ -90,7 +90,7 @@ bool HelloWorld::init()
         // create a Waved3D action
     ActionInterval* waves = Waves3D::create(60, Size(32, 32), 18, 15);
 
-    ActionInterval* ripple = Ripple3D::create(60, Size(32, 32), visibleSize / 2, 300, 100, 150);
+    ActionInterval* ripple = Ripple3D::create(60, Size(32, 32), visibleSize / 2, 300, 100, 100);
 
     // create a sequence an repeat it forever
     //bgimage->runAction(RepeatForever::create((Sequence*)Sequence::create(waves, lens, NULL)));

@@ -85,18 +85,22 @@ bool HelloWorld::init()
     bgimage->setScale(1.6);
     //bgimage->runAction(Liquid::create(2, Size(32, 32), 1, 20));
     // create a Lens3D action
-    ActionInterval* lens = Lens3D::create(60, Size(32, 24), Vec2(100, 180), 150);
+    ActionInterval* lens = Lens3D::create(5, Size(32, 32), visibleSize / 2, 160);
 
         // create a Waved3D action
-    ActionInterval* waves = Waves3D::create(60, Size(15, 10), 18, 15);
+    ActionInterval* waves = Waves3D::create(60, Size(32, 32), 18, 15);
+
+    ActionInterval* ripple = Ripple3D::create(60, Size(32, 32), visibleSize / 2, 300, 100, 150);
 
     // create a sequence an repeat it forever
     //bgimage->runAction(RepeatForever::create((Sequence*)Sequence::create(waves, lens, NULL)));
-    
+    //nodeGrid->runAction(RepeatForever::create((Sequence*)Sequence::create(waves, lens, ripple, NULL)));
+
     auto nodeGrid = NodeGrid::create();
+
+    nodeGrid->runAction(RepeatForever::create((Sequence*)Sequence::create(ripple, lens, NULL)));
+
     nodeGrid->addChild(bgimage);
-    //nodeGrid->runAction(Liquid::create(2, Size(32, 32), 1, 20));
-    nodeGrid->runAction(RepeatForever::create((Sequence*)Sequence::create(waves, lens, NULL)));
 
     this->addChild(nodeGrid);
 

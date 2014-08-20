@@ -92,6 +92,8 @@ bool HelloWorld::init()
 
     ActionInterval* ripple = Ripple3D::create(60, Size(32, 32), visibleSize / 2, 300, 100, 100);
 
+    auto shaky = Shaky3D::create(60, Size(32, 32), 5, true);
+
     // create a sequence an repeat it forever
     //bgimage->runAction(RepeatForever::create((Sequence*)Sequence::create(waves, lens, NULL)));
     //nodeGrid->runAction(RepeatForever::create((Sequence*)Sequence::create(waves, lens, ripple, NULL)));

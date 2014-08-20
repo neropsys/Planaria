@@ -30,13 +30,9 @@ class Planaria : public UnitBase {
 
 public:
     Planaria();
-
-    virtual ~Planaria();
-
-    static Planaria *create();
-    static Planaria *create(float x, float y, float angle);
-    static Planaria *create(float x, float y, float angle, float speed);
-    static Planaria *create(float x, float y, float angle, float speed, float length);
+    ~Planaria();
+    
+    CREATE_FUNC2(Planaria);
 
     void Die();
 
@@ -55,9 +51,6 @@ public:
 
     void setMove(float angle, float speed);
     void setMove(const cocos2d::Vec2&);
-
-    void setPosition(float x, float y);
-    cocos2d::Vec2 &getPosition();
 
     void setAngle(float angle);
     float getAngle();

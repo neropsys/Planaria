@@ -64,7 +64,7 @@ void QuickSlot::Init() {
 
 void QuickSlot::Run() {
     if (Mouse::isDown() && coolTime <= 0 && Mouse::isFirst()) {
-        float distX = Mouse::getPoint().x - position.x, distY = Mouse::getPoint().y - position.y;
+        float distX = Mouse::getPoint().x - getPositionX(), distY = Mouse::getPoint().y - getPositionY();
         float realSize = btnRadius + 1;
 
         if ((distX * distX + distY * distY) < (realSize * realSize)) {
@@ -131,7 +131,7 @@ void QuickSlot::Render() {
         btnColor = Color4F(0.3f, 0.3f, 0.3f, 1.f);
     }
 
-    btnModel->drawDot(this->position, this->btnRadius, btnColor);
+    btnModel->drawDot(this->getPosition(), this->btnRadius, btnColor);
 }
 
 void QuickSlot::Dead() {

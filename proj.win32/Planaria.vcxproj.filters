@@ -19,14 +19,23 @@
     <Filter Include="Content">
       <UniqueIdentifier>{3e7a35cb-b781-470b-bed3-174a66daee64}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Classes\Planaria">
-      <UniqueIdentifier>{1ec4193a-6b98-4de7-8b0c-3836492301ea}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Classes\Scenes">
       <UniqueIdentifier>{f8bf598e-c1b6-4dfc-8879-8a678ee8ebc9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Classes\CustomPlanariaVector">
       <UniqueIdentifier>{5e2c5a54-3ada-47a2-8e9f-9555b45e92f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Mouse">
+      <UniqueIdentifier>{641b4e92-9be1-4faa-ae28-07636f24fe40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Unit">
+      <UniqueIdentifier>{5b2b8ce3-ace7-4ab1-bc82-bf7d352459d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Unit\Planaria">
+      <UniqueIdentifier>{1ec4193a-6b98-4de7-8b0c-3836492301ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\UI">
+      <UniqueIdentifier>{96288182-4a55-479f-b31f-fa8d542fed12}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -37,28 +46,28 @@
       <Filter>Classes</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Planaria.cpp">
-      <Filter>Classes\Planaria</Filter>
+      <Filter>Classes\Unit\Planaria</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\PlanariaUnits.cpp">
-      <Filter>Classes\Planaria</Filter>
+      <Filter>Classes\Unit\Planaria</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\HelloWorldScene.cpp">
       <Filter>Classes\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\UnitBase.cpp">
+    <ClCompile Include="..\Classes\Area.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Mouse.cpp">
-      <Filter>Classes</Filter>
+      <Filter>Classes\Mouse</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\PlayerSkill.cpp">
-      <Filter>Classes</Filter>
+    <ClCompile Include="..\Classes\UnitBase.cpp">
+      <Filter>Classes\Unit</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\UI.cpp">
-      <Filter>Classes</Filter>
+      <Filter>Classes\UI</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Area.cpp">
-      <Filter>Classes</Filter>
+    <ClCompile Include="..\Classes\PlayerSkill.cpp">
+      <Filter>Classes\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -69,28 +78,28 @@
       <Filter>Classes</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Planaria.h">
-      <Filter>Classes\Planaria</Filter>
+      <Filter>Classes\Unit\Planaria</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\PlanariaUnits.h">
-      <Filter>Classes\Planaria</Filter>
+      <Filter>Classes\Unit\Planaria</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\HelloWorldScene.h">
       <Filter>Classes\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\UnitBase.h">
+    <ClInclude Include="..\Classes\Area.h">
       <Filter>Classes</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Mouse.h">
-      <Filter>Classes</Filter>
+      <Filter>Classes\Mouse</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\PlayerSkill.h">
-      <Filter>Classes</Filter>
+    <ClInclude Include="..\Classes\UnitBase.h">
+      <Filter>Classes\Unit</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\UI.h">
-      <Filter>Classes</Filter>
+      <Filter>Classes\UI</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Area.h">
-      <Filter>Classes</Filter>
+    <ClInclude Include="..\Classes\PlayerSkill.h">
+      <Filter>Classes\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -80,9 +80,13 @@ bool HelloWorld::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
+<<<<<<< HEAD
     auto bgimage = Sprite::create("top.png");
+=======
+    auto bgimage = Sprite::create("background/fishtank.png");
+>>>>>>> origin/Planaria-Redesign
     bgimage->setPosition(visibleSize / 2);
-    bgimage->setScale(1.6);
+    bgimage->setScale(1.35f);
     //bgimage->runAction(Liquid::create(2, Size(32, 32), 1, 20));
     // create a Lens3D action
     ActionInterval* lens = Lens3D::create(5, Size(32, 32), visibleSize / 2, 160);
@@ -96,13 +100,26 @@ bool HelloWorld::init()
 
     // create a sequence an repeat it forever
     //bgimage->runAction(RepeatForever::create((Sequence*)Sequence::create(waves, lens, NULL)));
+<<<<<<< HEAD
     //nodeGrid->runAction(RepeatForever::create((Sequence*)Sequence::create(waves, lens, ripple, NULL)));
 
+=======
+
+    auto shaky = Shaky3D::create(60, Size(32, 32), 3, true);
+
+    auto ripple = Ripple3D::create(60, Size(32, 32), visibleSize / 2, 800, 10, 50);
+    
+>>>>>>> origin/Planaria-Redesign
     auto nodeGrid = NodeGrid::create();
 
     nodeGrid->runAction(RepeatForever::create((Sequence*)Sequence::create(ripple, lens, NULL)));
 
     nodeGrid->addChild(bgimage);
+<<<<<<< HEAD
+=======
+    //nodeGrid->runAction(Liquid::create(2, Size(32, 32), 1, 20));
+    nodeGrid->runAction(RepeatForever::create((Sequence*)Sequence::create(ripple, lens, NULL)));
+>>>>>>> origin/Planaria-Redesign
 
     this->addChild(nodeGrid);
 

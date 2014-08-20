@@ -65,7 +65,7 @@ void RainbowPlanaria::cutBody(const Vec2 &pos) {
     //auto pl = RainbowPlanaria::create();
     auto pl2 = RainbowPlanaria::create();
 
-    pl2->position.setPoint(crashedPos->x, crashedPos->y);
+    pl2->setPosition(crashedPos->x, crashedPos->y);
     pl2->setMove(angle - 20 + getNext() * 40, 0.5);
     pl2->bodyLength = bodyLength - dividedLength;
 

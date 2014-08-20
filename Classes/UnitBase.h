@@ -10,7 +10,8 @@
 #define RAD(angle) angle * M_PI / 180
 
 // this is inline function to realize static create* method
-#define CREATE_FUNC2(__TYPE_NAME__) __TYPE_NAME__() {}; ~__TYPE_NAME__() {}; static __TYPE_NAME__ *create() { auto unit = new __TYPE_NAME__(); if (unit) { unit->autorelease(); } else { CC_SAFE_DELETE(unit); } UnitBase::newUnit.pushBack(unit); return unit; };
+#define CREATE_FUNC2(__TYPE_NAME__) static __TYPE_NAME__ *create() { auto unit = new __TYPE_NAME__(); if (unit) { unit->autorelease(); } else { CC_SAFE_DELETE(unit); } UnitBase::newUnit.pushBack(unit); return unit; };
+#define CREATE_FUNC3(__TYPE_NAME__) __TYPE_NAME__() {}; ~__TYPE_NAME__() {}; static __TYPE_NAME__ *create() { auto unit = new __TYPE_NAME__(); if (unit) { unit->autorelease(); } else { CC_SAFE_DELETE(unit); } UnitBase::newUnit.pushBack(unit); return unit; };
 #define DELETE_OBJ(__OBJECT__) if ( __OBJECT__ ) { __OBJECT__->release(); __OBJECT__ = NULL; }
 
 using namespace std;
@@ -44,9 +45,6 @@ public:
 
     virtual void setSize(float size);
     virtual float getSize();
-
-    virtual void setPosition(float x, float y);
-    virtual cocos2d::Vec2 &getPosition();
 
     virtual void setMove(float angle, float speed);
     virtual void setMove(const cocos2d::Vec2&);
@@ -82,7 +80,7 @@ protected:
     bool canCrash = false;
 
     // current position, velocity, acceleration
-    cocos2d::Vec2 position, velocity;
+    cocos2d::Vec2 velocity;
 
     // basic status
     float angle = 0.f, speed = 0.f;

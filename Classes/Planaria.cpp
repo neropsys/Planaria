@@ -41,49 +41,6 @@ void Planaria::onTouchEnded(Touch* touch, Event* event) {
 void Planaria::onTouchCancelled(Touch* touch, Event* event) {
 }
 
-Planaria *Planaria::create() {
-    return create(0, 0, 0, 0, 120);
-}
-
-Planaria *Planaria::create(float x, float y, float angle) {
-    return create(x, y, angle, 0, 120);
-}
-
-Planaria *Planaria::create(float x, float y, float angle, float speed) {
-    return create(x, y, angle, 0, 120);
-}
-
-Planaria *Planaria::create(float x, float y, float angle, float speed, float length) {
-    Planaria *ret = new Planaria();
-
-    if (ret)
-    {
-        ret->autorelease();
-    }
-    else
-    {
-        CC_SAFE_DELETE(ret);
-    }
-
-    ret->position.setPoint(x, y);
-    ret->angle = angle;
-    ret->speed = speed;
-    ret->bodyLength = length;
-
-    UnitBase::newUnit.pushBack(ret);
-
-    return ret;
-}
-
-void Planaria::setPosition(float x, float y) {
-    this->position.x = x;
-    this->position.y = y;
-}
-
-Vec2 &Planaria::getPosition() {
-    return position;
-}
-
 void Planaria::setAngle(float angle) {
     this->angle = angle;
 
@@ -146,7 +103,7 @@ void Planaria::Init() {
     UnitBase::layer->addChild(plBody);
 
     for (int i = 0; i < tailSegments; i++) {
-        plTail.push_back(new Vec2(position));
+        plTail.push_back(new Vec2(getPosition()));
     }
 
     if (velocity.isZero()) {
@@ -193,7 +150,7 @@ void Planaria::Recovery() {
 }
 
 void Planaria::moveBody() {
-    Vec2 pre = position + velocity;
+    Vec2 pre = getPosition() + velocity;
 
     float reflectAngle = 140.f;
 
@@ -246,7 +203,7 @@ void Planaria::moveBody() {
 
     setMove(angle + exAngle, realSpeed);
 
-    position = pre;
+    setPosition(pre);
 }
 
 float Planaria::getSegmentLength() {
@@ -257,7 +214,7 @@ void Planaria::calulateTail() {
     float acceleration = this->speed * this->speed;
     float pieceLength = this->getSegmentLength() + speed / 3;
     Vec2 lastVel = -velocity;
-    Vec2 pt = position;
+    Vec2 pt = getPosition();
     
     // 꼬리를 휘두르는 정도를 결정함 (amount of planaria's tail snap increases if this value is small)
     float rotateAngle = 40;
@@ -300,7 +257,7 @@ Vec2 Planaria::align() {
     Vec2 steer = Vec2(0, 0);
 
     for (auto other : Plas) {
-        float distance = position.getDistance(other->position);
+        float distance = getPosition().getDistance(other->getPosition());
 
         if (distance > 0 && distance < neighborDist) {
             steer += other->velocity;
@@ -340,7 +297,7 @@ void Planaria::renderHead() {
     plHead->clear();
 
     plHead->setScale(1.0f);
-    plHead->setPosition(position);
+    plHead->setPosition(getPosition());
     plHead->setRotation(angle);
 
     plHead->drawTriangle(pt[0], pt[1], pt[2], bodyColor);
@@ -496,7 +453,11 @@ void Planaria::cutBody(const Vec2 &pos) {
     Vec2 *crashedPos = plTail[crashedSegment];
     float dividedLength = crashedSegment * getSegmentLength();
 
-    auto pl2 = Planaria::create(crashedPos->x, crashedPos->y, angle - 20 + getNext() * 40, 0.5, bodyLength - dividedLength);
+    auto pl2 = Planaria::create();
+    pl2->setPosition(crashedPos->x, crashedPos->y);
+    pl2->bodyLength = bodyLength - dividedLength;
+    pl2->angle = angle - 20 + getNext() * 40;
+
     this->bodyLength = dividedLength;
     this->isHurted = true;
 

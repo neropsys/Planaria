@@ -131,15 +131,6 @@ float UnitBase::getSpeed() {
     return speed;
 }
 
-void UnitBase::setPosition(float x, float y) {
-    this->position.x = x;
-    this->position.y = y;
-}
-
-Vec2 &UnitBase::getPosition() {
-    return position;
-}
-
 void UnitBase::setVelocity() {
     velocity.setPoint(cosf(RAD(angle)) * speed, -sinf(RAD(angle)) * speed);
 }
@@ -149,7 +140,7 @@ bool UnitBase::isCrash(const Vec2 &pt, float radius) {
 }
 
 bool UnitBase::isCrash(float x, float y, float radius) {
-    float distX = x - position.x, distY = y - position.y;
+    float distX = x - getPositionX(), distY = y - getPositionY();
     float realSize = radius + bodySize;
 
     if ((distX * distX + distY * distY) < (realSize * realSize)) {

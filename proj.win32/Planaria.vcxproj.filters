@@ -10,6 +10,36 @@
     <Filter Include="resource">
       <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
     </Filter>
+<<<<<<< HEAD
+=======
+    <Filter Include="Scripts">
+      <UniqueIdentifier>{14a01344-74cc-4362-8432-ae3170faff22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="fonts">
+      <UniqueIdentifier>{8ea713ad-9c42-4ef7-be26-21f7a6279cea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content">
+      <UniqueIdentifier>{3e7a35cb-b781-470b-bed3-174a66daee64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Scenes">
+      <UniqueIdentifier>{f8bf598e-c1b6-4dfc-8879-8a678ee8ebc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\CustomPlanariaVector">
+      <UniqueIdentifier>{5e2c5a54-3ada-47a2-8e9f-9555b45e92f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Mouse">
+      <UniqueIdentifier>{641b4e92-9be1-4faa-ae28-07636f24fe40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Unit">
+      <UniqueIdentifier>{5b2b8ce3-ace7-4ab1-bc82-bf7d352459d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Unit\Planaria">
+      <UniqueIdentifier>{1ec4193a-6b98-4de7-8b0c-3836492301ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\UI">
+      <UniqueIdentifier>{96288182-4a55-479f-b31f-fa8d542fed12}</UniqueIdentifier>
+    </Filter>
+>>>>>>> origin/Planaria-Redesign
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -19,14 +49,22 @@
       <Filter>Classes</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Planaria.cpp">
+<<<<<<< HEAD
       <Filter>Classes</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\PlanariaUnits.cpp">
       <Filter>Classes</Filter>
+=======
+      <Filter>Classes\Unit\Planaria</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PlanariaUnits.cpp">
+      <Filter>Classes\Unit\Planaria</Filter>
+>>>>>>> origin/Planaria-Redesign
     </ClCompile>
     <ClCompile Include="..\Classes\PlayerSkill.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="..\Classes\SkillUpgradeScene.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
@@ -41,9 +79,22 @@
     </ClCompile>
     <ClCompile Include="..\Classes\AppDelegate.cpp">
       <Filter>Classes</Filter>
-    </ClCompile>
+=======
     <ClCompile Include="..\Classes\Area.cpp">
       <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Mouse.cpp">
+      <Filter>Classes\Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UnitBase.cpp">
+      <Filter>Classes\Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI.cpp">
+      <Filter>Classes\UI</Filter>
+>>>>>>> origin/Planaria-Redesign
+    </ClCompile>
+    <ClCompile Include="..\Classes\PlayerSkill.cpp">
+      <Filter>Classes\UI</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\HelloWorldScene.cpp">
       <Filter>Classes</Filter>
@@ -60,14 +111,22 @@
       <Filter>Classes</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Planaria.h">
+<<<<<<< HEAD
       <Filter>Classes</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\PlanariaUnits.h">
       <Filter>Classes</Filter>
+=======
+      <Filter>Classes\Unit\Planaria</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PlanariaUnits.h">
+      <Filter>Classes\Unit\Planaria</Filter>
+>>>>>>> origin/Planaria-Redesign
     </ClInclude>
     <ClInclude Include="..\Classes\PlayerSkill.h">
       <Filter>Classes</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="..\Classes\SkillUpgradeScene.h">
       <Filter>Classes</Filter>
     </ClInclude>
@@ -82,9 +141,22 @@
     </ClInclude>
     <ClInclude Include="..\Classes\AppDelegate.h">
       <Filter>Classes</Filter>
-    </ClInclude>
+=======
     <ClInclude Include="..\Classes\Area.h">
       <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Mouse.h">
+      <Filter>Classes\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UnitBase.h">
+      <Filter>Classes\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI.h">
+      <Filter>Classes\UI</Filter>
+>>>>>>> origin/Planaria-Redesign
+    </ClInclude>
+    <ClInclude Include="..\Classes\PlayerSkill.h">
+      <Filter>Classes\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -2,7 +2,7 @@
 #pragma once
 
 using namespace cocos2d;
-class SkillUpgradeScene :public Layer
+class SkillUpgradeScene : public Layer
 {
 public:
 	static Scene* createScene();
@@ -16,8 +16,14 @@ public:
 	virtual void onTouchMoved(Touch* touch, Event* event);
 	virtual void onTouchEnded(Touch* touch, Event* event);
 	virtual void onTouchCancelled(Touch* touch, Event* event);
-
-	void returnToAquarium(Ref* pSender);
 private:
 	Sprite* b2Aquarium;
+	Color4F circleColor = Color4F::BLUE;
+	float circleRadius = 120.f;
+	Vec2 midPoint;
+	DrawNode* middleCircle;
+	LabelTTF* equipmentText;
+	LabelTTF* constructText;
+	LabelTTF* valueText;
+	LabelTTF* collectionText;
 };

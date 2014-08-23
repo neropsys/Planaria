@@ -73,6 +73,7 @@ public:
 	UtilityButton();
 	virtual ~UtilityButton();
 	virtual void create();
+	//additional method may be added in the future
 protected:
 	virtual void gotoScene(cocos2d::Ref* pSender);
 };

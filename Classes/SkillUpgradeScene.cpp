@@ -37,24 +37,39 @@ bool SkillUpgradeScene::init(){
 	b2Aquarium->setAnchorPoint(Vec2::ANCHOR_MIDDLE_BOTTOM);
 	b2Aquarium->setPosition(visibleSize.width/2, 0);
 	this->addChild(b2Aquarium);
-	/*
-	auto b2Aquarium = MenuItemImage::create("b2aquarium.png", "b2aquarium.png", CC_CALLBACK_1(SkillUpgradeScene::returnToAquarium, this));
-	b2Aquarium->setAnchorPoint(Vec2::ANCHOR_MIDDLE_BOTTOM);
-	auto *menu = Menu::create(b2Aquarium, NULL);
-	menu->setPosition(visibleSize.width/2, 0);
-	this->addChild(menu, 1);*/
 
+	middleCircle = DrawNode::create();
+	midPoint = Vec2(visibleSize.width/2, visibleSize.height/2);
+	middleCircle->drawDot(midPoint, circleRadius, circleColor);
+	this->addChild(middleCircle);
+
+	equipmentText = LabelTTF::create("Equipment", "Segoe UI", 36);
+	equipmentText->setPosition(visibleSize.width * 3 / 4, visibleSize.height * 3 / 4);
+	equipmentText->setHorizontalAlignment(TextHAlignment::CENTER);
+	this->addChild(equipmentText);
+
+	collectionText = LabelTTF::create("Collection", "Segoe UI", 36);
+	collectionText->setPosition(visibleSize.width / 4, visibleSize.height * 3 / 4);
+	equipmentText->setHorizontalAlignment(TextHAlignment::CENTER);
+	this->addChild(collectionText);
+
+	constructText = LabelTTF::create("Construction", "Segoe UI", 36);
+	constructText->setPosition(visibleSize.width * 3 / 4, visibleSize.height / 4);
+	constructText->setHorizontalAlignment(TextHAlignment::CENTER);
+	this->addChild(constructText);
+
+	valueText = LabelTTF::create("Value", "Segoe UI", 36);
+	valueText->setPosition(visibleSize.width / 4, visibleSize.height / 4);
+	valueText->setHorizontalAlignment(TextHAlignment::CENTER);
+	this->addChild(valueText);
 	return true;
 }
-void SkillUpgradeScene::returnToAquarium(Ref* pSender){
-	log("clicked");
-}
+
 
 bool SkillUpgradeScene::onTouchBegan(Touch* touch, Event* event){
 	auto touchPt = touch->getLocation();
-	auto bTouch = b2Aquarium->getBoundingBox().containsPoint(touchPt);
+	auto bTouch = b2Aquarium->getBoundingBox().containsPoint(touchPt);//does not work with Mouse::getPoint
 	if (bTouch){ 
-		log("clicked"); 
 		Director::getInstance()->popScene();
 	}
 	return true;

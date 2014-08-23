@@ -126,6 +126,5 @@ void skillSceneBtn::gotoScene(){
 	if (skillButtonSprite->getBoundingBox().containsPoint(Mouse::getPoint())){
 		auto skillScene = SkillUpgradeScene::createScene();
 		Director::getInstance()->pushScene(skillScene);
-
 	}
 }

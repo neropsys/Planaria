@@ -113,13 +113,19 @@ void scoopPot::Render() {
     SkillSlot::Render();
 }
 skillSceneBtn::skillSceneBtn(){
-	auto skillButton = MenuItemImage::create("skillbutton.png", "skillbutton.png", CC_CALLBACK_1(skillSceneBtn::gotoScene, this));
-	auto menu = Menu::create(skillButton, NULL);
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	skillButtonSprite = Sprite::create("skillbutton.png");
+	skillButtonSprite->setAnchorPoint(Vec2::ANCHOR_BOTTOM_RIGHT);
+	skillButtonSprite->setPosition(visibleSize.width, 0);
+	layer->addChild(skillButtonSprite);
 }
 skillSceneBtn::~skillSceneBtn(){
 
 }
-void skillSceneBtn::gotoScene(cocos2d::Ref* pSender){
-	auto skillScene = SkillUpgradeScene::createScene();
-	Director::getInstance()->pushScene(skillScene);
+void skillSceneBtn::gotoScene(){
+	if (skillButtonSprite->getBoundingBox().containsPoint(Mouse::getPoint())){
+		auto skillScene = SkillUpgradeScene::createScene();
+		Director::getInstance()->pushScene(skillScene);
+
+	}
 }

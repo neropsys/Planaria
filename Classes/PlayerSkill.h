@@ -34,7 +34,7 @@ class skillSceneBtn : public UtilityButton{
 public:
 	skillSceneBtn();
 	~skillSceneBtn();
-protected:
-	void gotoScene(cocos2d::Ref* pSender);
-
+	void gotoScene();
+private:
+	cocos2d::Sprite* skillButtonSprite;
 };

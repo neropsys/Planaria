@@ -77,7 +77,7 @@ void SkillSlot::Run() {
         activeSkill();
     }
 
-    passiaveSkill();
+    passiveSkill();
 
     if (coolTime > 0) {
         coolTime -= 1 / oDir->getFrameRate();
@@ -98,7 +98,7 @@ void SkillSlot::activeSkill() {
 }
 
 
-void SkillSlot::passiaveSkill() {
+void SkillSlot::passiveSkill() {
 }
 
 void SkillSlot::Render() {

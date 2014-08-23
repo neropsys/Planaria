@@ -1,5 +1,5 @@
 #include "HelloWorldScene.h"
-
+#include "Mouse.h"
 USING_NS_CC;
 
 Scene* HelloWorld::createScene()
@@ -23,8 +23,6 @@ float HelloWorld::getNext() {
 
 void HelloWorld::Mainloop(float f) {
     UnitBase::Mainloop();
-
-  
 }
 
 void HelloWorld::onEnter() {
@@ -52,7 +50,7 @@ void HelloWorld::onExit() {
 
 bool HelloWorld::onTouchBegan(Touch* touch, Event* event) {
     Mouse::onTouchBegan(touch, event);
-
+	skillSceneButton->gotoScene();
     return true;
 }
 
@@ -81,12 +79,6 @@ bool HelloWorld::init()
     
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
-
-	auto skillScenebtn = new skillSceneBtn();
-	skillScenebtn->setAnchorPoint(Vec2::ANCHOR_BOTTOM_RIGHT);
-	skillScenebtn->setPosition(visibleSize.width, 0);
-	this->addChild(skillScenebtn, 4);
-
     auto bgimage = Sprite::create("background/fishtank.png");
 
     bgimage->setPosition(visibleSize / 2);
@@ -136,7 +128,8 @@ bool HelloWorld::init()
 
     skill1->turnOn();
 
-
+	skillSceneButton = new skillSceneBtn();
+	this->addChild(skillSceneButton);
     Area::coinLabel = LabelTTF::create("0", "Segoe UI", 36);
     Area::coinLabel->setPosition(128, visibleSize.height - 32);
     Area::coinLabel->setHorizontalAlignment(TextHAlignment::LEFT);

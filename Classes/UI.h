@@ -51,7 +51,7 @@ protected:
     virtual void Dead();
 
     virtual void activeSkill();
-    virtual void passiaveSkill();
+    virtual void passiveSkill();
 
     virtual void Render();
 

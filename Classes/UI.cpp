@@ -22,23 +22,6 @@ void SlotGroup::alignItems() {
     }
 }
 
-/*RadioSlot *RadioSlot::create() {
-    auto unit = new RadioSlot();
-
-    if (unit)
-    {
-        unit->autorelease();
-    }
-    else
-    {
-        CC_SAFE_DELETE(unit);
-    }
-
-    UnitBase::newUnit.pushBack(unit);
-
-    return unit;
-}*/
-
 void RadioGroup::addChild(Node *child)
 {
     Node::addChild(child);
@@ -178,3 +161,11 @@ SkillSlot *SkillSlot::create() {
 bool SkillSlot::isActivated() {
     return actState;
 }
+UtilityButton::UtilityButton(){
+
+}
+UtilityButton::~UtilityButton(){
+
+}
+void UtilityButton::create(){}
+void UtilityButton::gotoScene(cocos2d::Ref* pSender){}

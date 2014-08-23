@@ -67,3 +67,12 @@ protected:
 
     RadioGroup *radioGroup;
 };
+
+class UtilityButton : public UnitBase{
+public:
+	UtilityButton();
+	virtual ~UtilityButton();
+	virtual void create();
+protected:
+	virtual void gotoScene(cocos2d::Ref* pSender);
+};

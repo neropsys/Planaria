@@ -82,6 +82,10 @@ bool HelloWorld::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
+	auto skillScenebtn = new skillSceneBtn();
+	skillScenebtn->setAnchorPoint(Vec2::ANCHOR_BOTTOM_RIGHT);
+	skillScenebtn->setPosition(visibleSize.width, 0);
+	this->addChild(skillScenebtn, 4);
 
     auto bgimage = Sprite::create("background/fishtank.png");
 
@@ -142,20 +146,6 @@ bool HelloWorld::init()
     return true;
 }
 
-
-void HelloWorld::menuCloseCallback(Ref* pSender)
-{
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WP8) || (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
-	MessageBox("You pressed the close button. Windows Store Apps do not implement a close button.","Alert");
-    return;
-#endif
-
-    Director::getInstance()->end();
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    exit(0);
-#endif
-}
 
 void HelloWorld::weaponMenuCallback(Ref *pSender) {
     MenuItemToggle *pMenu = (MenuItemToggle *)pSender;

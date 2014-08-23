@@ -30,3 +30,11 @@ protected:
     virtual void activeSkill();
     virtual void Render();
 };
+class skillSceneBtn : public UtilityButton{
+public:
+	skillSceneBtn();
+	~skillSceneBtn();
+protected:
+	void gotoScene(cocos2d::Ref* pSender);
+
+};

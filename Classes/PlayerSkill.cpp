@@ -29,12 +29,12 @@ roseKnife *roseKnife::create() {
 
 void roseKnife::Init() {
     UnitBase::Init();
-    QuickSlot::Init();
+    SkillSlot::Init();
     starGraphic = Director::getInstance()->getTextureCache()->addImage("stars.png");
 }
 
 void roseKnife::Render() {
-    QuickSlot::Render();
+    SkillSlot::Render();
 }
 
 void roseKnife::activeSkill() {
@@ -71,7 +71,7 @@ void roseKnife::activeSkill() {
         particle->setTexture(starGraphic);
         
         if (particle != NULL) {
-            particle->setScale(0.2f);
+            particle->setScale(0.3f);
             if (segAlign.isZero()) {
                 particle->setPosition(Mouse::getPoint());
             }
@@ -82,7 +82,7 @@ void roseKnife::activeSkill() {
             //log("%f, %f", segAlign.x, segAlign.y);
             //log("%f, %f", particle->getPositionX(), particle->getPositionY());
 
-            particle->setDuration(0.05f);
+            particle->setDuration(0.02f);
 
             UnitBase::layer->addChild(particle);
         }
@@ -110,5 +110,5 @@ void scoopPot::activeSkill() {
 }
 
 void scoopPot::Render() {
-    QuickSlot::Render();
+    SkillSlot::Render();
 }

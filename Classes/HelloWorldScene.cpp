@@ -23,6 +23,20 @@ float HelloWorld::getNext() {
 
 void HelloWorld::Mainloop(float f) {
     UnitBase::Mainloop();
+
+    /*NodeGrid *nodeGrid = (NodeGrid *)getChildByName("node");
+
+    auto size = Size(32, 32);
+
+    auto grid = GridBase::create(size);
+    nodeGrid->setGrid(grid);
+
+    auto g = (Grid3D *)grid;
+    auto key = Vec2(2, 2);
+
+    auto tile = g->getOriginalVertex(key);
+
+    g->setVertex(key, tile);*/
 }
 
 void HelloWorld::onEnter() {
@@ -100,7 +114,8 @@ bool HelloWorld::init()
     auto nodeGrid = NodeGrid::create();
     nodeGrid->addChild(bgimage);
     //nodeGrid->runAction(Liquid::create(2, Size(32, 32), 1, 20));
-    nodeGrid->runAction(RepeatForever::create((Sequence*)Sequence::create(ripple, lens, NULL)));
+    //nodeGrid->runAction(RepeatForever::create((Sequence*)Sequence::create(ripple, NULL)));
+    nodeGrid->setName("node");
 
     this->addChild(nodeGrid);
 
@@ -123,7 +138,7 @@ bool HelloWorld::init()
     auto skill1 = roseKnife::create();
     auto skill2 = scoopPot::create();
 
-    auto skillGroup = RadioSlot::create();
+    auto skillGroup = RadioGroup::create();
 
     skillGroup->addChild(skill1);
     skillGroup->addChild(skill2);

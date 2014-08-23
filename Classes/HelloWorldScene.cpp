@@ -80,11 +80,11 @@ bool HelloWorld::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-<<<<<<< HEAD
-    auto bgimage = Sprite::create("top.png");
-=======
+//<<<<<<< HEAD
+//    auto bgimage = Sprite::create("top.png");
+//=======
     auto bgimage = Sprite::create("background/fishtank.png");
->>>>>>> origin/Planaria-Redesign
+//>>>>>>> origin/Planaria-Redesign
     bgimage->setPosition(visibleSize / 2);
     bgimage->setScale(1.35f);
     //bgimage->runAction(Liquid::create(2, Size(32, 32), 1, 20));
@@ -94,34 +94,36 @@ bool HelloWorld::init()
         // create a Waved3D action
     ActionInterval* waves = Waves3D::create(60, Size(32, 32), 18, 15);
 
-    ActionInterval* ripple = Ripple3D::create(60, Size(32, 32), visibleSize / 2, 300, 100, 100);
+    ActionInterval* ripple = Ripple3D::create(60, Size(32, 32), visibleSize / 2, 800, 100, 100);
 
-    auto shaky = Shaky3D::create(60, Size(32, 32), 5, true);
+    //auto shaky = Shaky3D::create(60, Size(32, 32), 5, true);
 
     // create a sequence an repeat it forever
     //bgimage->runAction(RepeatForever::create((Sequence*)Sequence::create(waves, lens, NULL)));
-<<<<<<< HEAD
+/*<<<<<<< HEAD
     //nodeGrid->runAction(RepeatForever::create((Sequence*)Sequence::create(waves, lens, ripple, NULL)));
 
 =======
 
     auto shaky = Shaky3D::create(60, Size(32, 32), 3, true);
-
-    auto ripple = Ripple3D::create(60, Size(32, 32), visibleSize / 2, 800, 10, 50);
+*/
+    //auto ripple = Ripple3D::create(60, Size(32, 32), visibleSize / 2, 800, 10, 50);
     
->>>>>>> origin/Planaria-Redesign
+//>>>>>>> origin/Planaria-Redesign
     auto nodeGrid = NodeGrid::create();
 
     nodeGrid->runAction(RepeatForever::create((Sequence*)Sequence::create(ripple, lens, NULL)));
 
     nodeGrid->addChild(bgimage);
-<<<<<<< HEAD
+
+    this->addChild(nodeGrid);
+/*<<<<<<< HEAD
 =======
     //nodeGrid->runAction(Liquid::create(2, Size(32, 32), 1, 20));
     nodeGrid->runAction(RepeatForever::create((Sequence*)Sequence::create(ripple, lens, NULL)));
 >>>>>>> origin/Planaria-Redesign
 
-    this->addChild(nodeGrid);
+    this->addChild(nodeGrid);*/
 
     UnitBase::Initialize(this);
 

@@ -24,19 +24,7 @@ float HelloWorld::getNext() {
 void HelloWorld::Mainloop(float f) {
     UnitBase::Mainloop();
 
-    /*NodeGrid *nodeGrid = (NodeGrid *)getChildByName("node");
-
-    auto size = Size(32, 32);
-
-    auto grid = GridBase::create(size);
-    nodeGrid->setGrid(grid);
-
-    auto g = (Grid3D *)grid;
-    auto key = Vec2(2, 2);
-
-    auto tile = g->getOriginalVertex(key);
-
-    g->setVertex(key, tile);*/
+  
 }
 
 void HelloWorld::onEnter() {
@@ -94,19 +82,11 @@ bool HelloWorld::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-<<<<<<< HEAD
-//<<<<<<< HEAD
-//    auto bgimage = Sprite::create("top.png");
-//=======
-    auto bgimage = Sprite::create("background/fishtank.png");
-//>>>>>>> origin/Planaria-Redesign
-=======
+
     auto bgimage = Sprite::create("background/fishtank.png");
 
->>>>>>> c222752ad5a4bea24e4f8ba6baa1f349b759f2c1
     bgimage->setPosition(visibleSize / 2);
     bgimage->setScale(1.35f);
-    //bgimage->runAction(Liquid::create(2, Size(32, 32), 1, 20));
     // create a Lens3D action
     ActionInterval* lens = Lens3D::create(5, Size(32, 32), visibleSize / 2, 160);
 
@@ -115,46 +95,13 @@ bool HelloWorld::init()
 
     ActionInterval* ripple = Ripple3D::create(60, Size(32, 32), visibleSize / 2, 800, 100, 100);
 
-    //auto shaky = Shaky3D::create(60, Size(32, 32), 5, true);
-
-    // create a sequence an repeat it forever
-    //bgimage->runAction(RepeatForever::create((Sequence*)Sequence::create(waves, lens, NULL)));
-<<<<<<< HEAD
-/*<<<<<<< HEAD
-    //nodeGrid->runAction(RepeatForever::create((Sequence*)Sequence::create(waves, lens, ripple, NULL)));
-
-=======
-
-    auto shaky = Shaky3D::create(60, Size(32, 32), 3, true);
-*/
-    //auto ripple = Ripple3D::create(60, Size(32, 32), visibleSize / 2, 800, 10, 50);
-    
-//>>>>>>> origin/Planaria-Redesign
-=======
->>>>>>> c222752ad5a4bea24e4f8ba6baa1f349b759f2c1
     auto nodeGrid = NodeGrid::create();
 
     nodeGrid->runAction(RepeatForever::create((Sequence*)Sequence::create(ripple, lens, NULL)));
 
     nodeGrid->addChild(bgimage);
-<<<<<<< HEAD
 
     this->addChild(nodeGrid);
-/*<<<<<<< HEAD
-=======
-    //nodeGrid->runAction(Liquid::create(2, Size(32, 32), 1, 20));
-<<<<<<< HEAD
-    nodeGrid->runAction(RepeatForever::create((Sequence*)Sequence::create(ripple, lens, NULL)));
->>>>>>> origin/Planaria-Redesign
-=======
->>>>>>> c222752ad5a4bea24e4f8ba6baa1f349b759f2c1
-=======
-    //nodeGrid->runAction(RepeatForever::create((Sequence*)Sequence::create(ripple, NULL)));
-    nodeGrid->setName("node");
->>>>>>> origin/Planaria-Redesign
-
-    this->addChild(nodeGrid);*/
-
     UnitBase::Initialize(this);
 
     this->schedule(schedule_selector(HelloWorld::Mainloop));
@@ -185,44 +132,12 @@ bool HelloWorld::init()
 
     skill1->turnOn();
 
-    /*for (auto child : skill1->getGroup()->getChildren()) {
-        log("%f", ((UnitBase *)child)->getPosition().x);
-    }*/
-
-    //skill1->setPosition(256, 32);
-
-    //skill2->setPosition(320, 32);
 
     Area::coinLabel = LabelTTF::create("0", "Segoe UI", 36);
     Area::coinLabel->setPosition(128, visibleSize.height - 32);
     Area::coinLabel->setHorizontalAlignment(TextHAlignment::LEFT);
 
     this->addChild(Area::coinLabel);
-
-
-    /*
-    // 3. add your codes below...
-
-    // add a label shows "Hello World"
-    // create and initialize a label
-    
-    auto label = LabelTTF::create("Hello World", "Arial", 24);
-    
-    // position the label on the center of the screen
-    label->setPosition(Vec2(origin.x + visibleSize.width/2,
-                            origin.y + visibleSize.height - label->getContentSize().height));
-
-    // add the label as a child to this layer
-    this->addChild(label, 1);
-
-    // add "HelloWorld" splash screen"
-    auto sprite = Sprite::create("HelloWorld.png");
-
-    // position the sprite on the center of the screen
-    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-
-    // add the sprite as a child to this layer
-    this->addChild(sprite, 0);*/
     
     return true;
 }

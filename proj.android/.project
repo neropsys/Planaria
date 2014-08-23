@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
 	<name>Planaria</name>
 	<comment></comment>
 	<projects>
 		<project>libcocos2dx</project>
+=======
+	<name>AppActivity</name>
+	<comment></comment>
+	<projects>
+>>>>>>> origin/Planaria-Redesign
 	</projects>
 	<buildSpec>
 		<buildCommand>
@@ -22,6 +28,7 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
+<<<<<<< HEAD
 			<name>org.eclipse.cdt.managedbuilder.core.genmakebuilder</name>
 			<triggers>clean,full,incremental,</triggers>
 			<arguments>
@@ -88,20 +95,26 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
+=======
+>>>>>>> origin/Planaria-Redesign
 			<name>com.android.ide.eclipse.adt.ApkBuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
+<<<<<<< HEAD
 		<buildCommand>
 			<name>org.eclipse.cdt.managedbuilder.core.ScannerConfigBuilder</name>
 			<triggers>full,incremental,</triggers>
 			<arguments>
 			</arguments>
 		</buildCommand>
+=======
+>>>>>>> origin/Planaria-Redesign
 	</buildSpec>
 	<natures>
 		<nature>com.android.ide.eclipse.adt.AndroidNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
+<<<<<<< HEAD
 		<nature>org.eclipse.cdt.core.cnature</nature>
 		<nature>org.eclipse.cdt.core.ccnature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
@@ -124,4 +137,7 @@
 			<locationURI>PARENT-1-PROJECT_LOC/cocos2d/cocos/2d/platform/android/java/src</locationURI>
 		</link>
 	</linkedResources>
+=======
+	</natures>
+>>>>>>> origin/Planaria-Redesign
 </projectDescription>

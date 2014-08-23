@@ -12,7 +12,11 @@ LOCAL_MODULE_FILENAME := libcocos2dcpp
 
 PPP_C_FILE_LIST := $(wildcard $(LOCAL_PATH)/../../Classes/*.cpp)
 LOCAL_SRC_FILES := hellocpp/main.cpp \
+<<<<<<< HEAD
                    $(PPP_C_FILE_LIST:$(LOCAL_PATH)/%=%)
+=======
+                   ../../Classes/*
+>>>>>>> origin/Planaria-Redesign
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
 

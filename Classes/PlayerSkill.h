@@ -2,7 +2,7 @@
 #include "cocos2d.h"
 #include "Planaria.h"
 
-class roseKnife : public QuickSlot {
+class roseKnife : public SkillSlot {
 public:
     roseKnife();
     ~roseKnife();
@@ -22,7 +22,7 @@ protected:
     virtual void Render();
 };
 
-class scoopPot : public QuickSlot {
+class scoopPot : public SkillSlot {
 public:
     CREATE_FUNC2(scoopPot);
 protected:

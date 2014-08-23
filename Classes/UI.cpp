@@ -2,13 +2,13 @@
 
 USING_NS_CC;
 
-ItemSlot::ItemSlot() {
+SlotGroup::SlotGroup() {
 }
 
-ItemSlot::~ItemSlot() {
+SlotGroup::~SlotGroup() {
 }
 
-void ItemSlot::alignItems() {
+void SlotGroup::alignItems() {
     Vector<Node *> items = getChildren();
 
     int dist = 0;
@@ -39,20 +39,20 @@ void ItemSlot::alignItems() {
     return unit;
 }*/
 
-void RadioSlot::addChild(Node *child)
+void RadioGroup::addChild(Node *child)
 {
     Node::addChild(child);
 
-    ((QuickSlot *)child)->setGroup(this);
+    ((SkillSlot *)child)->setGroup(this);
 }
 
-QuickSlot::QuickSlot() {
+SkillSlot::SkillSlot() {
 }
 
-QuickSlot::~QuickSlot() {
+SkillSlot::~SkillSlot() {
 }
 
-void QuickSlot::Init() {
+void SkillSlot::Init() {
     UnitBase::Init();
 
     btnModel = DrawNode::create();
@@ -62,7 +62,7 @@ void QuickSlot::Init() {
     oDir = Director::getInstance();
 }
 
-void QuickSlot::Run() {
+void SkillSlot::Run() {
     if (Mouse::isDown() && coolTime <= 0 && Mouse::isFirst()) {
         float distX = Mouse::getPoint().x - getPositionX(), distY = Mouse::getPoint().y - getPositionY();
         float realSize = btnRadius + 1;
@@ -76,7 +76,7 @@ void QuickSlot::Run() {
                 if (this->radioGroup != nullptr) {
 
                     for (auto child : this->radioGroup->getChildren()) {
-                        QuickSlot *realChild = (QuickSlot *)child;
+                        SkillSlot *realChild = (SkillSlot *)child;
 
                         realChild->turnOff();
                         realChild->setCoolTime(0.5f);
@@ -107,18 +107,18 @@ void QuickSlot::Run() {
     Render();
 }
 
-void QuickSlot::setCoolTime(float time) {
+void SkillSlot::setCoolTime(float time) {
     coolTime = time;
 }
 
-void QuickSlot::activeSkill() {
+void SkillSlot::activeSkill() {
 }
 
 
-void QuickSlot::passiaveSkill() {
+void SkillSlot::passiaveSkill() {
 }
 
-void QuickSlot::Render() {
+void SkillSlot::Render() {
     btnModel->clear();
 
     Color4F btnColor = Color4F(1.f, 1.f, 1.f, 1.f);
@@ -134,32 +134,32 @@ void QuickSlot::Render() {
     btnModel->drawDot(this->getPosition(), this->btnRadius, btnColor);
 }
 
-void QuickSlot::Dead() {
+void SkillSlot::Dead() {
     UnitBase::layer->removeChild(btnModel);
 }
 
-float QuickSlot::getSize() {
+float SkillSlot::getSize() {
     return btnRadius;
 }
 
-void QuickSlot::setGroup(RadioSlot *group) {
+void SkillSlot::setGroup(RadioGroup *group) {
     this->radioGroup = group;
 }
 
-RadioSlot *QuickSlot::getGroup() {
+RadioGroup *SkillSlot::getGroup() {
     return this->radioGroup;
 }
 
-void QuickSlot::turnOff() {
+void SkillSlot::turnOff() {
     actState = false;
 }
 
-void QuickSlot::turnOn() {
+void SkillSlot::turnOn() {
     actState = true;
 }
 
-QuickSlot *QuickSlot::create() {
-    auto unit = new QuickSlot();
+SkillSlot *SkillSlot::create() {
+    auto unit = new SkillSlot();
 
     if (unit)
     {
@@ -175,6 +175,6 @@ QuickSlot *QuickSlot::create() {
     return unit;
 }
 
-bool QuickSlot::isActivated() {
+bool SkillSlot::isActivated() {
     return actState;
 }

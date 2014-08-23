@@ -115,7 +115,7 @@ protected:
 
     float exAngle = 0.f, exSpeed = 0.f;
     float maxSpeed = 6.f, minSpeed = 2.f;
-    float bodyLength = 120.f, bodySize = 4.5f;
+    float bodyLength = 120.f, bodySize = 8.5f;
     float bodyMaxLength = 120.f;
 
     bool isHurted = false;

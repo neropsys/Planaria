@@ -2,12 +2,12 @@
 #include "UnitBase.h"
 #include "Mouse.h"
 
-class ItemSlot : public UnitBase {
+class SlotGroup : public UnitBase {
 public:
-    ItemSlot();
-    ~ItemSlot();
+    SlotGroup();
+    ~SlotGroup();
 
-    CREATE_FUNC(ItemSlot);
+    CREATE_FUNC(SlotGroup);
 
     void alignItems();
 
@@ -15,10 +15,10 @@ public:
 protected:
 };
 
-class RadioSlot :public ItemSlot {
+class RadioGroup :public SlotGroup {
 public:
     //static RadioSlot *create();
-    CREATE_FUNC2(RadioSlot);
+    CREATE_FUNC2(RadioGroup);
 
     virtual void addChild(cocos2d::Node *child);
 
@@ -26,12 +26,12 @@ public:
 protected:
 };
 
-class QuickSlot : public UnitBase {
+class SkillSlot : public UnitBase {
 public:
-    QuickSlot();
-    virtual ~QuickSlot();
+    SkillSlot();
+    virtual ~SkillSlot();
 
-    static QuickSlot *create();
+    static SkillSlot *create();
 
     void turnOn();
     void turnOff();
@@ -42,8 +42,8 @@ public:
 
     virtual float getSize();
 
-    void setGroup(RadioSlot *);
-    RadioSlot *getGroup();
+    void setGroup(RadioGroup *);
+    RadioGroup *getGroup();
 
 protected:
     virtual void Init();
@@ -65,5 +65,5 @@ protected:
 
     cocos2d::DrawNode *btnModel;
 
-    RadioSlot *radioGroup;
+    RadioGroup *radioGroup;
 };

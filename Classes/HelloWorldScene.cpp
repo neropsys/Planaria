@@ -23,6 +23,20 @@ float HelloWorld::getNext() {
 
 void HelloWorld::Mainloop(float f) {
     UnitBase::Mainloop();
+
+    /*NodeGrid *nodeGrid = (NodeGrid *)getChildByName("node");
+
+    auto size = Size(32, 32);
+
+    auto grid = GridBase::create(size);
+    nodeGrid->setGrid(grid);
+
+    auto g = (Grid3D *)grid;
+    auto key = Vec2(2, 2);
+
+    auto tile = g->getOriginalVertex(key);
+
+    g->setVertex(key, tile);*/
 }
 
 void HelloWorld::onEnter() {
@@ -129,10 +143,15 @@ bool HelloWorld::init()
 /*<<<<<<< HEAD
 =======
     //nodeGrid->runAction(Liquid::create(2, Size(32, 32), 1, 20));
+<<<<<<< HEAD
     nodeGrid->runAction(RepeatForever::create((Sequence*)Sequence::create(ripple, lens, NULL)));
 >>>>>>> origin/Planaria-Redesign
 =======
 >>>>>>> c222752ad5a4bea24e4f8ba6baa1f349b759f2c1
+=======
+    //nodeGrid->runAction(RepeatForever::create((Sequence*)Sequence::create(ripple, NULL)));
+    nodeGrid->setName("node");
+>>>>>>> origin/Planaria-Redesign
 
     this->addChild(nodeGrid);*/
 
@@ -155,7 +174,7 @@ bool HelloWorld::init()
     auto skill1 = roseKnife::create();
     auto skill2 = scoopPot::create();
 
-    auto skillGroup = RadioSlot::create();
+    auto skillGroup = RadioGroup::create();
 
     skillGroup->addChild(skill1);
     skillGroup->addChild(skill2);

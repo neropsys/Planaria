@@ -217,7 +217,7 @@ void Planaria::calulateTail() {
     Vec2 pt = getPosition();
     
     // 꼬리를 휘두르는 정도를 결정함 (amount of planaria's tail snap increases if this value is small)
-    float rotateAngle = 40;
+    float rotateAngle = 50;
 
     // 너무 낮으면 애가 흔드는지 안흔드는지....
     if (acceleration < pieceLength) {
@@ -441,7 +441,7 @@ int Planaria::getCrashedSegment(float x, float y, float radius) {
 }
 
 inline float Planaria::getSegmentSize(int n) {
-    return bodySize + bodySize * sinf((float)n * 3 / tailSegments);
+    return bodySize + bodySize * sinf((float)n * 3 / tailSegments) * 0.7;
 }
 
 void Planaria::cutBody(const Vec2 &pos) {

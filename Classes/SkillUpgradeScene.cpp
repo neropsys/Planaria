@@ -1,5 +1,9 @@
 #include "SkillUpgradeScene.h"
 #include "HelloWorldScene.h"
+#include "ValueScene.h"
+#include "CollectionScene.h"
+#include "EquipmentScene.h"
+#include "ConstructionScene.h"
 using namespace cocos2d;
 
 Scene* SkillUpgradeScene::createScene(){
@@ -31,7 +35,7 @@ bool SkillUpgradeScene::init(){
 		return false;
 	}
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	visibleSize = Director::getInstance()->getVisibleSize();
 
 	b2Aquarium = Sprite::create("b2aquarium.png");
 	b2Aquarium->setAnchorPoint(Vec2::ANCHOR_MIDDLE_BOTTOM);
@@ -68,9 +72,30 @@ bool SkillUpgradeScene::init(){
 
 bool SkillUpgradeScene::onTouchBegan(Touch* touch, Event* event){
 	auto touchPt = touch->getLocation();
+	log("%f %f", Mouse::getPoint().x, Mouse::getPoint().y);
 	auto bTouch = b2Aquarium->getBoundingBox().containsPoint(touchPt);//does not work with Mouse::getPoint
-	if (bTouch){ 
+	if (bTouch){
 		Director::getInstance()->popScene();
+	}
+	if (touchPt.x < visibleSize.width / 2 && touchPt.y < visibleSize.height / 2){
+		auto valueScene = ValueScene::createScene();
+		Director::getInstance()->popScene();
+		Director::getInstance()->pushScene(valueScene);
+	}
+	else if (touchPt.x < visibleSize.width / 2 && touchPt.y > visibleSize.height / 2){
+		auto collectionScene = CollectionScene::createScene();
+		Director::getInstance()->popScene();
+		Director::getInstance()->pushScene(collectionScene);
+	}
+	else if (touchPt.x > visibleSize.width / 2 && touchPt.y > visibleSize.height / 2){
+		auto equipmentScene = EquipmentScene::createScene();
+		Director::getInstance()->popScene();
+		Director::getInstance()->pushScene(equipmentScene);
+	}
+	else{
+		auto constructionScene = ConstructionScene::createScene();
+		Director::getInstance()->popScene();
+		Director::getInstance()->pushScene(constructionScene);
 	}
 	return true;
 }

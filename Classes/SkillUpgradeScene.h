@@ -26,4 +26,5 @@ private:
 	LabelTTF* constructText;
 	LabelTTF* valueText;
 	LabelTTF* collectionText;
+	Size visibleSize;
 };

@@ -164,6 +164,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\PlanariaUnits.h" />
     <ClInclude Include="..\Classes\PlayerSkill.h" />
     <ClInclude Include="..\Classes\SkillUpgradeScene.h" />
+    <ClInclude Include="..\Classes\TechTreeSceneTemplate.h" />
     <ClInclude Include="..\Classes\UI.h" />
     <ClInclude Include="..\Classes\unit.h" />
     <ClInclude Include="..\Classes\UnitBase.h" />

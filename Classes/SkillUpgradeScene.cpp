@@ -76,6 +76,7 @@ bool SkillUpgradeScene::onTouchBegan(Touch* touch, Event* event){
 	auto bTouch = b2Aquarium->getBoundingBox().containsPoint(touchPt);//does not work with Mouse::getPoint
 	if (bTouch){
 		Director::getInstance()->popScene();
+		return true;
 	}
 	if (touchPt.x < visibleSize.width / 2 && touchPt.y < visibleSize.height / 2){
 		auto valueScene = ValueScene::createScene();

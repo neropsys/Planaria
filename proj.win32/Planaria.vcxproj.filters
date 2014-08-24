@@ -87,6 +87,9 @@
     <ClInclude Include="..\Classes\CollectionScene.h">
       <Filter>Scenes\AquariumUpgrade</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\TechTreeSceneTemplate.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc" />

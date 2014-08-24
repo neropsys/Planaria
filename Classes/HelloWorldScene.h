@@ -24,9 +24,6 @@ public:
 
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool init();  
-    
-    // a selector callback
-    void menuCloseCallback(cocos2d::Ref* pSender);
 
     void weaponMenuCallback(cocos2d::Ref *pSender);
     
@@ -36,11 +33,11 @@ public:
     void Mainloop(float);
 
     float getNext();
+	skillSceneBtn* skillSceneButton;
 
 protected:
 
     int t = 0;
-
 };
 
 #endif

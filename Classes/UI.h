@@ -51,7 +51,7 @@ protected:
     virtual void Dead();
 
     virtual void activeSkill();
-    virtual void passiaveSkill();
+    virtual void passiveSkill();
 
     virtual void Render();
 
@@ -66,4 +66,14 @@ protected:
     cocos2d::DrawNode *btnModel;
 
     RadioGroup *radioGroup;
+};
+
+class UtilityButton : public UnitBase{
+public:
+	UtilityButton();
+	virtual ~UtilityButton();
+	virtual void create();
+	//additional method may be added in the future
+protected:
+	virtual void gotoScene(cocos2d::Ref* pSender);
 };

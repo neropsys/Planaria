@@ -1,5 +1,5 @@
 #include "HelloWorldScene.h"
-
+#include "Mouse.h"
 USING_NS_CC;
 
 Scene* HelloWorld::createScene()
@@ -23,8 +23,6 @@ float HelloWorld::getNext() {
 
 void HelloWorld::Mainloop(float f) {
     UnitBase::Mainloop();
-
-  
 }
 
 void HelloWorld::onEnter() {
@@ -52,7 +50,7 @@ void HelloWorld::onExit() {
 
 bool HelloWorld::onTouchBegan(Touch* touch, Event* event) {
     Mouse::onTouchBegan(touch, event);
-
+	skillSceneButton->gotoScene();
     return true;
 }
 
@@ -81,8 +79,6 @@ bool HelloWorld::init()
     
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
-
-
     auto bgimage = Sprite::create("background/fishtank.png");
 
     bgimage->setPosition(visibleSize / 2);
@@ -132,7 +128,8 @@ bool HelloWorld::init()
 
     skill1->turnOn();
 
-
+	skillSceneButton = new skillSceneBtn();
+	this->addChild(skillSceneButton);
     Area::coinLabel = LabelTTF::create("0", "Segoe UI", 36);
     Area::coinLabel->setPosition(128, visibleSize.height - 32);
     Area::coinLabel->setHorizontalAlignment(TextHAlignment::LEFT);
@@ -142,20 +139,6 @@ bool HelloWorld::init()
     return true;
 }
 
-
-void HelloWorld::menuCloseCallback(Ref* pSender)
-{
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WP8) || (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
-	MessageBox("You pressed the close button. Windows Store Apps do not implement a close button.","Alert");
-    return;
-#endif
-
-    Director::getInstance()->end();
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    exit(0);
-#endif
-}
 
 void HelloWorld::weaponMenuCallback(Ref *pSender) {
     MenuItemToggle *pMenu = (MenuItemToggle *)pSender;

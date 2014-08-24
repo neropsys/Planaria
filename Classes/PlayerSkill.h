@@ -30,3 +30,11 @@ protected:
     virtual void activeSkill();
     virtual void Render();
 };
+class skillSceneBtn : public UtilityButton{
+public:
+	skillSceneBtn();
+	~skillSceneBtn();
+	void gotoScene();
+private:
+	cocos2d::Sprite* skillButtonSprite;
+};

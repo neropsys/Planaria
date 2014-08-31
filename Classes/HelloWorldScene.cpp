@@ -94,6 +94,8 @@ bool HelloWorld::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("sprite.plist");
+
     auto bgimage = Sprite::create("background/fishtank.png");
     bgimage->setPosition(visibleSize / 2);
     bgimage->setScale(1.35f);
@@ -109,12 +111,12 @@ bool HelloWorld::init()
 
     auto shaky = Shaky3D::create(60, Size(32, 32), 3, true);
 
-    auto ripple = Ripple3D::create(60, Size(32, 32), visibleSize / 2, 800, 10, 50);
+    auto ripple = Ripple3D::create(60, Size(32, 32), visibleSize / 2, 800, 5, 20);
     
     auto nodeGrid = NodeGrid::create();
     nodeGrid->addChild(bgimage);
     //nodeGrid->runAction(Liquid::create(2, Size(32, 32), 1, 20));
-    //nodeGrid->runAction(RepeatForever::create((Sequence*)Sequence::create(ripple, NULL)));
+    nodeGrid->runAction(RepeatForever::create((Sequence*)Sequence::create(ripple, NULL)));
     nodeGrid->setName("node");
 
     this->addChild(nodeGrid);
@@ -135,6 +137,27 @@ bool HelloWorld::init()
         pl3->setPosition(visibleSize.width * getNext(), visibleSize.height * getNext());
     }
 
+    /*for (auto child : skill1->getGroup()->getChildren()) {
+        log("%f", ((UnitBase *)child)->getPosition().x);
+    }*/
+
+    //skill1->setPosition(256, 32);
+
+    //skill2->setPosition(320, 32);
+
+    auto systemUI = AreaUI::create();
+
+    SpriteBatchNode *profile = SpriteBatchNode::create("sprite.png");
+    auto sp1 = Sprite::createWithSpriteFrameName("chat-circle.png");
+    profile->addChild(sp1);
+
+    auto sp2 = Sprite::createWithSpriteFrameName("chat-man.png");
+    profile->addChild(sp2);
+
+    profile->setPosition(40, 40);
+
+    this->addChild(profile);
+
     auto skill1 = roseKnife::create();
     auto skill2 = scoopPot::create();
 
@@ -148,20 +171,6 @@ bool HelloWorld::init()
     skillGroup->alignItems();
 
     skill1->turnOn();
-
-    /*for (auto child : skill1->getGroup()->getChildren()) {
-        log("%f", ((UnitBase *)child)->getPosition().x);
-    }*/
-
-    //skill1->setPosition(256, 32);
-
-    //skill2->setPosition(320, 32);
-
-    Area::coinLabel = LabelTTF::create("0", "Segoe UI", 36);
-    Area::coinLabel->setPosition(128, visibleSize.height - 32);
-    Area::coinLabel->setHorizontalAlignment(TextHAlignment::LEFT);
-
-    this->addChild(Area::coinLabel);
 
     /////////////////////////////
     // 2. add a menu item with "X" image, which is clicked to quit the program

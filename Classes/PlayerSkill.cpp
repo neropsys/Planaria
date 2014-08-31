@@ -29,12 +29,18 @@ roseKnife *roseKnife::create() {
 
 void roseKnife::Init() {
     UnitBase::Init();
-    SkillSlot::Init();
+
+    SkillSlot::Init("knife.png");
+
     starGraphic = Director::getInstance()->getTextureCache()->addImage("stars.png");
+
+    skillName = "Incise";
 }
 
 void roseKnife::Render() {
     SkillSlot::Render();
+
+    skillIcon->setColor(dispColor);
 }
 
 void roseKnife::activeSkill() {
@@ -97,6 +103,12 @@ void roseKnife::activeSkill() {
     lastPoint = Mouse::getPoint();
 }
 
+void scoopPot::Init() {
+    skillName = "Collect";
+
+    SkillSlot::Init("scoop-pot.png");
+}
+
 void scoopPot::activeSkill() {
     if (!Mouse::isDown()) return;
 
@@ -111,4 +123,6 @@ void scoopPot::activeSkill() {
 
 void scoopPot::Render() {
     SkillSlot::Render();
+
+    skillIcon->setColor(dispColor);
 }

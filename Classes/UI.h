@@ -2,6 +2,15 @@
 #include "UnitBase.h"
 #include "Mouse.h"
 
+#define UI_FONT "Segoe UI"
+#define SCRIPT_FONT "Comic Sans MS"
+#define TITLE_FONT "Segoe UI"
+
+// z-index layer
+#define Z_UI 100
+#define Z_UNIT 10
+#define Z_BACK 0
+
 class SlotGroup : public UnitBase {
 public:
     SlotGroup();
@@ -46,7 +55,7 @@ public:
     RadioGroup *getGroup();
 
 protected:
-    virtual void Init();
+    virtual void Init(const string &iconName);
     virtual void Run();
     virtual void Dead();
 
@@ -59,11 +68,30 @@ protected:
 
     float coolTime = 0.f;
 
-    float btnRadius = 40.f;
+    float btnRadius = 24.f;
+
+    string skillName;
 
     cocos2d::Director *oDir;
-
-    cocos2d::DrawNode *btnModel;
+    cocos2d::LabelTTF *skillLabel;
+    cocos2d::SpriteBatchNode *skillDisp;
+    cocos2d::Sprite *skillBorder, *skillIcon;
+    cocos2d::Color3B dispColor;
 
     RadioGroup *radioGroup;
+};
+
+class AreaUI : public UnitBase {
+public:
+    CREATE_FUNC3(AreaUI);
+
+protected:
+    virtual void Init();
+
+    cocos2d::SpriteBatchNode *areaDisp;
+    cocos2d::Sprite *borderLeft, *borderRight, *borderTop, *borderBottom;
+
+    RadioGroup *skillGroup;
+    SlotGroup *navGroup;
+    SlotGroup *statGroup;
 };

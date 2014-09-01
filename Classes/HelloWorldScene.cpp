@@ -1,5 +1,5 @@
 #include "HelloWorldScene.h"
-
+#include "Mouse.h"
 USING_NS_CC;
 
 Scene* HelloWorld::createScene()
@@ -23,20 +23,6 @@ float HelloWorld::getNext() {
 
 void HelloWorld::Mainloop(float f) {
     UnitBase::Mainloop();
-
-    /*NodeGrid *nodeGrid = (NodeGrid *)getChildByName("node");
-
-    auto size = Size(32, 32);
-
-    auto grid = GridBase::create(size);
-    nodeGrid->setGrid(grid);
-
-    auto g = (Grid3D *)grid;
-    auto key = Vec2(2, 2);
-
-    auto tile = g->getOriginalVertex(key);
-
-    g->setVertex(key, tile);*/
 }
 
 void HelloWorld::onEnter() {
@@ -64,7 +50,7 @@ void HelloWorld::onExit() {
 
 bool HelloWorld::onTouchBegan(Touch* touch, Event* event) {
     Mouse::onTouchBegan(touch, event);
-
+	skillSceneButton->gotoScene();
     return true;
 }
 
@@ -93,6 +79,7 @@ bool HelloWorld::init()
     
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -106,12 +93,12 @@ bool HelloWorld::init()
     auto bgimage = Sprite::create("background/fishtank.png");
 //>>>>>>> origin/Planaria-Redesign
 =======
+=======
+>>>>>>> c586f80f0466ca1e7bf7674b7ab9457c3692af29
     auto bgimage = Sprite::create("background/fishtank.png");
 
->>>>>>> c222752ad5a4bea24e4f8ba6baa1f349b759f2c1
     bgimage->setPosition(visibleSize / 2);
     bgimage->setScale(1.35f);
-    //bgimage->runAction(Liquid::create(2, Size(32, 32), 1, 20));
     // create a Lens3D action
     ActionInterval* lens = Lens3D::create(5, Size(32, 32), visibleSize / 2, 160);
 
@@ -120,6 +107,7 @@ bool HelloWorld::init()
 
     ActionInterval* ripple = Ripple3D::create(60, Size(32, 32), visibleSize / 2, 800, 100, 100);
 
+<<<<<<< HEAD
     //auto shaky = Shaky3D::create(60, Size(32, 32), 5, true);
 
     // create a sequence an repeat it forever
@@ -141,14 +129,16 @@ bool HelloWorld::init()
 //>>>>>>> origin/Planaria-Redesign
 =======
 >>>>>>> c222752ad5a4bea24e4f8ba6baa1f349b759f2c1
+=======
+>>>>>>> c586f80f0466ca1e7bf7674b7ab9457c3692af29
     auto nodeGrid = NodeGrid::create();
 
     nodeGrid->runAction(RepeatForever::create((Sequence*)Sequence::create(ripple, lens, NULL)));
 
     nodeGrid->addChild(bgimage);
-<<<<<<< HEAD
 
     this->addChild(nodeGrid);
+<<<<<<< HEAD
 /*<<<<<<< HEAD
 =======
     //nodeGrid->runAction(Liquid::create(2, Size(32, 32), 1, 20));
@@ -168,6 +158,8 @@ bool HelloWorld::init()
 
     this->addChild(nodeGrid);*/
 
+=======
+>>>>>>> c586f80f0466ca1e7bf7674b7ab9457c3692af29
     UnitBase::Initialize(this);
 
     this->schedule(schedule_selector(HelloWorld::Mainloop));
@@ -220,6 +212,7 @@ bool HelloWorld::init()
     skill1->turnOn();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     /*for (auto child : skill1->getGroup()->getChildren()) {
         log("%f", ((UnitBase *)child)->getPosition().x);
     }*/
@@ -228,11 +221,16 @@ bool HelloWorld::init()
 
     //skill2->setPosition(320, 32);
 
+=======
+	skillSceneButton = new skillSceneBtn();
+	this->addChild(skillSceneButton);
+>>>>>>> c586f80f0466ca1e7bf7674b7ab9457c3692af29
     Area::coinLabel = LabelTTF::create("0", "Segoe UI", 36);
     Area::coinLabel->setPosition(128, visibleSize.height - 32);
     Area::coinLabel->setHorizontalAlignment(TextHAlignment::LEFT);
 
     this->addChild(Area::coinLabel);
+<<<<<<< HEAD
 
 =======
     /////////////////////////////
@@ -303,24 +301,12 @@ bool HelloWorld::init()
 
     // add the sprite as a child to this layer
     this->addChild(sprite, 0);*/
+=======
+>>>>>>> c586f80f0466ca1e7bf7674b7ab9457c3692af29
     
     return true;
 }
 
-
-void HelloWorld::menuCloseCallback(Ref* pSender)
-{
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WP8) || (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
-	MessageBox("You pressed the close button. Windows Store Apps do not implement a close button.","Alert");
-    return;
-#endif
-
-    Director::getInstance()->end();
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    exit(0);
-#endif
-}
 
 void HelloWorld::weaponMenuCallback(Ref *pSender) {
     MenuItemToggle *pMenu = (MenuItemToggle *)pSender;

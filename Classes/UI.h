@@ -60,7 +60,7 @@ protected:
     virtual void Dead();
 
     virtual void activeSkill();
-    virtual void passiaveSkill();
+    virtual void passiveSkill();
 
     virtual void Render();
 
@@ -81,6 +81,7 @@ protected:
     RadioGroup *radioGroup;
 };
 
+<<<<<<< HEAD
 class AreaUI : public UnitBase {
 public:
     CREATE_FUNC3(AreaUI);
@@ -94,4 +95,14 @@ protected:
     RadioGroup *skillGroup;
     SlotGroup *navGroup;
     SlotGroup *statGroup;
+=======
+class UtilityButton : public UnitBase{
+public:
+	UtilityButton();
+	virtual ~UtilityButton();
+	virtual void create();
+	//additional method may be added in the future
+protected:
+	virtual void gotoScene(cocos2d::Ref* pSender);
+>>>>>>> c586f80f0466ca1e7bf7674b7ab9457c3692af29
 };

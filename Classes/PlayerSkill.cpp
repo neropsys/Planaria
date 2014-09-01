@@ -1,5 +1,5 @@
 #include "PlayerSkill.h"
-
+#include "SkillUpgradeScene.h"
 USING_NS_CC;
 
 Texture2D *roseKnife::starGraphic;
@@ -123,6 +123,25 @@ void scoopPot::activeSkill() {
 
 void scoopPot::Render() {
     SkillSlot::Render();
+<<<<<<< HEAD
 
     skillIcon->setColor(dispColor);
+=======
+}
+skillSceneBtn::skillSceneBtn(){
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	skillButtonSprite = Sprite::create("skillbutton.png");
+	skillButtonSprite->setAnchorPoint(Vec2::ANCHOR_BOTTOM_RIGHT);
+	skillButtonSprite->setPosition(visibleSize.width, 0);
+	layer->addChild(skillButtonSprite);
+}
+skillSceneBtn::~skillSceneBtn(){
+
+}
+void skillSceneBtn::gotoScene(){
+	if (skillButtonSprite->getBoundingBox().containsPoint(Mouse::getPoint())){
+		auto skillScene = SkillUpgradeScene::createScene();
+		Director::getInstance()->pushScene(skillScene);
+	}
+>>>>>>> c586f80f0466ca1e7bf7674b7ab9457c3692af29
 }

@@ -11,6 +11,8 @@ proj.win32/Planaria.sdf
 *.suo
 *.sln.docstates
 
+Planaria.v12.suo
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/

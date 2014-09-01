@@ -137,6 +137,9 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\Area.cpp" />
+    <ClCompile Include="..\Classes\CollectionScene.cpp" />
+    <ClCompile Include="..\Classes\ConstructionScene.cpp" />
+    <ClCompile Include="..\Classes\EquipmentScene.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\Mouse.cpp" />
     <ClCompile Include="..\Classes\Planaria.cpp" />
@@ -146,20 +149,26 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\UI.cpp" />
     <ClCompile Include="..\Classes\unit.cpp" />
     <ClCompile Include="..\Classes\UnitBase.cpp" />
+    <ClCompile Include="..\Classes\ValueScene.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\Area.h" />
+    <ClInclude Include="..\Classes\CollectionScene.h" />
+    <ClInclude Include="..\Classes\ConstructionScene.h" />
+    <ClInclude Include="..\Classes\EquipmentScene.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\Mouse.h" />
     <ClInclude Include="..\Classes\Planaria.h" />
     <ClInclude Include="..\Classes\PlanariaUnits.h" />
     <ClInclude Include="..\Classes\PlayerSkill.h" />
     <ClInclude Include="..\Classes\SkillUpgradeScene.h" />
+    <ClInclude Include="..\Classes\TechTreeSceneTemplate.h" />
     <ClInclude Include="..\Classes\UI.h" />
     <ClInclude Include="..\Classes\unit.h" />
     <ClInclude Include="..\Classes\UnitBase.h" />
+    <ClInclude Include="..\Classes\ValueScene.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
@@ -176,6 +185,9 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

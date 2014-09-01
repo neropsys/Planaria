@@ -189,8 +189,6 @@ SkillSlot *SkillSlot::create() {
 bool SkillSlot::isActivated() {
     return actState;
 }
-<<<<<<< HEAD
-
 void AreaUI::Init() {
     UnitBase::Init();
 
@@ -223,7 +221,6 @@ void AreaUI::Init() {
     auto rightRect = cFrame->getSpriteFrameByName("area-border-left.png")->getRect();
     borderRight->setPosition(visibleSize.width - rightRect.size.width / 2, visibleSize.height / 2);
 }
-=======
 UtilityButton::UtilityButton(){
 
 }
@@ -232,4 +229,3 @@ UtilityButton::~UtilityButton(){
 }
 void UtilityButton::create(){}
 void UtilityButton::gotoScene(cocos2d::Ref* pSender){}
->>>>>>> c586f80f0466ca1e7bf7674b7ab9457c3692af29

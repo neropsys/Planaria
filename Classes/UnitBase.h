@@ -1,7 +1,6 @@
 #include "cocos2d.h"
 #include <cmath>
 #include <iostream>
-#define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
 
 #pragma once
@@ -26,17 +25,20 @@ static __TYPE_NAME__ *create(){\
 #define CREATE_FUNC3(__TYPE_NAME__)\
 	__TYPE_NAME__() {};\
 	~__TYPE_NAME__() {};\
-static __TYPE_NAME__ *create(){\
-	auto unit = new __TYPE_NAME__();\
+	static __TYPE_NAME__ *create(){\
+	auto unit = new __TYPE_NAME__(); \
 	if (unit)\
-		unit->autorelease();\
+		unit->autorelease(); \
 	else\
-		CC_SAFE_DELETE(unit); } UnitBase::newUnit.pushBack(unit); return unit; };
+		CC_SAFE_DELETE(unit); \
+	UnitBase::newUnit.pushBack(unit);\
+	return unit;\
+	};
 #define DELETE_OBJ(__OBJECT__)\
 	if ( __OBJECT__ )\
 		__OBJECT__->release();\
 	__OBJECT__ = NULL;\
- }
+ 
 
 using namespace std;
 

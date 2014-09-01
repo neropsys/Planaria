@@ -81,21 +81,19 @@ protected:
     RadioGroup *radioGroup;
 };
 
-<<<<<<< HEAD
 class AreaUI : public UnitBase {
 public:
-    CREATE_FUNC3(AreaUI);
-
+	CREATE_FUNC3(AreaUI);
 protected:
-    virtual void Init();
+	virtual void Init();
 
-    cocos2d::SpriteBatchNode *areaDisp;
-    cocos2d::Sprite *borderLeft, *borderRight, *borderTop, *borderBottom;
+	cocos2d::SpriteBatchNode *areaDisp;
+	cocos2d::Sprite *borderLeft, *borderRight, *borderTop, *borderBottom;
 
-    RadioGroup *skillGroup;
-    SlotGroup *navGroup;
-    SlotGroup *statGroup;
-=======
+	RadioGroup *skillGroup;
+	SlotGroup *navGroup;
+	SlotGroup *statGroup;
+};
 class UtilityButton : public UnitBase{
 public:
 	UtilityButton();
@@ -104,5 +102,5 @@ public:
 	//additional method may be added in the future
 protected:
 	virtual void gotoScene(cocos2d::Ref* pSender);
->>>>>>> c586f80f0466ca1e7bf7674b7ab9457c3692af29
+
 };

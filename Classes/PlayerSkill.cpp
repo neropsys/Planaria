@@ -123,10 +123,8 @@ void scoopPot::activeSkill() {
 
 void scoopPot::Render() {
     SkillSlot::Render();
-<<<<<<< HEAD
 
     skillIcon->setColor(dispColor);
-=======
 }
 skillSceneBtn::skillSceneBtn(){
 	Size visibleSize = Director::getInstance()->getVisibleSize();
@@ -143,5 +141,4 @@ void skillSceneBtn::gotoScene(){
 		auto skillScene = SkillUpgradeScene::createScene();
 		Director::getInstance()->pushScene(skillScene);
 	}
->>>>>>> c586f80f0466ca1e7bf7674b7ab9457c3692af29
 }

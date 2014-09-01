@@ -95,9 +95,14 @@ bool HelloWorld::init()
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 //<<<<<<< HEAD
 //    auto bgimage = Sprite::create("top.png");
 //=======
+=======
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("sprite.plist");
+
+>>>>>>> origin/Planaria-Redesign
     auto bgimage = Sprite::create("background/fishtank.png");
 //>>>>>>> origin/Planaria-Redesign
 =======
@@ -125,9 +130,13 @@ bool HelloWorld::init()
 
 =======
 
+<<<<<<< HEAD
     auto shaky = Shaky3D::create(60, Size(32, 32), 3, true);
 */
     //auto ripple = Ripple3D::create(60, Size(32, 32), visibleSize / 2, 800, 10, 50);
+=======
+    auto ripple = Ripple3D::create(60, Size(32, 32), visibleSize / 2, 800, 5, 20);
+>>>>>>> origin/Planaria-Redesign
     
 //>>>>>>> origin/Planaria-Redesign
 =======
@@ -144,12 +153,16 @@ bool HelloWorld::init()
 =======
     //nodeGrid->runAction(Liquid::create(2, Size(32, 32), 1, 20));
 <<<<<<< HEAD
+<<<<<<< HEAD
     nodeGrid->runAction(RepeatForever::create((Sequence*)Sequence::create(ripple, lens, NULL)));
 >>>>>>> origin/Planaria-Redesign
 =======
 >>>>>>> c222752ad5a4bea24e4f8ba6baa1f349b759f2c1
 =======
     //nodeGrid->runAction(RepeatForever::create((Sequence*)Sequence::create(ripple, NULL)));
+=======
+    nodeGrid->runAction(RepeatForever::create((Sequence*)Sequence::create(ripple, NULL)));
+>>>>>>> origin/Planaria-Redesign
     nodeGrid->setName("node");
 >>>>>>> origin/Planaria-Redesign
 
@@ -171,6 +184,27 @@ bool HelloWorld::init()
         pl3->setPosition(visibleSize.width * getNext(), visibleSize.height * getNext());
     }
 
+    /*for (auto child : skill1->getGroup()->getChildren()) {
+        log("%f", ((UnitBase *)child)->getPosition().x);
+    }*/
+
+    //skill1->setPosition(256, 32);
+
+    //skill2->setPosition(320, 32);
+
+    auto systemUI = AreaUI::create();
+
+    SpriteBatchNode *profile = SpriteBatchNode::create("sprite.png");
+    auto sp1 = Sprite::createWithSpriteFrameName("chat-circle.png");
+    profile->addChild(sp1);
+
+    auto sp2 = Sprite::createWithSpriteFrameName("chat-man.png");
+    profile->addChild(sp2);
+
+    profile->setPosition(40, 40);
+
+    this->addChild(profile);
+
     auto skill1 = roseKnife::create();
     auto skill2 = scoopPot::create();
 
@@ -185,6 +219,7 @@ bool HelloWorld::init()
 
     skill1->turnOn();
 
+<<<<<<< HEAD
     /*for (auto child : skill1->getGroup()->getChildren()) {
         log("%f", ((UnitBase *)child)->getPosition().x);
     }*/
@@ -199,6 +234,51 @@ bool HelloWorld::init()
 
     this->addChild(Area::coinLabel);
 
+=======
+    /////////////////////////////
+    // 2. add a menu item with "X" image, which is clicked to quit the program
+    //    you may modify it.
+
+    // add a "close" icon to exit the progress. it's an autorelease object
+    /*auto knifeSkillOff = MenuItemImage::create(
+        "weapon/rose-knife-off.png",
+        "weapon/rose-knife-off.png",
+        NULL,
+        NULL);
+
+    auto knifeSkillOn = MenuItemImage::create(
+        "weapon/rose-knife-on.png",
+        "weapon/rose-knife-on.png",
+        NULL,
+        NULL);
+
+    auto roseKnife = MenuItemToggle::createWithCallback(CC_CALLBACK_1(HelloWorld::weaponMenuCallback, this), knifeSkillOff, knifeSkillOn, NULL);
+    roseKnife->setName("roseKnife");
+
+    auto scoopOff = MenuItemImage::create(
+        "weapon/scoop-pot-off.png",
+        "weapon/scoop-pot-off.png",
+        NULL,
+        NULL);
+
+    auto scoopOn = MenuItemImage::create(
+        "weapon/scoop-pot-on.png",
+        "weapon/scoop-pot-on.png",
+        NULL,
+        NULL);
+
+    auto scoopPot = MenuItemToggle::createWithCallback(CC_CALLBACK_1(HelloWorld::weaponMenuCallback, this), scoopOff, scoopOn, NULL);
+    scoopPot->setName("scoopPot");
+
+    // create menu, it's an autorelease object
+    auto menu = Menu::create(roseKnife, scoopPot, NULL);
+    menu->setPosition(128, 64);
+    this->addChild(menu, 1);
+    menu->setTag(_WEAPON_);
+    menu->alignItemsHorizontally();
+
+    roseKnife->activate();*/
+>>>>>>> origin/Planaria-Redesign
 
     /*
     // 3. add your codes below...

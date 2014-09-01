@@ -470,8 +470,6 @@ void Planaria::cutBody(const Vec2 &pos) {
 void Planaria::becomeCoin() {
     Area::humanCoin += 10;
 
-    Area::coinLabel->setString(std::to_string((int)Area::humanCoin) + " Coin");
-
     for (auto segment : plTail) {
         auto particle = ParticleFlower::create();
         auto texture = Director::getInstance()->getTextureCache()->addImage("stars.png");

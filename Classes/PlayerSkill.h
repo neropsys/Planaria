@@ -27,6 +27,8 @@ public:
     CREATE_FUNC2(scoopPot);
 protected:
 
+    virtual void Init();
+
     virtual void activeSkill();
     virtual void Render();
 };

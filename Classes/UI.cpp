@@ -52,14 +52,31 @@ SkillSlot::SkillSlot() {
 SkillSlot::~SkillSlot() {
 }
 
-void SkillSlot::Init() {
+void SkillSlot::Init(const string &iconName = string()) {
     UnitBase::Init();
 
-    btnModel = DrawNode::create();
-
-    UnitBase::layer->addChild(btnModel);
-
     oDir = Director::getInstance();
+
+    skillDisp = SpriteBatchNode::create("sprite.png");
+    skillDisp->setGlobalZOrder(Z_UI);
+
+    UnitBase::layer->addChild(skillDisp);
+
+    skillBorder = Sprite::createWithSpriteFrameName("border-polygon.png");
+    
+    skillIcon = Sprite::createWithSpriteFrameName(iconName);
+    skillDisp->addChild(skillIcon);
+
+    skillDisp->addChild(skillBorder);
+    skillDisp->setPosition(this->getPosition());
+
+    dispColor = Color3B(255, 255, 255);
+
+    skillLabel = LabelTTF::create(skillName, UI_FONT, 14.f);
+    skillLabel->setPosition(skillDisp->getPositionX(), skillDisp->getPositionY() - btnRadius - 10.f);
+    skillLabel->setGlobalZOrder(Z_UI);
+    skillLabel->setLocalZOrder(Z_UI);
+    UnitBase::layer->addChild(skillLabel, Z_UI);
 }
 
 void SkillSlot::Run() {
@@ -119,23 +136,34 @@ void SkillSlot::passiaveSkill() {
 }
 
 void SkillSlot::Render() {
-    btnModel->clear();
+    dispColor = Color3B(255, 255, 255);
 
-    Color4F btnColor = Color4F(1.f, 1.f, 1.f, 1.f);
-
-    if (this->isActivated()) {
-        btnColor = Color4F(1.f, 0.f, 0.f, 1.f);
+    if (isActivated()) {
+        dispColor = Color3B(100, 100, 255);
     }
 
     if (coolTime > 0) {
-        btnColor = Color4F(0.3f, 0.3f, 0.3f, 1.f);
+        dispColor = Color3B(100, 100, 100);
     }
 
-    btnModel->drawDot(this->getPosition(), this->btnRadius, btnColor);
+    skillBorder->setColor(dispColor);
+    if (skillIcon != nullptr) {
+        skillIcon->setColor(dispColor);
+    }
+
+    skillLabel->setString(skillName);
+
+    //skillLabel->setFontFillColor(dispColor);
+    //skillLabel->setColor(dispColor);
 }
 
 void SkillSlot::Dead() {
-    UnitBase::layer->removeChild(btnModel);
+    UnitBase::layer->removeChild(skillBorder);
+    UnitBase::layer->removeChild(skillLabel);
+    if (skillIcon != nullptr) {
+        UnitBase::layer->removeChild(skillIcon);
+    }
+    UnitBase::layer->removeChild(skillDisp);
 }
 
 float SkillSlot::getSize() {
@@ -177,4 +205,37 @@ SkillSlot *SkillSlot::create() {
 
 bool SkillSlot::isActivated() {
     return actState;
+}
+
+void AreaUI::Init() {
+    UnitBase::Init();
+
+    areaDisp = SpriteBatchNode::create("sprite.png");
+
+    UnitBase::layer->addChild(areaDisp, Z_UI);
+
+    borderTop = Sprite::createWithSpriteFrameName("area-border-top.png");
+    borderBottom = Sprite::createWithSpriteFrameName("area-border-bottom.png");
+    borderLeft = Sprite::createWithSpriteFrameName("area-border-left.png");
+    borderRight = Sprite::createWithSpriteFrameName("area-border-right.png");
+
+    areaDisp->addChild(borderTop);
+    areaDisp->addChild(borderBottom);
+    areaDisp->addChild(borderLeft);
+    areaDisp->addChild(borderRight);
+
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+    auto cFrame = SpriteFrameCache::getInstance();
+
+    auto topRect = cFrame->getSpriteFrameByName("area-border-top.png")->getRect();
+    borderTop->setPosition(visibleSize.width / 2, visibleSize.height - topRect.size.height / 2);
+
+    auto bottomRect = cFrame->getSpriteFrameByName("area-border-bottom.png")->getRect();
+    borderBottom->setPosition(visibleSize.width / 2, bottomRect.size.height / 2);
+
+    auto leftRect = cFrame->getSpriteFrameByName("area-border-left.png")->getRect();
+    borderLeft->setPosition(leftRect.size.width / 2, visibleSize.height / 2);
+
+    auto rightRect = cFrame->getSpriteFrameByName("area-border-left.png")->getRect();
+    borderRight->setPosition(visibleSize.width - rightRect.size.width / 2, visibleSize.height / 2);
 }

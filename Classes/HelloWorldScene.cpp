@@ -119,13 +119,6 @@ bool HelloWorld::init()
         pl3->setPosition(visibleSize.width * getNext(), visibleSize.height * getNext());
     }
 
-    /*for (auto child : skill1->getGroup()->getChildren()) {
-        log("%f", ((UnitBase *)child)->getPosition().x);
-    }*/
-
-    //skill1->setPosition(256, 32);
-
-    //skill2->setPosition(320, 32);
 
     auto systemUI = AreaUI::create();
 
@@ -145,16 +138,18 @@ bool HelloWorld::init()
 
     auto skillGroup = RadioGroup::create();
 
+	skillSceneButton = new skillSceneBtn();
+	skillSceneButton->setGlobalZOrder(100);
+	this->addChild(skillSceneButton);
+
     skillGroup->addChild(skill1);
     skillGroup->addChild(skill2);
-
-    skillGroup->setPosition(256, 48);
+	skillGroup->setPosition(256, 48);
 
     skillGroup->alignItems();
 
     skill1->turnOn();
 
-	skillSceneButton = new skillSceneBtn();
     Area::coinLabel = LabelTTF::create("0", "Segoe UI", 36);
     Area::coinLabel->setPosition(128, visibleSize.height - 32);
     Area::coinLabel->setHorizontalAlignment(TextHAlignment::LEFT);

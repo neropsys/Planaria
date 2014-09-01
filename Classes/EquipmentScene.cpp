@@ -3,10 +3,7 @@
 #include "TechTreeSceneTemplate.h"
 USING_NS_CC;
 Scene* EquipmentScene::createScene(){
-	auto scene = Scene::create();
-	auto layer = EquipmentScene::create();
-	scene->addChild(layer);
-	return scene;
+	INIT_SCENE(EquipmentScene);
 }
 bool EquipmentScene::init(){
 	if (!Layer::init()){
@@ -31,15 +28,7 @@ bool EquipmentScene::onTouchBegan(Touch* touch, Event* event){
 	return true;
 }
 void EquipmentScene::onEnter(){
-	Layer::onEnter();
-	auto listener = EventListenerTouchOneByOne::create();
-
-	listener->setSwallowTouches(true);
-	listener->onTouchBegan = CC_CALLBACK_2(EquipmentScene::onTouchBegan, this);
-
-	_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
-
-	auto mouseBinder = EventListenerMouse::create();
+	INIT_LISTENER(EquipmentScene);
 }
 void EquipmentScene::onExit() {
 	_eventDispatcher->removeEventListenersForType(EventListener::Type::TOUCH_ONE_BY_ONE);

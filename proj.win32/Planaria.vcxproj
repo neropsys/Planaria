@@ -141,11 +141,11 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\ConstructionScene.cpp" />
     <ClCompile Include="..\Classes\EquipmentScene.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
+    <ClCompile Include="..\Classes\IconCreator.cpp" />
     <ClCompile Include="..\Classes\Mouse.cpp" />
     <ClCompile Include="..\Classes\Planaria.cpp" />
     <ClCompile Include="..\Classes\PlanariaUnits.cpp" />
     <ClCompile Include="..\Classes\PlayerSkill.cpp" />
-    <ClCompile Include="..\Classes\SkillUpgradeScene.cpp" />
     <ClCompile Include="..\Classes\UI.cpp" />
     <ClCompile Include="..\Classes\unit.cpp" />
     <ClCompile Include="..\Classes\UnitBase.cpp" />
@@ -159,11 +159,11 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\ConstructionScene.h" />
     <ClInclude Include="..\Classes\EquipmentScene.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
+    <ClInclude Include="..\Classes\IconCreator.h" />
     <ClInclude Include="..\Classes\Mouse.h" />
     <ClInclude Include="..\Classes\Planaria.h" />
     <ClInclude Include="..\Classes\PlanariaUnits.h" />
     <ClInclude Include="..\Classes\PlayerSkill.h" />
-    <ClInclude Include="..\Classes\SkillUpgradeScene.h" />
     <ClInclude Include="..\Classes\TechTreeSceneTemplate.h" />
     <ClInclude Include="..\Classes\UI.h" />
     <ClInclude Include="..\Classes\unit.h" />

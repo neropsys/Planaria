@@ -136,8 +136,7 @@ void SkillSlot::Render() {
 
     skillLabel->setString(skillName);
 
-    //skillLabel->setFontFillColor(dispColor);
-    //skillLabel->setColor(dispColor);
+   
 }
 
 void SkillSlot::Dead() {

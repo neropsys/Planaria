@@ -1,5 +1,5 @@
 #include "PlayerSkill.h"
-#include "SkillUpgradeScene.h"
+#include "CollectionScene.h"
 USING_NS_CC;
 
 Texture2D *roseKnife::starGraphic;
@@ -131,14 +131,14 @@ skillSceneBtn::skillSceneBtn(){
 	skillButtonSprite = Sprite::create("skillbutton.png");
 	skillButtonSprite->setAnchorPoint(Vec2::ANCHOR_BOTTOM_RIGHT);
 	skillButtonSprite->setPosition(visibleSize.width, 0);
-	layer->addChild(skillButtonSprite);
+	layer->addChild(skillButtonSprite, 101);
 }
 skillSceneBtn::~skillSceneBtn(){
 
 }
 void skillSceneBtn::gotoScene(){
 	if (skillButtonSprite->getBoundingBox().containsPoint(Mouse::getPoint())){
-		auto skillScene = SkillUpgradeScene::createScene();
+		auto skillScene = CollectionScene::createScene();
 		Director::getInstance()->pushScene(skillScene);
 	}
 }

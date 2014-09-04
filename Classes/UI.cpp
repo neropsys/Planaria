@@ -248,3 +248,7 @@ void Icon::create(const std::string& outerName, const std::string& innerName, Sp
 Vec2 Icon::locationForLogo(){
 	return Vec2(Node::convertToWorldSpace(outerSymbol->getPosition()));
 }
+bool Icon::isTouched(const Vec2* touchPt){
+	bool temp = outerSymbol->getBoundingBox().containsPoint(*touchPt);//cannot access outerSymbol
+	return temp;
+}

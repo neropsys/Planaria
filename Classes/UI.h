@@ -112,6 +112,7 @@ public:
 	~Icon();
 	void create(const std::string& outerName, const std::string& innerName, cocos2d::SpriteBatchNode** batch);
 	cocos2d::Vec2 locationForLogo();
+	bool isTouched(const cocos2d::Vec2* touchPt);
 private:
 	cocos2d::Sprite* outerSymbol;
 	cocos2d::Sprite* innerSymbol;

@@ -18,4 +18,5 @@
 	auto layer = __SCENE_NAME__::create();\
 	scene->addChild(layer);\
 	return scene;
+
 //Additional function used on tech tree skill scenes may be added here in the future

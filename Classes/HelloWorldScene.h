@@ -33,7 +33,7 @@ public:
     void Mainloop(float);
 
     float getNext();
-	skillSceneBtn* skillSceneButton;
+	SkillSceneBtn* skillSceneButton;
 
 protected:
 

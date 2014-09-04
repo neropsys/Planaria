@@ -40,7 +40,6 @@
     <ClCompile Include="..\Classes\CollectionScene.cpp">
       <Filter>Scenes\AquariumUpgrade</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\IconCreator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -85,13 +84,9 @@
     <ClInclude Include="..\Classes\TechTreeSceneTemplate.h">
       <Filter>Scenes\AquariumUpgrade</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\IconCreator.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="UI">
@@ -112,5 +107,8 @@
     <Filter Include="Scenes\AquariumUpgrade">
       <UniqueIdentifier>{2fe46633-95d2-4f9c-921f-bca00e4e1207}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram2.cd" />
   </ItemGroup>
 </Project>

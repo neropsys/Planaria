@@ -2,16 +2,16 @@
 #include "CollectionScene.h"
 USING_NS_CC;
 
-Texture2D *roseKnife::starGraphic;
+Texture2D *RoseKnife::starGraphic;
 
-roseKnife::roseKnife() {
+RoseKnife::RoseKnife() {
 }
 
-roseKnife::~roseKnife() {
+RoseKnife::~RoseKnife() {
 }
 
-roseKnife *roseKnife::create() {
-    auto unit = new roseKnife();
+RoseKnife *RoseKnife::create() {
+    auto unit = new RoseKnife();
 
     if (unit)
     {
@@ -27,7 +27,7 @@ roseKnife *roseKnife::create() {
     return unit;
 }
 
-void roseKnife::Init() {
+void RoseKnife::Init() {
     UnitBase::Init();
 
     SkillSlot::Init("knife.png");
@@ -37,13 +37,13 @@ void roseKnife::Init() {
     skillName = "Incise";
 }
 
-void roseKnife::Render() {
+void RoseKnife::Render() {
     SkillSlot::Render();
 
     skillIcon->setColor(dispColor);
 }
 
-void roseKnife::activeSkill() {
+void RoseKnife::activeSkill() {
     if (!Mouse::isDown()) {
         lastPoint = Vec2::ZERO;
         return;
@@ -103,13 +103,13 @@ void roseKnife::activeSkill() {
     lastPoint = Mouse::getPoint();
 }
 
-void scoopPot::Init() {
+void ScoopPot::Init() {
     skillName = "Collect";
 
     SkillSlot::Init("scoop-pot.png");
 }
 
-void scoopPot::activeSkill() {
+void ScoopPot::activeSkill() {
     if (!Mouse::isDown()) return;
 
     Vec2 tPos = Mouse::getPoint();
@@ -121,22 +121,22 @@ void scoopPot::activeSkill() {
     }
 }
 
-void scoopPot::Render() {
+void ScoopPot::Render() {
     SkillSlot::Render();
 
     skillIcon->setColor(dispColor);
 }
-skillSceneBtn::skillSceneBtn(){
+SkillSceneBtn::SkillSceneBtn(){
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	skillButtonSprite = Sprite::create("skillbutton.png");
 	skillButtonSprite->setAnchorPoint(Vec2::ANCHOR_BOTTOM_RIGHT);
 	skillButtonSprite->setPosition(visibleSize.width, 0);
 	layer->addChild(skillButtonSprite, 101);
 }
-skillSceneBtn::~skillSceneBtn(){
+SkillSceneBtn::~SkillSceneBtn(){
 
 }
-void skillSceneBtn::gotoScene(){
+void SkillSceneBtn::gotoScene(){
 	if (skillButtonSprite->getBoundingBox().containsPoint(Mouse::getPoint())){
 		auto skillScene = CollectionScene::createScene();
 		Director::getInstance()->pushScene(skillScene);

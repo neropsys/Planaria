@@ -228,3 +228,23 @@ UtilityButton::~UtilityButton(){
 }
 void UtilityButton::create(){}
 void UtilityButton::gotoScene(cocos2d::Ref* pSender){}
+
+
+Icon::~Icon(){
+
+}
+Icon::Icon(){
+
+}
+void Icon::create(const std::string& outerName, const std::string& innerName, SpriteBatchNode** batch){
+	outerSymbol = Sprite::createWithSpriteFrameName(outerName);
+	outerSymbol->setName("outerSymbol");
+	(*batch)->addChild(outerSymbol);
+
+	innerSymbol = Sprite::createWithSpriteFrameName(innerName);
+	innerSymbol->setName("innerSymbol");
+	(*batch)->addChild(innerSymbol);
+}
+Vec2 Icon::locationForLogo(){
+	return Vec2(Node::convertToWorldSpace(outerSymbol->getPosition()));
+}

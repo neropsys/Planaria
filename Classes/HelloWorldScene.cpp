@@ -133,12 +133,12 @@ bool HelloWorld::init()
 
     this->addChild(profile);
 
-    auto skill1 = roseKnife::create();
-    auto skill2 = scoopPot::create();
+    auto skill1 = RoseKnife::create();
+    auto skill2 = ScoopPot::create();
 
     auto skillGroup = RadioGroup::create();
 
-	skillSceneButton = new skillSceneBtn();
+	skillSceneButton = new SkillSceneBtn();
 	skillSceneButton->setGlobalZOrder(100);
 	this->addChild(skillSceneButton);
 

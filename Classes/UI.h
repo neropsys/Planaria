@@ -1,6 +1,7 @@
 #include "cocos2d.h"
 #include "UnitBase.h"
 #include "Mouse.h"
+#pragma once
 
 #define UI_FONT "Segoe UI"
 #define SCRIPT_FONT "Comic Sans MS"
@@ -103,4 +104,17 @@ public:
 protected:
 	virtual void gotoScene(cocos2d::Ref* pSender);
 
+};
+
+class Icon : public cocos2d::Node{
+public:
+	Icon();
+	~Icon();
+	void create(const std::string& outerName, const std::string& innerName, cocos2d::SpriteBatchNode** batch);
+	cocos2d::Vec2 locationForLogo();
+private:
+	cocos2d::Sprite* outerSymbol;
+	cocos2d::Sprite* innerSymbol;
+	cocos2d::LabelTTF* iconLogo;
+	float logoSize;
 };

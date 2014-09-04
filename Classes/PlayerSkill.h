@@ -2,12 +2,12 @@
 #include "cocos2d.h"
 #include "Planaria.h"
 
-class roseKnife : public SkillSlot {
+class RoseKnife : public SkillSlot {
 public:
-    roseKnife();
-    ~roseKnife();
+    RoseKnife();
+    ~RoseKnife();
 
-    static roseKnife *create();
+    static RoseKnife *create();
 
 protected:
     static cocos2d::Texture2D *starGraphic;
@@ -22,9 +22,9 @@ protected:
     virtual void Render();
 };
 
-class scoopPot : public SkillSlot {
+class ScoopPot : public SkillSlot {
 public:
-    CREATE_FUNC2(scoopPot);
+    CREATE_FUNC2(ScoopPot);
 protected:
 
     virtual void Init();
@@ -32,10 +32,10 @@ protected:
     virtual void activeSkill();
     virtual void Render();
 };
-class skillSceneBtn : public UtilityButton{
+class SkillSceneBtn : public UtilityButton{
 public:
-	skillSceneBtn();
-	~skillSceneBtn();
+	SkillSceneBtn();
+	~SkillSceneBtn();
 	void gotoScene();
 private:
 	cocos2d::Sprite* skillButtonSprite;

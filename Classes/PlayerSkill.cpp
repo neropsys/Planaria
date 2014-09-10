@@ -4,6 +4,7 @@ USING_NS_CC;
 
 Texture2D *RoseKnife::starGraphic;
 
+<<<<<<< HEAD
 RoseKnife::RoseKnife() {
 }
 
@@ -29,6 +30,10 @@ RoseKnife *RoseKnife::create() {
 
 void RoseKnife::Init() {
     UnitBase::Init();
+=======
+void roseKnife::Init() {
+    UIBase::Init();
+>>>>>>> origin/Planaria-Redesign
 
     SkillSlot::Init("knife.png");
 
@@ -48,6 +53,8 @@ void RoseKnife::activeSkill() {
         lastPoint = Vec2::ZERO;
         return;
     }
+
+    Area::stamina -= 0.5f;
 
     Vec2 tPos = Mouse::getPoint();
 
@@ -90,7 +97,7 @@ void RoseKnife::activeSkill() {
 
             particle->setDuration(0.02f);
 
-            UnitBase::layer->addChild(particle);
+            UIBase::layer->addChild(particle);
         }
     }
 
@@ -109,7 +116,13 @@ void ScoopPot::Init() {
     SkillSlot::Init("scoop-pot.png");
 }
 
+<<<<<<< HEAD
 void ScoopPot::activeSkill() {
+=======
+void scoopPot::activeSkill() {
+    //log("%f, %f", this->getPositionX(), this->getPositionY());
+
+>>>>>>> origin/Planaria-Redesign
     if (!Mouse::isDown()) return;
 
     Vec2 tPos = Mouse::getPoint();

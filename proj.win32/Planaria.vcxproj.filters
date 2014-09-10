@@ -19,9 +19,12 @@
     <ClCompile Include="..\Classes\PlanariaUnits.cpp">
       <Filter>Unit\Planaria</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="..\Classes\Mouse.cpp">
       <Filter>Mouse</Filter>
     </ClCompile>
+=======
+>>>>>>> origin/Planaria-Redesign
     <ClCompile Include="..\Classes\UnitBase.cpp">
       <Filter>Unit</Filter>
     </ClCompile>
@@ -39,6 +42,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\CollectionScene.cpp">
       <Filter>Scenes\AquariumUpgrade</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Mouse.cpp">
+      <Filter>Classes\Mouse</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

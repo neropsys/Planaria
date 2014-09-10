@@ -22,8 +22,12 @@ float HelloWorld::getNext() {
 }
 
 void HelloWorld::Mainloop(float f) {
-    UnitBase::Mainloop();
+    UIBase::Mainloop();
 
+    
+    //log("%d", stat3);
+
+    statStamina->setProfileImgRate(Area::stamina / 100);
     /*NodeGrid *nodeGrid = (NodeGrid *)getChildByName("node");
 
     auto size = Size(32, 32);
@@ -96,6 +100,8 @@ bool HelloWorld::init()
 
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("sprite.plist");
 
+    UIBase::Initialize(this);
+
     auto bgimage = Sprite::create("background/fishtank.png");
     bgimage->setPosition(visibleSize / 2);
     bgimage->setScale(1.35f);
@@ -121,16 +127,12 @@ bool HelloWorld::init()
 
     this->addChild(nodeGrid);
 
-    UnitBase::Initialize(this);
-
-    this->schedule(schedule_selector(HelloWorld::Mainloop));
-
     for (int i = 0; i < 5; i++) {
-        RainbowPlanaria *pl = RainbowPlanaria::create();
+        //RainbowPlanaria *pl = RainbowPlanaria::create();
         NormalPlanaria *pl2 = NormalPlanaria::create();
         ExtendedPlanaria *pl3 = ExtendedPlanaria::create();
-        pl->setMove(getNext() * 360, 1);
-        pl->setPosition(visibleSize.width * getNext(), visibleSize.height * getNext());
+        //pl->setMove(getNext() * 360, 1);
+        //pl->setPosition(visibleSize.width * getNext(), visibleSize.height * getNext());
         pl2->setMove(getNext() * 360, 1);
         pl2->setPosition(visibleSize.width * getNext(), visibleSize.height * getNext());
         pl3->setMove(getNext() * 360, 1);
@@ -147,30 +149,42 @@ bool HelloWorld::init()
 
     auto systemUI = AreaUI::create();
 
-    SpriteBatchNode *profile = SpriteBatchNode::create("sprite.png");
-    auto sp1 = Sprite::createWithSpriteFrameName("chat-circle.png");
-    profile->addChild(sp1);
-
-    auto sp2 = Sprite::createWithSpriteFrameName("chat-man.png");
-    profile->addChild(sp2);
-
-    profile->setPosition(40, 40);
-
-    this->addChild(profile);
-
     auto skill1 = roseKnife::create();
     auto skill2 = scoopPot::create();
 
-    auto skillGroup = RadioGroup::create();
+    auto skillGroup = systemUI->getSkillGroup();
 
     skillGroup->addChild(skill1);
     skillGroup->addChild(skill2);
 
-    skillGroup->setPosition(256, 48);
-
     skillGroup->alignItems();
 
     skill1->turnOn();
+
+    auto statGroup = systemUI->getStatGroup();
+
+    auto profileTest = Profile::create("chat-man.png");
+
+    statGold = Profile::create("coin.png");
+
+    statPPM = Profile::create("ppm.png");
+
+    statStamina = Profile::create("stamina.png");
+
+    //log("%s", stat3->getName().c_str());
+
+    statGroup->addChild(profileTest);
+    statGroup->addChild(statGold);
+    statGroup->addChild(statPPM);
+    statGroup->addChild(statStamina);
+
+    auto txt = statGold->getLabel();
+
+    txt->setString("fewfw");
+
+    statGroup->alignItems();
+
+    this->schedule(schedule_selector(HelloWorld::Mainloop));
 
     /////////////////////////////
     // 2. add a menu item with "X" image, which is clicked to quit the program

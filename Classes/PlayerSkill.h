@@ -1,13 +1,11 @@
 #include "UI.h"
 #include "cocos2d.h"
 #include "Planaria.h"
+#include "Area.h"
 
 class roseKnife : public SkillSlot {
 public:
-    roseKnife();
-    ~roseKnife();
-
-    static roseKnife *create();
+    CREATE_FUNC5(roseKnife);
 
 protected:
     static cocos2d::Texture2D *starGraphic;
@@ -24,7 +22,7 @@ protected:
 
 class scoopPot : public SkillSlot {
 public:
-    CREATE_FUNC2(scoopPot);
+    CREATE_FUNC5(scoopPot);
 protected:
 
     virtual void Init();

@@ -57,9 +57,6 @@
     <ClCompile Include="..\Classes\Area.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Mouse.cpp">
-      <Filter>Classes\Mouse</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\UnitBase.cpp">
       <Filter>Classes\Unit</Filter>
     </ClCompile>
@@ -68,6 +65,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\PlayerSkill.cpp">
       <Filter>Classes\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Mouse.cpp">
+      <Filter>Classes\Mouse</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -4,31 +4,8 @@ USING_NS_CC;
 
 Texture2D *roseKnife::starGraphic;
 
-roseKnife::roseKnife() {
-}
-
-roseKnife::~roseKnife() {
-}
-
-roseKnife *roseKnife::create() {
-    auto unit = new roseKnife();
-
-    if (unit)
-    {
-        unit->autorelease();
-    }
-    else
-    {
-        CC_SAFE_DELETE(unit);
-    }
-
-    UnitBase::newUnit.pushBack(unit);
-
-    return unit;
-}
-
 void roseKnife::Init() {
-    UnitBase::Init();
+    UIBase::Init();
 
     SkillSlot::Init("knife.png");
 
@@ -48,6 +25,8 @@ void roseKnife::activeSkill() {
         lastPoint = Vec2::ZERO;
         return;
     }
+
+    Area::stamina -= 0.5f;
 
     Vec2 tPos = Mouse::getPoint();
 
@@ -90,7 +69,7 @@ void roseKnife::activeSkill() {
 
             particle->setDuration(0.02f);
 
-            UnitBase::layer->addChild(particle);
+            UIBase::layer->addChild(particle);
         }
     }
 
@@ -110,6 +89,8 @@ void scoopPot::Init() {
 }
 
 void scoopPot::activeSkill() {
+    //log("%f, %f", this->getPositionX(), this->getPositionY());
+
     if (!Mouse::isDown()) return;
 
     Vec2 tPos = Mouse::getPoint();

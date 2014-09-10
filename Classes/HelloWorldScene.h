@@ -39,6 +39,8 @@ public:
 
 protected:
 
+    Profile *statGold, *statPPM, *statStamina;
+
     int t = 0;
 
 };

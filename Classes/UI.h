@@ -11,23 +11,54 @@
 #define Z_UNIT 10
 #define Z_BACK 0
 
-class SlotGroup : public UnitBase {
-public:
-    SlotGroup();
-    ~SlotGroup();
+#define CREATE_FUNC4(__TYPE_NAME__) static __TYPE_NAME__ *create() { auto unit = new __TYPE_NAME__(); if (unit) { unit->autorelease(); } else { CC_SAFE_DELETE(unit); } UIBase::UIQueue.pushBack(unit); return unit; };
+#define CREATE_FUNC5(__TYPE_NAME__) __TYPE_NAME__() {}; ~__TYPE_NAME__() {}; static __TYPE_NAME__ *create() { auto unit = new __TYPE_NAME__(); if (unit) { unit->autorelease(); } else { CC_SAFE_DELETE(unit); } UIBase::UIQueue.pushBack(unit); return unit; };
 
-    CREATE_FUNC(SlotGroup);
+class UIBase : public cocos2d::Node {
+public:
+    UIBase();
+
+    static void Initialize(cocos2d::Layer *layer);
+    static void Mainloop();
+
+    static cocos2d::Layer getLayer();
+
+    cocos2d::Size &getBoxModel();
+    cocos2d::Size &setBoxModel(const cocos2d::Size &size);
+
+protected:
+    static cocos2d::Vector<UIBase *> UIQueue, UICont, UIDead;
+
+    static cocos2d::Layer *layer;
+
+    virtual void Init();
+    virtual void Render();
+    virtual void Run();
+    virtual void Dead();
+    virtual void Click();
+    virtual void Drag();
+
+    cocos2d::Size boxModel;
+};
+
+class SlotGroup : public UIBase {
+public:
+    CREATE_FUNC5(SlotGroup);
 
     void alignItems();
 
-    float margin = 10.f;
+    cocos2d::Vec2 &getNextPosition();
+
+    virtual void addChildWithAction(cocos2d::Node *child);
 protected:
+
+    float margin = 10.f;
 };
 
 class RadioGroup :public SlotGroup {
 public:
     //static RadioSlot *create();
-    CREATE_FUNC2(RadioGroup);
+    CREATE_FUNC5(RadioGroup);
 
     virtual void addChild(cocos2d::Node *child);
 
@@ -35,12 +66,12 @@ public:
 protected:
 };
 
-class SkillSlot : public UnitBase {
+class SkillSlot : public UIBase {
 public:
     SkillSlot();
-    virtual ~SkillSlot();
+    ~SkillSlot();
 
-    static SkillSlot *create();
+    CREATE_FUNC4(SkillSlot);
 
     void turnOn();
     void turnOff();
@@ -49,8 +80,6 @@ public:
 
     void setCoolTime(float);
 
-    virtual float getSize();
-
     void setGroup(RadioGroup *);
     RadioGroup *getGroup();
 
@@ -58,17 +87,15 @@ protected:
     virtual void Init(const string &iconName);
     virtual void Run();
     virtual void Dead();
+    virtual void Click();
+    virtual void Render();
 
     virtual void activeSkill();
     virtual void passiaveSkill();
 
-    virtual void Render();
-
     bool actState = false;
 
     float coolTime = 0.f;
-
-    float btnRadius = 24.f;
 
     string skillName;
 
@@ -81,12 +108,21 @@ protected:
     RadioGroup *radioGroup;
 };
 
-class AreaUI : public UnitBase {
+class AreaUI : public UIBase {
 public:
-    CREATE_FUNC3(AreaUI);
+    AreaUI();
+    virtual ~AreaUI();
+    
+    CREATE_FUNC4(AreaUI);
+
+    RadioGroup *getSkillGroup();
+    SlotGroup *getNavGroup();
+    SlotGroup *getStatGroup();
 
 protected:
     virtual void Init();
+    virtual void Dead();
+    virtual void Run();
 
     cocos2d::SpriteBatchNode *areaDisp;
     cocos2d::Sprite *borderLeft, *borderRight, *borderTop, *borderBottom;
@@ -94,4 +130,36 @@ protected:
     RadioGroup *skillGroup;
     SlotGroup *navGroup;
     SlotGroup *statGroup;
+};
+
+class Profile : public UIBase {
+public:
+    Profile();
+    ~Profile();
+
+    CREATE_FUNC4(Profile);
+
+    static Profile *create(const string &profileImage);
+
+    cocos2d::LabelTTF *getLabel() { return profileText; }
+    cocos2d::Sprite *getProfileImg() { return profileImg; }
+
+    void setProfileImgRate(float rate);
+    float getProfileImgRate() { return profileImgRate; }
+
+protected:
+
+    virtual void Init();
+    virtual void Render();
+
+    cocos2d::SpriteBatchNode *profileDisp;
+    cocos2d::Sprite *profileCircle, *profileImg;
+
+    cocos2d::LabelTTF *profileText;
+
+    cocos2d::Size originalSize;
+    
+    float profileImgRate = 1.0f;
+
+    string profileImgName;
 };

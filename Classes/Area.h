@@ -5,7 +5,7 @@
 
 class Area : public cocos2d::Layer {
 public:
-    static float humanCoin;
+    static float humanCoin, ppm, stamina;
     static cocos2d::LabelTTF *coinLabel;
 
 protected:

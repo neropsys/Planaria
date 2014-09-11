@@ -90,9 +90,6 @@ void SlotGroup::alignItems() {
         dist += child->getBoxModel().width + margin;
     }
 }
-
-<<<<<<< HEAD
-=======
 Vec2 &SlotGroup::getNextPosition() {
     Vec2 nextPos;
     
@@ -103,24 +100,6 @@ void SlotGroup::addChildWithAction(cocos2d::Node *child) {
     Node::addChild(child);
 }
 
-/*RadioSlot *RadioSlot::create() {
-    auto unit = new RadioSlot();
-
-    if (unit)
-    {
-        unit->autorelease();
-    }
-    else
-    {
-        CC_SAFE_DELETE(unit);
-    }
-
-    UIBase::newUnit.pushBack(unit);
-
-    return unit;
-}*/
-
->>>>>>> origin/Planaria-Redesign
 void RadioGroup::addChild(Node *child)
 {
     Node::addChild(child);
@@ -238,23 +217,13 @@ void SkillSlot::Render() {
 
     skillLabel->setString(skillName);
 
-<<<<<<< HEAD
-   
-=======
     if (!(this->getPosition() - skillDisp->getPosition()).isZero()) {
         if (skillDisp->getNumberOfRunningActions() <= 0) {
             skillDisp->runAction(EaseOut::create(MoveTo::create(0.5f, this->getPosition()), 2.5f));
         }
     }
-
-    //skillDisp->setPosition(this->getPosition());
-
     skillLabel->setPosition(skillDisp->getPositionX(), skillDisp->getPositionY() - getBoxModel().height / 2 - 10.f);
-    //skillLabel->setFontFillColor(dispColor);
-    //skillLabel->setColor(dispColor);
-
-    //log("%f, %f", this->getPositionX(), this->getPositionY());
->>>>>>> origin/Planaria-Redesign
+    
 }
 
 void SkillSlot::Dead() {
@@ -285,13 +254,7 @@ void SkillSlot::turnOn() {
 bool SkillSlot::isActivated() {
     return actState;
 }
-<<<<<<< HEAD
-void AreaUI::Init() {
-    UnitBase::Init();
-=======
-
 AreaUI::AreaUI() {
->>>>>>> origin/Planaria-Redesign
 
     areaDisp = SpriteBatchNode::create("sprite.png");
 
@@ -321,8 +284,24 @@ AreaUI::AreaUI() {
 
     auto rightRect = cFrame->getSpriteFrameByName("area-border-left.png")->getRect();
     borderRight->setPosition(visibleSize.width - rightRect.size.width / 2, visibleSize.height / 2);
-<<<<<<< HEAD
+
+	navGroup = SlotGroup::create();
+	UIBase::layer->addChild(navGroup, Z_UI);
+
+	statGroup = SlotGroup::create();
+	UIBase::layer->addChild(statGroup, Z_UI);
+
+	skillGroup = RadioGroup::create();
+	UIBase::layer->addChild(skillGroup, Z_UI);
+
+	statGroup->setPosition(64, 48);
+	statGroup->alignItems();
+	
+	skillGroup->setPosition(-128, 54);
+	skillGroup->alignItems();
+
 }
+
 UtilityButton::UtilityButton(){
 
 }
@@ -331,7 +310,9 @@ UtilityButton::~UtilityButton(){
 }
 void UtilityButton::create(){}
 void UtilityButton::gotoScene(cocos2d::Ref* pSender){}
-
+void UtilityButton::Init(){}
+void UtilityButton::Dead(){}
+void UtilityButton::Run(){}
 
 Icon::~Icon(){
 
@@ -354,7 +335,6 @@ Vec2 Icon::locationForLogo(){
 bool Icon::isTouched(const Vec2* touchPt){
 	bool temp = outerSymbol->getBoundingBox().containsPoint(*touchPt);//cannot access outerSymbol
 	return temp;
-=======
 
     navGroup = SlotGroup::create();
     UIBase::layer->addChild(navGroup, Z_UI);
@@ -375,7 +355,6 @@ bool Icon::isTouched(const Vec2* touchPt){
 }
 
 AreaUI::~AreaUI() {
-
 }
 
 void AreaUI::Init() {
@@ -489,8 +468,5 @@ void Profile::Render() {
     editedRect.setRect(editedRect.getMinX(), editedRect.getMinY() + originalSize.height - editedRect.size.height, editedRect.size.width, editedRect.size.height);
 
     stat1sp->setTextureRect(editedRect);
-    //stat1sp->setAnchorPoint(Vec2(0, -originalSize.height - editedRect.size.height));
     stat1sp->setAnchorPoint(Vec2(0.5, 0.5 + 1 - profileImgRate));
-    //log("%f, %f", stat1sp->getAnchorPoint().x, stat1sp->getAnchorPoint().y);
->>>>>>> origin/Planaria-Redesign
 }

@@ -4,36 +4,8 @@ USING_NS_CC;
 
 Texture2D *RoseKnife::starGraphic;
 
-<<<<<<< HEAD
-RoseKnife::RoseKnife() {
-}
-
-RoseKnife::~RoseKnife() {
-}
-
-RoseKnife *RoseKnife::create() {
-    auto unit = new RoseKnife();
-
-    if (unit)
-    {
-        unit->autorelease();
-    }
-    else
-    {
-        CC_SAFE_DELETE(unit);
-    }
-
-    UnitBase::newUnit.pushBack(unit);
-
-    return unit;
-}
-
 void RoseKnife::Init() {
-    UnitBase::Init();
-=======
-void roseKnife::Init() {
     UIBase::Init();
->>>>>>> origin/Planaria-Redesign
 
     SkillSlot::Init("knife.png");
 
@@ -116,13 +88,8 @@ void ScoopPot::Init() {
     SkillSlot::Init("scoop-pot.png");
 }
 
-<<<<<<< HEAD
-void ScoopPot::activeSkill() {
-=======
-void scoopPot::activeSkill() {
-    //log("%f, %f", this->getPositionX(), this->getPositionY());
 
->>>>>>> origin/Planaria-Redesign
+void ScoopPot::activeSkill() {
     if (!Mouse::isDown()) return;
 
     Vec2 tPos = Mouse::getPoint();

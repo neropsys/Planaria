@@ -5,14 +5,7 @@
 
 class RoseKnife : public SkillSlot {
 public:
-<<<<<<< HEAD
-    RoseKnife();
-    ~RoseKnife();
-
-    static RoseKnife *create();
-=======
-    CREATE_FUNC5(roseKnife);
->>>>>>> origin/Planaria-Redesign
+    CREATE_FUNC5(RoseKnife);
 
 protected:
     static cocos2d::Texture2D *starGraphic;
@@ -29,11 +22,7 @@ protected:
 
 class ScoopPot : public SkillSlot {
 public:
-<<<<<<< HEAD
-    CREATE_FUNC2(ScoopPot);
-=======
-    CREATE_FUNC5(scoopPot);
->>>>>>> origin/Planaria-Redesign
+    CREATE_FUNC5(ScoopPot);
 protected:
 
     virtual void Init();

@@ -1,11 +1,7 @@
 #include "cocos2d.h"
 #include <cmath>
 #include <iostream>
-<<<<<<< HEAD
 #include <stdlib.h>
-=======
->>>>>>> origin/Planaria-Redesign
-
 #pragma once
 
 #define RAD(angle) angle * M_PI / 180

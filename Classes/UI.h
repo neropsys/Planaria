@@ -157,7 +157,9 @@ public:
 
 	static Profile *create(const string &profileImage);
 
-	cocos2d::LabelTTF *getLabel() { return profileText; }
+    cocos2d::LabelTTF *getLabel() { return profileText; }
+    cocos2d::LabelTTF *getName() { return profileName; }
+    cocos2d::Sprite *getProfileCircle() { return profileCircle; }
 	cocos2d::Sprite *getProfileImg() { return profileImg; }
 
 	void setProfileImgRate(float rate);
@@ -171,7 +173,7 @@ protected:
 	cocos2d::SpriteBatchNode *profileDisp;
 	cocos2d::Sprite *profileCircle, *profileImg;
 
-	cocos2d::LabelTTF *profileText;
+	cocos2d::LabelTTF *profileText, *profileName;
 
 	cocos2d::Size originalSize;
 
@@ -179,6 +181,7 @@ protected:
 
 	string profileImgName;
 };
+
 class UtilityButton : public UIBase{
 public:
 	UtilityButton();

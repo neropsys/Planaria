@@ -129,6 +129,8 @@ void Planaria::Run() {
         cutBody(Mouse::getPoint());
         }*/
 
+    Area::ppm += 0.03f;
+
     Recovery();
 
     moveBody();

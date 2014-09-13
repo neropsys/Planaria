@@ -25,7 +25,54 @@ void HelloWorld::Mainloop(float f) {
     UIBase::Mainloop();
 
     statStamina->setProfileImgRate(Area::stamina / 100);
-   
+
+    if (Area::stamina < 0) {
+        Area::isAmid = true;
+        Area::amidTime = 400.f;
+    }
+
+    auto statCircle = statStamina->getProfileCircle();
+
+    if (Area::isAmid) {
+
+        statCircle->setColor(Color3B(255, 40, 40));
+
+        if (Area::amidTime > 0) {
+            Area::amidTime -= 1.f;
+        }
+
+        if (Area::amidTime <= 0) {
+            Area::isAmid = false;
+            Area::amidTime = 0;
+        }
+    }
+    else {
+        statCircle->setColor(Color3B(255, 255, 255));
+    }
+
+    Area::stamina += 0.05f;
+
+    if (Area::stamina > 100) {
+        Area::stamina = 100;
+    }
+
+    auto ppmImg = statPPM->getProfileImg();
+
+    if (Area::ppm >= 100) {
+        ppmImg->setColor(Color3B(100, 255, 100));
+    }
+    else {
+        ppmImg->setColor(Color3B(255, 255, 255));
+    }
+
+    auto goldLb = statGold->getLabel();
+    goldLb->setString(to_string((int)Area::humanCoin));
+
+    auto ppmLb = statPPM->getLabel();
+    ppmLb->setString(to_string((int)Area::ppm));
+
+    auto statLb = statStamina->getLabel();
+    statLb->setString(to_string((int)Area::stamina) + " / 100");
 }
 
 void HelloWorld::onEnter() {
@@ -137,9 +184,16 @@ bool HelloWorld::init()
 
 	statPPM = Profile::create("ppm.png");
 
-	statStamina = Profile::create("stamina.png");
+    statStamina = Profile::create("stamina.png");
 
+    auto goldName = statGold->getName();
+    goldName->setString("Gold");
 
+    auto ppmName = statPPM->getName();
+    ppmName->setString("PPM");
+
+    auto statName = statStamina->getName();
+    statName->setString("Stamina");
 
 	statGroup->addChild(profileTest);
 	statGroup->addChild(statGold);

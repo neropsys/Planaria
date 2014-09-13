@@ -155,9 +155,9 @@ bool HelloWorld::init()
 	for (int i = 0; i < 5; i++) {
 		NormalPlanaria *pl2 = NormalPlanaria::create();
 		ExtendedPlanaria *pl3 = ExtendedPlanaria::create();
-		pl2->setMove(getNext() * 360, 1);
+		pl2->setMove(getNext() * 360, 0.5);
 		pl2->setPosition(visibleSize.width * getNext(), visibleSize.height * getNext());
-		pl3->setMove(getNext() * 360, 1);
+		pl3->setMove(getNext() * 360, 0.5);
 		pl3->setPosition(visibleSize.width * getNext(), visibleSize.height * getNext());
 	}
 

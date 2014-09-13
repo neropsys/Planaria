@@ -459,18 +459,24 @@ void Planaria::cutBody(const Vec2 &pos) {
     Vec2 *crashedPos = plTail[crashedSegment];
     float dividedLength = crashedSegment * getSegmentLength();
 
-    auto pl2 = Planaria::create();
-    pl2->setPosition(crashedPos->x, crashedPos->y);
-    pl2->bodyLength = bodyLength - dividedLength;
-    pl2->angle = angle - 20 + getNext() * 40;
+    if (dividedLength > bodyMaxLength / 3) {
+        auto pl2 = Planaria::create();
+        pl2->setPosition(crashedPos->x, crashedPos->y);
+        pl2->bodyLength = bodyLength - dividedLength;
+        pl2->angle = angle - 20 + getNext() * 40;
+
+        //pl->isHurted = true;
+        pl2->isHurted = true;
+    }
 
     this->bodyLength = dividedLength;
     this->isHurted = true;
 
-    //pl->isHurted = true;
-    pl2->isHurted = true;
-
     isHurted = true;
+
+    if (bodyLength < bodyMaxLength / 3) {
+        Die();
+    }
 }
 
 void Planaria::becomeCoin() {

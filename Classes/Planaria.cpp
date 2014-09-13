@@ -129,9 +129,9 @@ void Planaria::Run() {
         cutBody(Mouse::getPoint());
         }*/
 
-    Area::ppm += 0.03f;
+    Area::ppm += PPM_RATE;//I think this should be controlled at the scene file(HelloWorldScene.cpp)
 
-    if (Area::ppm > 100) {
+    if (Area::ppm > DEATH_THRESHOLD) {
         explosion();
     }
 
@@ -346,10 +346,7 @@ void Planaria::Dead() {
     UnitBase::layer->removeChild(plHead, true);
     UnitBase::layer->removeChild(plBody, true);
 
-    //CC_SAFE_DELETE(plBody);
-    //CC_SAFE_DELETE(plHead);
-    //plHead->autorelease();
-    //plBody->autorelease();
+ 
 }
 
 void Planaria::setMove(float angle, float speed) {

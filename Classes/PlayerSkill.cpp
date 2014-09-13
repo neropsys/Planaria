@@ -106,6 +106,21 @@ void ScoopPot::Render() {
 
     skillIcon->setColor(dispColor);
 }
+void Decontaminant::Init(){
+	skillName = "Decontaminant";
+	SkillSlot::Init("plus.png");
+}
+void Decontaminant::activeSkill(){
+	if (!Mouse::isDown()) return;
+	if (Area::humanCoin < DECONTAMINANT_VALUE) return;
+	Area::humanCoin -= DECONTAMINANT_VALUE;
+	Area::ppm = 0;
+
+}
+void Decontaminant::Render(){
+	SkillSlot::Render();
+}
+
 SkillSceneBtn::SkillSceneBtn(){
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	skillButtonSprite = Sprite::create("skillbutton.png");

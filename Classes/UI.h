@@ -194,19 +194,3 @@ protected:
     virtual void Dead();
 	virtual void Run();
 };
-class Icon : public UIBase{
-public:
-	Icon();
-	~Icon();
-	void create(const std::string& outerName, const std::string& innerName, cocos2d::SpriteBatchNode** batch);
-	cocos2d::Vec2 locationForLogo();
-	bool isTouched(const cocos2d::Vec2* touchPt);
-private:
-	cocos2d::Sprite* outerSymbol;
-	cocos2d::Sprite* innerSymbol;
-	cocos2d::LabelTTF* iconLogo;
-	float logoSize;
-    RadioGroup *skillGroup;
-    SlotGroup *navGroup;
-    SlotGroup *statGroup;
-};

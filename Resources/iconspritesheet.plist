@@ -150,15 +150,15 @@
             <key>roseknife.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{624,2},{58,72}}</string>
+                <string>{{624,2},{58,87}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{58,72}}</string>
+                <string>{{0,0},{58,87}}</string>
                 <key>sourceSize</key>
-                <string>{58,72}</string>
+                <string>{58,87}</string>
             </dict>
             <key>upgrade_filter.png</key>
             <dict>
@@ -179,13 +179,13 @@
             <key>format</key>
             <integer>2</integer>
             <key>realTextureFileName</key>
-            <string>techtreeicons.png</string>
+            <string>iconspritesheet.png</string>
             <key>size</key>
             <string>{748,93}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:4313bb74d6f8ff29d7b682a597fd8650:4114ad72b3e653edce83b067e2762562:1eff20eaad104ac8dd41038c64c28fdd$</string>
+            <string>$TexturePacker:SmartUpdate:684cb85036a901dac8478a45db61d3ea:a12bfdd42ca1da6f86b9d43dee07d03c:b0bb753acf6417824de974165347386d$</string>
             <key>textureFileName</key>
-            <string>techtreeicons.png</string>
+            <string>iconspritesheet.png</string>
         </dict>
     </dict>
 </plist>

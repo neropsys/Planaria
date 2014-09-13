@@ -16,4 +16,8 @@ public:
 
 private:
 	cocos2d::Sprite* b2Aquarium;
+	cocos2d::Sprite* nova;
+	cocos2d::Sprite* fishTank;
+	cocos2d::Sprite* roseKnife;
+	cocos2d::Sprite* platonic;
 };

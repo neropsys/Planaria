@@ -4,7 +4,8 @@
 #include "Area.h"
 #include <cmath>
 #include <iostream>
-
+#define DEATH_THRESHOLD 100
+#define PPM_RATE 0.01f
 #define RAD(angle) angle * M_PI / 180
 
 #pragma once

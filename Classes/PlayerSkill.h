@@ -2,7 +2,7 @@
 #include "cocos2d.h"
 #include "Planaria.h"
 #include "Area.h"
-
+#define DECONTAMINANT_VALUE 10
 class RoseKnife : public SkillSlot {
 public:
     CREATE_FUNC5(RoseKnife);
@@ -19,7 +19,15 @@ protected:
 
     virtual void Render();
 };
+class Decontaminant : public SkillSlot{
+public:
+	CREATE_FUNC5(Decontaminant);
+protected:
+	virtual void Init();
 
+	virtual void activeSkill();
+	virtual void Render();
+};
 class ScoopPot : public SkillSlot {
 public:
     CREATE_FUNC5(ScoopPot);

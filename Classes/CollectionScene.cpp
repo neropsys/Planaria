@@ -1,6 +1,8 @@
 #include "CollectionScene.h"
 #include "HelloWorldScene.h"
 #include "TechTreeSceneTemplate.h"
+#include "UI.h"
+#include "Area.h"
 USING_NS_CC;
 Scene* CollectionScene::createScene(){
 	INIT_SCENE(CollectionScene);
@@ -10,30 +12,38 @@ bool CollectionScene::init(){
 		return false;
 	}
 	auto visibleSize = Director::getInstance()->getVisibleSize();
+
+	auto bgimage = Sprite::create("background/plaforming.png");
+
+
+	bgimage->setPosition(visibleSize / 2);
+	bgimage->setScale(1.3f);
+	this->addChild(bgimage);
+
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("iconspritesheet.plist");
+	
+	nova = Sprite::createWithSpriteFrameName("nova.png");
+	nova->setPosition(visibleSize.width * 3.5 / 13, visibleSize.height * 5.8 / 9);
+	this->addChild(nova, Z_UI);
+
+	roseKnife = Sprite::createWithSpriteFrameName("roseknife.png");
+	roseKnife->setPosition(visibleSize.width / 13, visibleSize.height * 5.8 / 9);
+	this->addChild(roseKnife, Z_UI);
+
+	fishTank = Sprite::createWithSpriteFrameName("fishtank.png");
+	fishTank->setPosition(visibleSize.width * 3.5 / 13, visibleSize.height * 7.3 / 9);
+	this->addChild(fishTank, Z_UI);
+
+
+	platonic = Sprite::createWithSpriteFrameName("platonic.png");
+	platonic->setPosition(visibleSize.width * 4.5 / 13, visibleSize.height * 4.3 / 9);
+	this->addChild(platonic, Z_UI);
+
 	
 
-	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("techtreeicons.plist");
-	
-
-	auto roseKnife = Sprite::createWithSpriteFrameName("roseknife.png");
-	roseKnife->setPosition(visibleSize.width/2, visibleSize.height/2);
-	this->addChild(roseKnife);
-
-	auto bioSystem = Sprite::createWithSpriteFrameName("biosystem.png");
-	bioSystem->setPosition(visibleSize.width / 3, visibleSize.width / 3);
-	this->addChild(bioSystem);
-
-	
-
 
 	
 	
-	/*auto roseKnife = Sprite::createWithSpriteFrameName("roseknife.png"); 
-
-	iconBatch->setPosition(0, 0);
-	iconBatch->addChild(roseKnife);
-	roseKnife->setPosition(visibleSize.width, visibleSize.height);*/
-	//this->addChild(iconBatch);
 
 	ADD_RETURN_BUTTON();
 	return true;
@@ -47,6 +57,33 @@ bool CollectionScene::onTouchBegan(Touch* touch, Event* event){
 		Director::getInstance()->popScene();
 		return true;
 	}
+	if (nova->getBoundingBox().containsPoint(touchPt)){
+		log("nova touched");
+		//do something that nova does
+
+		Area::ppm = 0.f;
+		
+		if (Area::humanCoin <= 0){//if there's no money
+			//give warning sign
+		}
+
+		return true;
+	}
+	if (fishTank->getBoundingBox().containsPoint(touchPt)){
+		log("fishtank touched");
+		return true;
+	}
+	if (roseKnife->getBoundingBox().containsPoint(touchPt)){
+		log("roseKnife touched");
+		return true;
+	}
+	if (platonic->getBoundingBox().containsPoint(touchPt)){
+		log("platonic touched");
+		
+		return true;
+	}
+
+
 	return true;
 }
 void CollectionScene::onEnter(){

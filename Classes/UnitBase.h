@@ -79,6 +79,8 @@ public:
 
     void Die();
 
+	static int getCurrentPlNumber();
+
 protected:
     // for managing unit objects.
     static cocos2d::Vector<UnitBase *> newUnit;

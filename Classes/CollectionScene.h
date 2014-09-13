@@ -1,6 +1,9 @@
 #include "cocos2d.h"
 #include "UI.h"
 #pragma once
+#define MAXNUMBER 40
+#define EXT_AQUARIUM_VALUE 100
+#define PLATONIC_VALUE 100
 class CollectionScene : public cocos2d::Layer{
 public:
 	static cocos2d::Scene* createScene();

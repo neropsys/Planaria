@@ -70,6 +70,8 @@ void UnitBase::Die() {
     deadUnit.pushBack(this);
 }
 
+int UnitBase::getCurrentPlNumber(){ return crtUnit.size(); }
+
 bool UnitBase::onTouchBegan(Touch* touch, Event* event) {
     Vec2 tPos = touch->getLocation();
 

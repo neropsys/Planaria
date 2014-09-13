@@ -430,6 +430,11 @@ Profile::Profile() {
 
     profileText = LabelTTF::create("", UI_FONT, 14.f);
     UIBase::layer->addChild(profileText, Z_UI);
+    profileText->enableShadow(Size(0, 0), 255, 10.f, true);
+
+    profileName = LabelTTF::create("", UI_FONT, 18.f);
+    UIBase::layer->addChild(profileName, Z_UI);
+    profileName->enableShadow(Size(0, 0), 255, 10.f, true);
 
 }
 
@@ -451,7 +456,11 @@ void Profile::Render() {
 
     profileDisp->setPosition(this->getPosition());
 
-    profileText->setPosition(this->getPosition());
+    profileText->setPosition(this->getPosition() + Vec2(0, 10));
+    profileText->enableShadow(Size(1, -1), 1, 10.f, true);
+
+    profileName->setPosition(this->getPosition() - Vec2(0, 10));
+    profileName->enableShadow(Size(1, -1), 1, 10.f, true);
 
     auto stat1sp = getProfileImg();
     
@@ -468,5 +477,5 @@ void Profile::Render() {
     editedRect.setRect(editedRect.getMinX(), editedRect.getMinY() + originalSize.height - editedRect.size.height, editedRect.size.width, editedRect.size.height);
 
     stat1sp->setTextureRect(editedRect);
-    stat1sp->setAnchorPoint(Vec2(0.5, 0.5 + 1 - profileImgRate));
+    stat1sp->setPositionY((editedRect.size.height - originalSize.height) / 2);
 }

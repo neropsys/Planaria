@@ -129,6 +129,12 @@ void Planaria::Run() {
         cutBody(Mouse::getPoint());
         }*/
 
+    Area::ppm += 0.03f;
+
+    if (Area::ppm > 100) {
+        explosion();
+    }
+
     Recovery();
 
     moveBody();
@@ -486,6 +492,23 @@ void Planaria::becomeCoin() {
         }
     }
 
+    Die();
+}
+
+void Planaria::explosion() {
+    auto particle = ParticleExplosion::create();
+    auto texture = Director::getInstance()->getTextureCache()->addImage("stars.png");
+    particle->setTexture(texture);
+
+    if (particle != NULL) {
+        particle->setScale(0.4f);
+        particle->setPosition(this->getPosition());
+
+        particle->setDuration(1.2f);
+
+        UnitBase::layer->addChild(particle);
+    }
+    
     Die();
 }
 

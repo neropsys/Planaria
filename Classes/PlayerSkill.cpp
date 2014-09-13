@@ -21,12 +21,12 @@ void RoseKnife::Render() {
 }
 
 void RoseKnife::activeSkill() {
-    if (!Mouse::isDown()) {
+    if (!Mouse::isDown() || Area::isAmid) {
         lastPoint = Vec2::ZERO;
         return;
     }
 
-    Area::stamina -= 0.5f;
+    Area::stamina -= 0.85f;
 
     Vec2 tPos = Mouse::getPoint();
 

@@ -16,11 +16,8 @@ public:
 
 private:
 	cocos2d::Sprite* b2Aquarium;
-	cocos2d::SpriteBatchNode* roseKnifeBatch;
-	cocos2d::SpriteBatchNode* fishTankBatch;
-	Icon* fishTank;
-	cocos2d::SpriteBatchNode* filterBatch;
-	cocos2d::SpriteBatchNode* novaBatch;
-	cocos2d::SpriteBatchNode* pureBatch;
-	cocos2d::SpriteBatchNode* platonicBatch;
+	cocos2d::Sprite* nova;
+	cocos2d::Sprite* fishTank;
+	cocos2d::Sprite* roseKnife;
+	cocos2d::Sprite* platonic;
 };

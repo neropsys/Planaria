@@ -9,7 +9,7 @@ proj.win32/Planaria.sdf
 
 # User-specific files
 *.sln.docstates
-
+*.suo
 Planaria.v12.suo
 
 # Build results

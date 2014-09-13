@@ -166,7 +166,7 @@ bool HelloWorld::init()
 
 	auto skill1 = RoseKnife::create();
 	auto skill2 = ScoopPot::create();
-
+	auto skill3 = Decontaminant::create();
 	auto skillGroup = systemUI->getSkillGroup();
 
 	skillSceneButton = new SkillSceneBtn();
@@ -175,6 +175,7 @@ bool HelloWorld::init()
 
 	skillGroup->addChild(skill1);
 	skillGroup->addChild(skill2);
+	skillGroup->addChild(skill3);
 	skillGroup->alignItems();
 	skill1->turnOn();
 

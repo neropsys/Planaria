@@ -4,9 +4,10 @@
 #include "Area.h"
 #include <cmath>
 #include <iostream>
-
+#define DEATH_THRESHOLD 300
+#define PPM_RATE 0.01f 
 #define RAD(angle) angle * M_PI / 180
-
+#define DEFAULT_GROWTH_RATE 0.8f
 #pragma once
 
 using namespace std;
@@ -57,6 +58,11 @@ public:
 
     void setSpeed(float speed);
     float getSpeed();
+
+	float getGrowthRate();
+	void setGrowthRate(float rate);
+	void increaseGrowthRate(float rate);
+	void decreaseGrowthRate(float rate);
 
     void setPlanariaZone(float top, float bottom, float left, float right);
     void setPlanariaZone(const PlanariaBox&);
@@ -118,7 +124,7 @@ protected:
     float maxSpeed = 6.f, minSpeed = 2.f;
     float bodyLength = 120.f, bodySize = 8.5f;
     float bodyMaxLength = 120.f;
-
+	float growthRate = DEFAULT_GROWTH_RATE;
     bool isHurted = false;
 
     int t = 0;

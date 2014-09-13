@@ -314,45 +314,6 @@ void UtilityButton::Init(){}
 void UtilityButton::Dead(){}
 void UtilityButton::Run(){}
 
-Icon::~Icon(){
-
-}
-Icon::Icon(){
-
-}
-void Icon::create(const std::string& outerName, const std::string& innerName, SpriteBatchNode** batch){
-	outerSymbol = Sprite::createWithSpriteFrameName(outerName);
-	outerSymbol->setName("outerSymbol");
-	(*batch)->addChild(outerSymbol);
-
-	innerSymbol = Sprite::createWithSpriteFrameName(innerName);
-	innerSymbol->setName("innerSymbol");
-	(*batch)->addChild(innerSymbol);
-}
-Vec2 Icon::locationForLogo(){
-	return Vec2(Node::convertToWorldSpace(outerSymbol->getPosition()));
-}
-bool Icon::isTouched(const Vec2* touchPt){
-	bool temp = outerSymbol->getBoundingBox().containsPoint(*touchPt);//cannot access outerSymbol
-	return temp;
-
-    navGroup = SlotGroup::create();
-    UIBase::layer->addChild(navGroup, Z_UI);
-
-    statGroup = SlotGroup::create();
-    UIBase::layer->addChild(statGroup, Z_UI);
-
-    skillGroup = RadioGroup::create();
-    UIBase::layer->addChild(skillGroup, Z_UI);
-
-    statGroup->setPosition(64, 48);
-
-    statGroup->alignItems();
-
-    skillGroup->setPosition(-128, 54);
-
-    skillGroup->alignItems();
-}
 
 AreaUI::~AreaUI() {
 }

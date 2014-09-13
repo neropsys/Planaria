@@ -11,6 +11,9 @@
 	auto listener = EventListenerTouchOneByOne::create();\
 	listener->setSwallowTouches(true);\
 	listener->onTouchBegan = CC_CALLBACK_2(__SCENE_NAME__::onTouchBegan, this);\
+    listener->onTouchMoved = CC_CALLBACK_2(__SCENE_NAME__::onTouchMoved, this);\
+    listener->onTouchEnded = CC_CALLBACK_2(__SCENE_NAME__::onTouchEnded, this);\
+    listener->onTouchCancelled = CC_CALLBACK_2(__SCENE_NAME__::onTouchCancelled, this);\
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);\
 	auto mouseBinder = EventListenerMouse::create();
 #define INIT_SCENE(__SCENE_NAME__)\

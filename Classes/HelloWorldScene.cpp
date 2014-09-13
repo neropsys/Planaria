@@ -94,6 +94,8 @@ void HelloWorld::onEnter() {
 
 void HelloWorld::onExit() {
     _eventDispatcher->removeEventListenersForType(EventListener::Type::TOUCH_ONE_BY_ONE);
+
+    Mouse::Initialize();
     
     Layer::onExit();
 }

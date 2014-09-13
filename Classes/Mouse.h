@@ -18,6 +18,8 @@ public:
     static void onTouchEnded(cocos2d::Touch*, cocos2d::Event*);
     static void onTouchCancelled(cocos2d::Touch*, cocos2d::Event*);
 
+    static void Initialize();
+
 protected:
     static cocos2d::Vec2 point;
 

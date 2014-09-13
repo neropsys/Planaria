@@ -31,7 +31,8 @@ void ConstructionScene::onEnter(){
 	INIT_LISTENER(ConstructionScene);
 }
 void ConstructionScene::onExit() {
-	_eventDispatcher->removeEventListenersForType(EventListener::Type::TOUCH_ONE_BY_ONE);
+    _eventDispatcher->removeEventListenersForType(EventListener::Type::TOUCH_ONE_BY_ONE);
+    Mouse::Initialize();
 
 	Layer::onExit();
 }

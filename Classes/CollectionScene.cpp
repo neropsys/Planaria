@@ -129,7 +129,8 @@ void CollectionScene::onEnter(){
 	INIT_LISTENER(CollectionScene);
 }
 void CollectionScene::onExit() {
-	_eventDispatcher->removeEventListenersForType(EventListener::Type::TOUCH_ONE_BY_ONE);
+    _eventDispatcher->removeEventListenersForType(EventListener::Type::TOUCH_ONE_BY_ONE);
+    Mouse::Initialize();
 
 	Layer::onExit();
 }

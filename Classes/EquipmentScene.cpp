@@ -27,11 +27,26 @@ bool EquipmentScene::onTouchBegan(Touch* touch, Event* event){
 	}
 	return true;
 }
+
+void EquipmentScene::onTouchMoved(Touch* touch, Event* event) {
+    Mouse::onTouchMoved(touch, event);
+}
+
+void EquipmentScene::onTouchEnded(Touch* touch, Event* event) {
+    Mouse::onTouchEnded(touch, event);
+}
+
+void EquipmentScene::onTouchCancelled(Touch* touch, Event* event) {
+    Mouse::onTouchCancelled(touch, event);
+}
+
 void EquipmentScene::onEnter(){
 	INIT_LISTENER(EquipmentScene);
 }
 void EquipmentScene::onExit() {
-	_eventDispatcher->removeEventListenersForType(EventListener::Type::TOUCH_ONE_BY_ONE);
+    _eventDispatcher->removeEventListenersForType(EventListener::Type::TOUCH_ONE_BY_ONE);
+
+    Mouse::Initialize();
 
 	Layer::onExit();
 }

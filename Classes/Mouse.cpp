@@ -53,3 +53,11 @@ void Mouse::onTouchCancelled(Touch* touch, Event* event) {
 float Mouse::getSize() {
     return Mouse::cursorSize;
 }
+
+void Mouse::Initialize()
+{
+    Mouse::isTouching = false;
+    Mouse::isStart = false;
+    Mouse::point = Vec2::ZERO;
+    Mouse::touchID = 0;
+}

@@ -60,7 +60,10 @@ void Planaria::setSpeed(float speed) {
 float Planaria::getSpeed() {
     return speed;
 }
-
+float Planaria::getGrowthRate(){ return growthRate; }
+void Planaria::setGrowthRate(float rate){ growthRate = rate; }
+void Planaria::increaseGrowthRate(float rate){ growthRate += rate; }
+void Planaria::decreaseGrowthRate(float rate){ growthRate -= rate; }
 void Planaria::setVelocity() {
     velocity.setPoint(cosf(RAD(angle)) * speed, -sinf(RAD(angle)) * speed);
 }

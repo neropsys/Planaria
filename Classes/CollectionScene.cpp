@@ -3,6 +3,7 @@
 #include "TechTreeSceneTemplate.h"
 #include "UI.h"
 #include "Area.h"
+#include "Planaria.h"
 USING_NS_CC;
 Scene* CollectionScene::createScene(){
 	INIT_SCENE(CollectionScene);
@@ -79,7 +80,9 @@ bool CollectionScene::onTouchBegan(Touch* touch, Event* event){
 	}
 	if (platonic->getBoundingBox().containsPoint(touchPt)){
 		log("platonic touched");
-		
+		for (auto child : Planaria::Plas){
+			child->increaseGrowthRate(.1f);
+		}
 		return true;
 	}
 
@@ -91,7 +94,6 @@ void CollectionScene::onEnter(){
 }
 void CollectionScene::onExit() {
 	_eventDispatcher->removeEventListenersForType(EventListener::Type::TOUCH_ONE_BY_ONE);
-
 	Layer::onExit();
 }
 

@@ -107,7 +107,7 @@ void ScoopPot::Render() {
     skillIcon->setColor(dispColor);
 }
 void Decontaminant::Init(){
-	skillName = "Decontaminant";
+	skillName = "Nova";
 	SkillSlot::Init("plus.png");
 }
 void Decontaminant::activeSkill(){

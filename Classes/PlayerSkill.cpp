@@ -106,17 +106,19 @@ void ScoopPot::Render() {
 
     skillIcon->setColor(dispColor);
 }
+
 void Decontaminant::Init(){
 	skillName = "Nova";
-	SkillSlot::Init("plus.png");
+	SkillSlot::Init("nova.png");
 }
+
 void Decontaminant::activeSkill(){
-	if (!Mouse::isDown()) return;
+    this->turnOff();
 	if (Area::humanCoin < DECONTAMINANT_VALUE) return;
 	Area::humanCoin -= DECONTAMINANT_VALUE;
 	Area::ppm = 0;
-
 }
+
 void Decontaminant::Render(){
 	SkillSlot::Render();
 }

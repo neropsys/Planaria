@@ -71,6 +71,7 @@ public:
     int getCrashedSegment(float x, float y, float radius);
 
     void becomeCoin();
+    void explosion();
 
     virtual void cutBody(const cocos2d::Vec2 &pos);
 

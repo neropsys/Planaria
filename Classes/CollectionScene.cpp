@@ -40,12 +40,6 @@ bool CollectionScene::init(){
 	platonic->setPosition(visibleSize.width * 4.5 / 13, visibleSize.height * 4.3 / 9);
 	this->addChild(platonic, Z_UI);
 
-	
-
-
-	
-	
-
 	ADD_RETURN_BUTTON();
 	return true;
 }
@@ -71,6 +65,9 @@ bool CollectionScene::onTouchBegan(Touch* touch, Event* event){
 		return true;
 	}
 	if (fishTank->getBoundingBox().containsPoint(touchPt)){
+		if (Area::humanCoin < EXT_AQUARIUM_VALUE) return true;
+		Area::humanCoin -= EXT_AQUARIUM_VALUE;
+		Area::maxPlanaria = MAXNUMBER;
 		log("fishtank touched");
 		return true;
 	}
@@ -79,6 +76,8 @@ bool CollectionScene::onTouchBegan(Touch* touch, Event* event){
 		return true;
 	}
 	if (platonic->getBoundingBox().containsPoint(touchPt)){
+		if (Area::humanCoin < PLATONIC_VALUE) return true;
+		Area::humanCoin -= PLATONIC_VALUE;
 		log("platonic touched");
 		for (auto child : Planaria::Plas){
 			child->increaseGrowthRate(.1f);

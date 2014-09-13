@@ -10,10 +10,9 @@ void RoseKnife::Init() {
     SkillSlot::Init("knife.png");
 
     starGraphic = Director::getInstance()->getTextureCache()->addImage("stars.png");
-
+	decreaseRate = ST_DECREASE_RATE;
     skillName = "Incise";
 }
-
 void RoseKnife::Render() {
     SkillSlot::Render();
 
@@ -25,8 +24,9 @@ void RoseKnife::activeSkill() {
         lastPoint = Vec2::ZERO;
         return;
     }
-
-    Area::stamina -= 0.85f;
+	if (Area::maxPlanaria < UnitBase::getCurrentPlNumber())
+		return;
+    Area::stamina -= decreaseRate;
 
     Vec2 tPos = Mouse::getPoint();
 
@@ -50,9 +50,7 @@ void RoseKnife::activeSkill() {
     }
 
     for (int i = 1; i <= segCount; i++) {
-
         auto particle = ParticleFlower::create();
-        //log("%d", particle->getReferenceCount());
         particle->setTexture(starGraphic);
 
         if (particle != NULL) {
@@ -63,10 +61,6 @@ void RoseKnife::activeSkill() {
             else {
                 particle->setPosition(Mouse::getPoint() + (segAlign * (segDist * i)));
             }
-
-            //log("%f, %f", segAlign.x, segAlign.y);
-            //log("%f, %f", particle->getPositionX(), particle->getPositionY());
-
             particle->setDuration(0.02f);
 
             UIBase::layer->addChild(particle);

@@ -102,6 +102,7 @@ void HelloWorld::onExit() {
 
 bool HelloWorld::onTouchBegan(Touch* touch, Event* event) {
     Mouse::onTouchBegan(touch, event);
+	shopButton->gotoScene();
 	skillSceneButton->gotoScene();
     return true;
 }
@@ -170,8 +171,11 @@ bool HelloWorld::init()
 	auto skillGroup = systemUI->getSkillGroup();
 
 	skillSceneButton = new SkillSceneBtn();
-	skillSceneButton->setGlobalZOrder(100);
 	this->addChild(skillSceneButton);
+
+	shopButton = new ShopButton();
+	this->addChild(shopButton);
+
 
 	skillGroup->addChild(skill1);
 	skillGroup->addChild(skill2);

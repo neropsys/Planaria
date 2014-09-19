@@ -33,12 +33,12 @@ public:
     void Mainloop(float);
 
     float getNext();
-	SkillSceneBtn* skillSceneButton;
+
 
 protected:
-
+	SkillSceneBtn* skillSceneButton;
     Profile *statGold, *statPPM, *statStamina;
-
+	ShopButton* shopButton;
     int t = 0;
 };
 

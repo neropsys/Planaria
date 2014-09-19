@@ -16,6 +16,7 @@
     <ClCompile Include="..\Classes\UnitBase.cpp" />
     <ClCompile Include="..\Classes\ValueScene.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="..\Classes\ShopScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -34,6 +35,7 @@
     <ClInclude Include="..\Classes\UnitBase.h" />
     <ClInclude Include="..\Classes\ValueScene.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="..\Classes\ShopScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc" />

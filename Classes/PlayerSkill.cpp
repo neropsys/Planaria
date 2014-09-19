@@ -1,5 +1,6 @@
 #include "PlayerSkill.h"
 #include "CollectionScene.h"
+#include "ShopScene.h"
 USING_NS_CC;
 
 Texture2D *RoseKnife::starGraphic;
@@ -122,14 +123,30 @@ SkillSceneBtn::SkillSceneBtn(){
 	skillButtonSprite = Sprite::create("skillbutton.png");
 	skillButtonSprite->setAnchorPoint(Vec2::ANCHOR_BOTTOM_RIGHT);
 	skillButtonSprite->setPosition(visibleSize.width, 0);
-	layer->addChild(skillButtonSprite, 101);
+	layer->addChild(skillButtonSprite, Z_UI);
 }
-SkillSceneBtn::~SkillSceneBtn(){
 
-}
+SkillSceneBtn::~SkillSceneBtn(){}
+
 void SkillSceneBtn::gotoScene(){
 	if (skillButtonSprite->getBoundingBox().containsPoint(Mouse::getPoint())){
 		auto skillScene = CollectionScene::createScene();
 		Director::getInstance()->pushScene(skillScene);
+	}
+}
+
+ShopButton::ShopButton(){
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	shopButtonSprite = Sprite::create("shopbutton.png");
+	shopButtonSprite->setAnchorPoint(Vec2::ANCHOR_MIDDLE_BOTTOM);
+	shopButtonSprite->setPosition(visibleSize.width * 3 / 4, 0);
+	layer->addChild(shopButtonSprite, Z_UI);
+}
+ShopButton::~ShopButton(){}
+
+void ShopButton::gotoScene(){
+	if (shopButtonSprite->getBoundingBox().containsPoint(Mouse::getPoint())){
+		auto shopScene = ShopScene::createScene();
+		Director::getInstance()->pushScene(shopScene);
 	}
 }

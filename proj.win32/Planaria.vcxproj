@@ -145,6 +145,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\Planaria.cpp" />
     <ClCompile Include="..\Classes\PlanariaUnits.cpp" />
     <ClCompile Include="..\Classes\PlayerSkill.cpp" />
+    <ClCompile Include="..\Classes\ShopScene.cpp" />
     <ClCompile Include="..\Classes\UI.cpp" />
     <ClCompile Include="..\Classes\unit.cpp" />
     <ClCompile Include="..\Classes\UnitBase.cpp" />
@@ -162,6 +163,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\Planaria.h" />
     <ClInclude Include="..\Classes\PlanariaUnits.h" />
     <ClInclude Include="..\Classes\PlayerSkill.h" />
+    <ClInclude Include="..\Classes\ShopScene.h" />
     <ClInclude Include="..\Classes\TechTreeSceneTemplate.h" />
     <ClInclude Include="..\Classes\UI.h" />
     <ClInclude Include="..\Classes\unit.h" />

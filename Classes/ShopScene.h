@@ -18,5 +18,4 @@ private:
 	cocos2d::Sprite* b2Aquarium;
 	cocos2d::Sprite* planariaButton;
 	cocos2d::Size visibleSize;
-	//
 };

@@ -214,4 +214,13 @@ bool HelloWorld::init()
 	statGroup->alignItems();
 
 	this->schedule(schedule_selector(HelloWorld::Mainloop));
+	if (Area::isNewPlanaria == true)
+		this->schedule(schedule_selector(HelloWorld::addNewPlanaria), 1.f);
+	return true;
+}
+void HelloWorld::addNewPlanaria(float){
+	for (auto species : Area::addedPlanaria){
+		//place to add new planaria
+	}
+	Area::isNewPlanaria = false;
 }

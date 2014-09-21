@@ -1,6 +1,7 @@
 #include "ShopScene.h"
 #include "HelloWorldScene.h"
 #include "TechTreeSceneTemplate.h"
+#define NORMAL_PLANARIA_VALUE 5
 USING_NS_CC;
 Scene* ShopScene::createScene(){
 	INIT_SCENE(ShopScene);
@@ -8,10 +9,10 @@ Scene* ShopScene::createScene(){
 
 bool ShopScene::init(){
 	if (!Layer::init()) return false;
-	auto visibleSize = Director::getInstance()->getVisibleSize();
-	auto tempText = LabelTTF::create("ShopScene", "Segoe UI", 36);
-	tempText->setPosition(visibleSize.width / 2, visibleSize.height / 2);
-	this->addChild(tempText);
+	visibleSize = Director::getInstance()->getVisibleSize();
+
+	planariaButton = Sprite::create("planariabutton.png");
+	this->addChild(planariaButton);
 
 	ADD_RETURN_BUTTON();
 	return true;
@@ -23,6 +24,13 @@ bool ShopScene::onTouchBegan(Touch* touch, Event* event){
 	auto bTouch = b2Aquarium->getBoundingBox().containsPoint(touchPt);//does not work with Mouse::getPoint
 	if (bTouch){
 		Director::getInstance()->popScene();
+		return true;
+	}
+	if (planariaButton->getBoundingBox().containsPoint(touchPt)){
+		if (Area::humanCoin < 5) return true;
+		Area::humanCoin -= NORMAL_PLANARIA_VALUE;
+		Area::addedPlanaria[1] += 1;
+		Area::isNewPlanaria = true;
 	}
 	return true;
 }

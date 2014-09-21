@@ -1,11 +1,8 @@
-#ifndef __HELLOWORLD_SCENE_H__
-#define __HELLOWORLD_SCENE_H__
-
 #include "cocos2d.h"
 #include "PlanariaUnits.h"
 #include "PlayerSkill.h"
 #include "Area.h"
-
+#pragma once
 #define _WEAPON_ 100
 
 class HelloWorld : public cocos2d::Layer
@@ -41,5 +38,3 @@ protected:
 	ShopButton* shopButton;
     int t = 0;
 };
-
-#endif

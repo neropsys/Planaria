@@ -1,9 +1,5 @@
 #include "CollectionScene.h"
 #include "HelloWorldScene.h"
-#include "TechTreeSceneTemplate.h"
-#include "UI.h"
-#include "Area.h"
-#include "Planaria.h"
 USING_NS_CC;
 Scene* CollectionScene::createScene(){
 	INIT_SCENE(CollectionScene);

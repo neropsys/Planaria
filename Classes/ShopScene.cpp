@@ -33,6 +33,7 @@ bool ShopScene::onTouchBegan(Touch* touch, Event* event){
 		Area::isNewPlanaria = true;
 	}
 	return true;
+	//
 }
 void ShopScene::onEnter(){
 	INIT_LISTENER(ShopScene);

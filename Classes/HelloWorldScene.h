@@ -32,6 +32,7 @@ public:
     float getNext();
 
 protected:
+	cocos2d::Size visibleSize;
 	SkillSceneBtn* skillSceneButton;
     Profile *statGold, *statPPM, *statStamina;
 	ShopButton* shopButton;

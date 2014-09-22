@@ -12,6 +12,7 @@ bool ShopScene::init(){
 	visibleSize = Director::getInstance()->getVisibleSize();
 
 	planariaButton = Sprite::create("planariabutton.png");
+	planariaButton->setPosition(visibleSize.width/2, visibleSize.height/2);
 	this->addChild(planariaButton);
 
 	ADD_RETURN_BUTTON();

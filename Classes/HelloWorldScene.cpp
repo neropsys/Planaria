@@ -128,7 +128,7 @@ bool HelloWorld::init()
 		return false;
 	}
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("sprite.plist");
@@ -214,13 +214,16 @@ bool HelloWorld::init()
 	statGroup->alignItems();
 
 	this->schedule(schedule_selector(HelloWorld::Mainloop));
-	/*if (Area::isNewPlanaria == true)
-		this->schedule(schedule_selector(HelloWorld::addNewPlanaria), 1.f);*/ //code not yet fully implemented
+	this->schedule(schedule_selector(HelloWorld::addNewPlanaria), 1.f); //code not yet fully implemented
 	return true;
 }
 void HelloWorld::addNewPlanaria(float){
-	for (auto species : Area::addedPlanaria){
-		//place to add new planaria
-	}
-	Area::isNewPlanaria = false;
+	if (Area::isNewPlanaria == false) return;
+	NormalPlanaria* pl = NormalPlanaria::create();
+	pl->setMove(getNext() * 360, 0.5);
+	pl->setPosition(visibleSize.width * getNext(), visibleSize.height * getNext());
+	Area::addedPlanaria[1] -= 1;
+	if (Area::addedPlanaria[1] == 0)
+		Area::isNewPlanaria = false;
+
 }

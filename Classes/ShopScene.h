@@ -15,7 +15,7 @@ public:
 	CREATE_FUNC(ShopScene);
 
 private:
+	cocos2d::Size visibleSize;
 	cocos2d::Sprite* b2Aquarium;
 	cocos2d::Sprite* planariaButton;
-	cocos2d::Size visibleSize;
 };

@@ -12,4 +12,5 @@ public:
 	CREATE_FUNC(ConstructionScene);
 private:
 	cocos2d::Sprite* b2Aquarium;
+	cocos2d::Size visibleSize;
 };

@@ -1,6 +1,5 @@
 #include "cocos2d.h"
 #include "Area.h"
-#include "PlanariaUnits.h"
 #pragma once
 
 class ShopScene : public cocos2d::Layer{

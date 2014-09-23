@@ -1,6 +1,9 @@
 #include "EquipmentScene.h"
 #include "HelloWorldScene.h"
 #include "TechTreeSceneTemplate.h"
+#include "ValueScene.h"
+#include "CollectionScene.h"
+#include "ConstructionScene.h"
 USING_NS_CC;
 Scene* EquipmentScene::createScene(){
 	INIT_SCENE(EquipmentScene);
@@ -9,10 +12,19 @@ bool EquipmentScene::init(){
 	if (!Layer::init()){
 		return false;
 	}
-	auto visibleSize = Director::getInstance()->getVisibleSize();
+	visibleSize = Director::getInstance()->getVisibleSize();
+	
+	auto bgimage = Sprite::create("background/dimension.png");
+	bgimage->setPosition(visibleSize / 2);
+	bgimage->setScale(1.3f);
+	this->addChild(bgimage);
+
 	auto tempText = LabelTTF::create("EquipmentScene", "Segoe UI", 36);
-	tempText->setPosition(visibleSize.width / 2, visibleSize.height / 2);
+	tempText->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
+	tempText->setPosition(visibleSize.width / 2, visibleSize.height);
 	this->addChild(tempText);
+
+	
 
 	ADD_RETURN_BUTTON();
 	return true;

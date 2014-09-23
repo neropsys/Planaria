@@ -214,7 +214,7 @@ bool HelloWorld::init()
 	statGroup->alignItems();
 
 	this->schedule(schedule_selector(HelloWorld::Mainloop));
-	this->schedule(schedule_selector(HelloWorld::addNewPlanaria), 1.f); //code not yet fully implemented
+	this->schedule(schedule_selector(HelloWorld::addNewPlanaria), 1.f);
 	return true;
 }
 void HelloWorld::addNewPlanaria(float){

@@ -1,4 +1,5 @@
 #include "ShopScene.h"
+#include "UnitBase.h"
 #include "HelloWorldScene.h"
 #include "TechTreeSceneTemplate.h"
 #define NORMAL_PLANARIA_VALUE 5
@@ -29,6 +30,7 @@ bool ShopScene::onTouchBegan(Touch* touch, Event* event){
 	}
 	if (planariaButton->getBoundingBox().containsPoint(touchPt)){
 		if (Area::humanCoin < 5) return true;
+		if (UnitBase::getCurrentPlNumber() >= (Area::maxPlanaria + Area::addedPlanaria[1])) return true;
 		Area::humanCoin -= NORMAL_PLANARIA_VALUE;
 		Area::addedPlanaria[1] += 1;
 		Area::isNewPlanaria = true;

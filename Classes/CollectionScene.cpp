@@ -51,11 +51,8 @@ bool CollectionScene::onTouchBegan(Touch* touch, Event* event){
 	Mouse::onTouchBegan(touch, event);
 
 	auto touchPt = touch->getLocation();
-	auto bTouch = b2Aquarium->getBoundingBox().containsPoint(touchPt);//does not work with Mouse::getPoint
-	if (b2Aquarium->getBoundingBox().containsPoint(touchPt)){
-		Director::getInstance()->popScene();
-		return true;
-	}
+	ADD_RETURN_LISTENER(touchPt);
+
 	if (nova->getBoundingBox().containsPoint(touchPt)){
 		log("nova touched");
 		//do something that nova does

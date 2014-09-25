@@ -39,6 +39,9 @@
     <ClCompile Include="..\Classes\Mouse.cpp">
       <Filter>UI</Filter>
     </ClCompile>
+    <ClCompile Include="SceneChangeButtons.cpp">
+      <Filter>TechTreeScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -80,6 +83,9 @@
       <Filter>UI</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\TechTreeSceneTemplate.h">
+      <Filter>TechTreeScene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneChangeButtons.h">
       <Filter>TechTreeScene</Filter>
     </ClInclude>
   </ItemGroup>

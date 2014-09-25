@@ -151,6 +151,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\UnitBase.cpp" />
     <ClCompile Include="..\Classes\ValueScene.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SceneChangeButtons.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -170,6 +171,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\UnitBase.h" />
     <ClInclude Include="..\Classes\ValueScene.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="SceneChangeButtons.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\cocos2d\cocos\2d\cocos2d.vcxproj">

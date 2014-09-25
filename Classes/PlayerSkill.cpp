@@ -1,5 +1,6 @@
 #include "PlayerSkill.h"
 #include "CollectionScene.h"
+#include "HelloWorldScene.h"
 USING_NS_CC;
 
 Texture2D *RoseKnife::starGraphic;
@@ -101,16 +102,43 @@ void ScoopPot::Render() {
     skillIcon->setColor(dispColor);
 }
 
+void BackToIntro::Init() {
+    skillName = "Back to Intro";
+
+    SkillSlot::Init("eye.png");
+}
+
+
+void BackToIntro::activeSkill() {
+    if (!Mouse::isDown()) return;
+
+    Director::getInstance()->replaceScene(HelloWorld::createScene());
+}
+
+void BackToIntro::Render() {
+    SkillSlot::Render();
+
+    skillIcon->setColor(dispColor);
+}
+
 void Decontaminant::Init(){
 	skillName = "Nova";
 	SkillSlot::Init("nova.png");
 }
 
 void Decontaminant::activeSkill(){
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+
     this->turnOff();
 	if (Area::humanCoin < DECONTAMINANT_VALUE) return;
 	Area::humanCoin -= DECONTAMINANT_VALUE;
 	Area::ppm = 0;
+    for (auto child : Poison::group) {
+        child->setOver();
+    }
+
+    auto f = PoisonExEffect::create(10, 600);
+    f->setPosition(visibleSize / 2);
 }
 
 void Decontaminant::Render(){

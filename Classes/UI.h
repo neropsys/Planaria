@@ -12,6 +12,12 @@
 #define Z_UNIT 10
 #define Z_BACK 0
 
+// Bend Funcs
+#define GL_BLEND_BLENDMODE { GL_DST_ALPHA, GL_ONE_MINUS_SRC_ALPHA }
+#define GL_BLEND_MULTIFLYMODE { GL_DST_COLOR, GL_ONE_MINUS_SRC_ALPHA }
+#define GL_BLEND_SCREENMODE { GL_ONE_MINUS_DST_COLOR, GL_ONE }
+#define GL_BLEND_LINEARDODGEMODE { GL_ONE, GL_ONE }
+
 #define CREATE_FUNC4(__TYPE_NAME__)\
 static __TYPE_NAME__ *create(){\
 	auto unit = new __TYPE_NAME__();\

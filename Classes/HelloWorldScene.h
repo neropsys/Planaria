@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "PlanariaUnits.h"
 #include "PlayerSkill.h"
+#include "Poison.h"
 #include "Area.h"
 
 #define _WEAPON_ 100
@@ -29,6 +30,8 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
+
+    static void Initialize();
 
     void Mainloop(float);
 

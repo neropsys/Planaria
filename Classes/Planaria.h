@@ -79,6 +79,8 @@ public:
     void becomeCoin();
     void explosion();
 
+    vector<cocos2d::Vec2 *> getTail() { return plTail; };
+
     virtual void cutBody(const cocos2d::Vec2 &pos);
 
     float getSegmentLength();

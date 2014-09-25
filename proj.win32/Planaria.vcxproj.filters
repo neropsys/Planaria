@@ -16,6 +16,8 @@
     <ClCompile Include="..\Classes\UnitBase.cpp" />
     <ClCompile Include="..\Classes\ValueScene.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="..\Classes\Poison.cpp" />
+    <ClCompile Include="..\Classes\ResultScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -34,6 +36,8 @@
     <ClInclude Include="..\Classes\UnitBase.h" />
     <ClInclude Include="..\Classes\ValueScene.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="..\Classes\Poison.h" />
+    <ClInclude Include="..\Classes\ResultScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc" />

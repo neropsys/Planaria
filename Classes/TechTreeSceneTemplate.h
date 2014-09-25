@@ -8,6 +8,7 @@
 	this->addChild(b2Aquarium);
 #define INIT_LISTENER(__SCENE_NAME__)\
 	Layer::onEnter();\
+    Mouse::Initialize();\
 	auto listener = EventListenerTouchOneByOne::create();\
 	listener->setSwallowTouches(true);\
 	listener->onTouchBegan = CC_CALLBACK_2(__SCENE_NAME__::onTouchBegan, this);\

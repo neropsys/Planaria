@@ -81,6 +81,10 @@ public:
 
 	static int getCurrentPlNumber();
 
+    static void removeAll() {
+        for (auto child : crtUnit) { child->Die(); }
+    };
+
 protected:
     // for managing unit objects.
     static cocos2d::Vector<UnitBase *> newUnit;

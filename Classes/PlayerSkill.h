@@ -2,8 +2,11 @@
 #include "cocos2d.h"
 #include "Planaria.h"
 #include "Area.h"
+#include "Poison.h"
 #define DECONTAMINANT_VALUE 10
 #define ST_DECREASE_RATE .85f
+#pragma once
+
 class RoseKnife : public SkillSlot {
 public:
     CREATE_FUNC5(RoseKnife);
@@ -23,6 +26,7 @@ protected:
 
     virtual void Render();
 };
+
 class Decontaminant : public SkillSlot{
 public:
 	CREATE_FUNC5(Decontaminant);
@@ -32,6 +36,7 @@ protected:
 	virtual void activeSkill();
 	virtual void Render();
 };
+
 class ScoopPot : public SkillSlot {
 public:
     CREATE_FUNC5(ScoopPot);
@@ -42,6 +47,19 @@ protected:
     virtual void activeSkill();
     virtual void Render();
 };
+
+class BackToIntro : public SkillSlot {
+public:
+    CREATE_FUNC5(BackToIntro);
+protected:
+
+    virtual void Init();
+
+    virtual void activeSkill();
+    virtual void Render();
+};
+
+
 class SkillSceneBtn : public UtilityButton{
 public:
 	SkillSceneBtn();

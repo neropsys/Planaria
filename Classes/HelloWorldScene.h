@@ -1,12 +1,9 @@
-#ifndef __HELLOWORLD_SCENE_H__
-#define __HELLOWORLD_SCENE_H__
-
 #include "cocos2d.h"
 #include "PlanariaUnits.h"
 #include "PlayerSkill.h"
 #include "Poison.h"
 #include "Area.h"
-
+#pragma once
 #define _WEAPON_ 100
 
 class HelloWorld : public cocos2d::Layer
@@ -36,13 +33,12 @@ public:
     void Mainloop(float);
 
     float getNext();
-	SkillSceneBtn* skillSceneButton;
 
 protected:
-
+	cocos2d::Size visibleSize;
+	SkillSceneBtn* skillSceneButton;
     Profile *statGold, *statPPM, *statStamina;
-
+	ShopButton* shopButton;
     int t = 0;
+	void addNewPlanaria(float);
 };
-
-#endif

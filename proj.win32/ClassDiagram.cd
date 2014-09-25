@@ -10,14 +10,14 @@
   <Class Name="Area" Collapsed="true">
     <Position X="16.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAABAAAAAAAAAAAAAAAAAIAAAAQAAAAQAAAQAA=</HashCode>
+      <HashCode>AAQAAAAABAAAAACAAAAAAAAAAAIAAAAQAAAAQCAAQAI=</HashCode>
       <FileName>C:\Users\Administrator\Desktop\gammaru_game_files\master\Classes\Area.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CollectionScene" Collapsed="true">
     <Position X="18" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IQAIgAAAAAAAAAAAAAAAABAAAAAAAAIAABAAAACAAAA=</HashCode>
+      <HashCode>IQAIgBAAAAAAAAAAAAAAABAAAAAAAAIABBAAAAKAABA=</HashCode>
       <FileName>C:\Users\Administrator\Desktop\gammaru_game_files\master\Classes\CollectionScene.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -31,21 +31,21 @@
   <Class Name="EquipmentScene" Collapsed="true">
     <Position X="14.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IQAIAAAAAAAAAAAAAAAAABAAAAAAAAIAABAAAACAAAA=</HashCode>
+      <HashCode>IwCIAAAAAAAAAAAAAAAAABAAAAAgAAIAABAAAACAAAA=</HashCode>
       <FileName>C:\Users\Administrator\Desktop\gammaru_game_files\master\Classes\EquipmentScene.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HelloWorld" Collapsed="true">
     <Position X="16.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IhiIiAAAAAAAAAAAAAAAABAAAAEgIAIAABQCAACAAAA=</HashCode>
+      <HashCode>IhiIiAAAAAAgAAAAAAAAABAAAAEgIAIAABQCAACAACA=</HashCode>
       <FileName>C:\Users\Administrator\Desktop\gammaru_game_files\master\Classes\HelloWorldScene.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Mouse" Collapsed="true">
     <Position X="19.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IoCAAACAAIAAAAAAAAAAAAAQAAAgAADAAQAAAAABACA=</HashCode>
+      <HashCode>IoCAAACAAIAAAQAAAAAAAAAQAAAgAADAAQAAAAABACA=</HashCode>
       <FileName>C:\Users\Administrator\Desktop\gammaru_game_files\master\Classes\Mouse.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -59,7 +59,7 @@
   <Class Name="Planaria" Collapsed="true">
     <Position X="2.75" Y="6.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IgKCgEAABAAgPYTgAANAUVAAEAR7hAEBELRCLAIAAUo=</HashCode>
+      <HashCode>IgKCgEAABAAgPYTgBANAUVAAEAR7lBEBELRCLAIAAUo=</HashCode>
       <FileName>C:\Users\Administrator\Desktop\gammaru_game_files\master\Classes\Planaria.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -87,7 +87,7 @@
   <Class Name="RoseKnife" Collapsed="true">
     <Position X="0.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQACAAAAAgAEAAAAAAAAAAAAAAAAAAAABACAAAAAAA=</HashCode>
+      <HashCode>AAQACAAAAAgAEAAAAAAAAAAAAAAAAAAAABACAAAAAAg=</HashCode>
       <FileName>C:\Users\Administrator\Desktop\gammaru_game_files\master\Classes\PlayerSkill.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -164,7 +164,7 @@
   <Class Name="UnitBase" Collapsed="true">
     <Position X="2.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IoKBgEAABMAABQggADIAEAAAABAwgQABAARCDFBAAQI=</HashCode>
+      <HashCode>IoKBgEAABMAgBQggADIAEAAAABAwgQABAARCDFBAAQI=</HashCode>
       <FileName>C:\Users\Administrator\Desktop\gammaru_game_files\master\Classes\UnitBase.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -173,13 +173,6 @@
     <TypeIdentifier>
       <HashCode>IQAIAAAAAAAAAAAAAAAAABAAAAAAAAIAABAAAACAAAA=</HashCode>
       <FileName>C:\Users\Administrator\Desktop\gammaru_game_files\master\Classes\ValueScene.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Icon" Collapsed="true">
-    <Position X="18" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AACAAAQAAAEAAQAAgAAAEAACAAAAAAAAAQJAAAUAAAA=</HashCode>
-      <FileName>C:\Users\Administrator\Desktop\gammaru_game_files\master\Classes\UI.h</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Malgun Gothic" Size="9" />

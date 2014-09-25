@@ -1,5 +1,8 @@
 #include "cocos2d.h"
 #include "UI.h"
+#include "TechTreeSceneTemplate.h"
+#include "Area.h"
+#include "Planaria.h"
 #pragma once
 #define MAXNUMBER 40
 #define EXT_AQUARIUM_VALUE 100
@@ -23,4 +26,5 @@ private:
 	cocos2d::Sprite* fishTank;
 	cocos2d::Sprite* roseKnife;
 	cocos2d::Sprite* platonic;
+	cocos2d::Size visibleSize;
 };

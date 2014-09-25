@@ -145,13 +145,18 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\Planaria.cpp" />
     <ClCompile Include="..\Classes\PlanariaUnits.cpp" />
     <ClCompile Include="..\Classes\PlayerSkill.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="..\Classes\Poison.cpp" />
     <ClCompile Include="..\Classes\ResultScene.cpp" />
+=======
+    <ClCompile Include="..\Classes\ShopScene.cpp" />
+>>>>>>> f3452533c050d43f53bb9736818cccd513ab7980
     <ClCompile Include="..\Classes\UI.cpp" />
     <ClCompile Include="..\Classes\unit.cpp" />
     <ClCompile Include="..\Classes\UnitBase.cpp" />
     <ClCompile Include="..\Classes\ValueScene.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SceneChangeButtons.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -164,14 +169,19 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\Planaria.h" />
     <ClInclude Include="..\Classes\PlanariaUnits.h" />
     <ClInclude Include="..\Classes\PlayerSkill.h" />
+<<<<<<< HEAD
     <ClInclude Include="..\Classes\Poison.h" />
     <ClInclude Include="..\Classes\ResultScene.h" />
+=======
+    <ClInclude Include="..\Classes\ShopScene.h" />
+>>>>>>> f3452533c050d43f53bb9736818cccd513ab7980
     <ClInclude Include="..\Classes\TechTreeSceneTemplate.h" />
     <ClInclude Include="..\Classes\UI.h" />
     <ClInclude Include="..\Classes\unit.h" />
     <ClInclude Include="..\Classes\UnitBase.h" />
     <ClInclude Include="..\Classes\ValueScene.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="SceneChangeButtons.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\cocos2d\cocos\2d\cocos2d.vcxproj">

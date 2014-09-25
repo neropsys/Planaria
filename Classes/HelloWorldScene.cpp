@@ -117,6 +117,11 @@ void HelloWorld::onExit() {
 
 bool HelloWorld::onTouchBegan(Touch* touch, Event* event) {
     Mouse::onTouchBegan(touch, event);
+<<<<<<< HEAD
+=======
+	shopButton->gotoScene();
+	skillSceneButton->gotoScene();
+>>>>>>> f3452533c050d43f53bb9736818cccd513ab7980
     return true;
 }
 
@@ -141,7 +146,7 @@ bool HelloWorld::init()
 		return false;
 	}
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("sprite.plist");
@@ -175,6 +180,16 @@ bool HelloWorld::init()
 	auto skill3 = Decontaminant::create();
 	auto skillGroup = systemUI->getSkillGroup();
 
+<<<<<<< HEAD
+=======
+	skillSceneButton = new SkillSceneBtn();
+	this->addChild(skillSceneButton);
+
+	shopButton = new ShopButton();
+	this->addChild(shopButton);
+
+
+>>>>>>> f3452533c050d43f53bb9736818cccd513ab7980
 	skillGroup->addChild(skill1);
 	skillGroup->addChild(skill2);
 	skillGroup->addChild(skill3);
@@ -214,6 +229,7 @@ bool HelloWorld::init()
     Initialize();
 
 	this->schedule(schedule_selector(HelloWorld::Mainloop));
+<<<<<<< HEAD
 }
 
 void HelloWorld::Initialize() {
@@ -237,4 +253,18 @@ void HelloWorld::Initialize() {
     Area::isAmid = false;
     Area::cutPlas = 0;
     Area::deadPlas = 0;
+=======
+	this->schedule(schedule_selector(HelloWorld::addNewPlanaria), 1.f);
+	return true;
+}
+void HelloWorld::addNewPlanaria(float){
+	if (Area::isNewPlanaria == false) return;
+	NormalPlanaria* pl = NormalPlanaria::create();
+	pl->setMove(getNext() * 360, 0.5);
+	pl->setPosition(visibleSize.width * getNext(), visibleSize.height * getNext());
+	Area::addedPlanaria[1] -= 1;
+	if (Area::addedPlanaria[1] == 0)
+		Area::isNewPlanaria = false;
+
+>>>>>>> f3452533c050d43f53bb9736818cccd513ab7980
 }

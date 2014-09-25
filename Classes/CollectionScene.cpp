@@ -1,9 +1,10 @@
 #include "CollectionScene.h"
 #include "HelloWorldScene.h"
-#include "TechTreeSceneTemplate.h"
-#include "UI.h"
-#include "Area.h"
-#include "Planaria.h"
+#include "ConstructionScene.h"
+#include "EquipmentScene.h"
+#include "ValueScene.h"
+#include "ConstructionScene.h"
+#include "CollectionScene.h"
 USING_NS_CC;
 Scene* CollectionScene::createScene(){
 	INIT_SCENE(CollectionScene);
@@ -12,14 +13,18 @@ bool CollectionScene::init(){
 	if (!Layer::init()){
 		return false;
 	}
-	auto visibleSize = Director::getInstance()->getVisibleSize();
+	visibleSize = Director::getInstance()->getVisibleSize();
 
-	auto bgimage = Sprite::create("background/plaforming.png");
-
-
+	auto bgimage = Sprite::create("background/dimension.png");
 	bgimage->setPosition(visibleSize / 2);
 	bgimage->setScale(1.3f);
 	this->addChild(bgimage);
+
+	auto tempText = LabelTTF::create("CollectionScene", "Segoe UI", 36);
+	tempText->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
+	tempText->setPosition(visibleSize.width / 2, visibleSize.height);
+	this->addChild(tempText);
+
 
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("iconspritesheet.plist");
 	
@@ -35,7 +40,6 @@ bool CollectionScene::init(){
 	fishTank->setPosition(visibleSize.width * 3.5 / 13, visibleSize.height * 7.3 / 9);
 	this->addChild(fishTank, Z_UI);
 
-
 	platonic = Sprite::createWithSpriteFrameName("platonic.png");
 	platonic->setPosition(visibleSize.width * 4.5 / 13, visibleSize.height * 4.3 / 9);
 	this->addChild(platonic, Z_UI);
@@ -47,11 +51,8 @@ bool CollectionScene::onTouchBegan(Touch* touch, Event* event){
 	Mouse::onTouchBegan(touch, event);
 
 	auto touchPt = touch->getLocation();
-	auto bTouch = b2Aquarium->getBoundingBox().containsPoint(touchPt);//does not work with Mouse::getPoint
-	if (b2Aquarium->getBoundingBox().containsPoint(touchPt)){
-		Director::getInstance()->popScene();
-		return true;
-	}
+	ADD_RETURN_LISTENER(touchPt);
+
 	if (nova->getBoundingBox().containsPoint(touchPt)){
 		log("nova touched");
 		//do something that nova does

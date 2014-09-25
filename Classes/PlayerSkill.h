@@ -68,3 +68,11 @@ public:
 private:
 	cocos2d::Sprite* skillButtonSprite;
 };
+class ShopButton : public UtilityButton{
+public:
+	ShopButton();
+	~ShopButton();
+	void gotoScene();
+private:
+	cocos2d::Sprite* shopButtonSprite;
+};

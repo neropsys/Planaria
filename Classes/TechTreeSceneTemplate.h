@@ -22,8 +22,5 @@
 	auto layer = __SCENE_NAME__::create();\
 	scene->addChild(layer);\
 	return scene;
-#define ADD_RETURN_LISTENER(_TOUCHPT_)\
-	auto bTouch = b2Aquarium->getBoundingBox().containsPoint(_TOUCHPT_);\
-	if(bTouch) Director::getInstance()->popScene();
 
 //Additional function used on tech tree skill scenes may be added here in the future

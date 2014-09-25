@@ -1,10 +1,6 @@
 #include "PlayerSkill.h"
 #include "CollectionScene.h"
-<<<<<<< HEAD
 #include "HelloWorldScene.h"
-=======
-#include "ShopScene.h"
->>>>>>> f3452533c050d43f53bb9736818cccd513ab7980
 USING_NS_CC;
 
 Texture2D *RoseKnife::starGraphic;
@@ -154,30 +150,14 @@ SkillSceneBtn::SkillSceneBtn(){
 	skillButtonSprite = Sprite::create("skillbutton.png");
 	skillButtonSprite->setAnchorPoint(Vec2::ANCHOR_BOTTOM_RIGHT);
 	skillButtonSprite->setPosition(visibleSize.width, 0);
-	layer->addChild(skillButtonSprite, Z_UI);
+	layer->addChild(skillButtonSprite, 101);
 }
+SkillSceneBtn::~SkillSceneBtn(){
 
-SkillSceneBtn::~SkillSceneBtn(){}
-
+}
 void SkillSceneBtn::gotoScene(){
 	if (skillButtonSprite->getBoundingBox().containsPoint(Mouse::getPoint())){
 		auto skillScene = CollectionScene::createScene();
 		Director::getInstance()->pushScene(skillScene);
-	}
-}
-
-ShopButton::ShopButton(){
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-	shopButtonSprite = Sprite::create("shopbutton.png");
-	shopButtonSprite->setAnchorPoint(Vec2::ANCHOR_MIDDLE_BOTTOM);
-	shopButtonSprite->setPosition(visibleSize.width * 3 / 4, 0);
-	layer->addChild(shopButtonSprite, Z_UI);
-}
-ShopButton::~ShopButton(){}
-
-void ShopButton::gotoScene(){
-	if (shopButtonSprite->getBoundingBox().containsPoint(Mouse::getPoint())){
-		auto shopScene = ShopScene::createScene();
-		Director::getInstance()->pushScene(shopScene);
 	}
 }

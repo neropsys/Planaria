@@ -2,6 +2,7 @@
 #pragma once
 class MenuButton{
 public:
+	cocos2d::Menu* create(float width, float height);
 	MenuButton();
 	~MenuButton();
 private:
@@ -13,4 +14,5 @@ private:
 	void constructionSceneCallback(cocos2d::Ref* pSender);
 	void valueSceneCallback(cocos2d::Ref* pSender);
 	void equipmentSceneCallback(cocos2d::Ref* pSender);
+
 };

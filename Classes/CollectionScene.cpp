@@ -3,8 +3,6 @@
 #include "ConstructionScene.h"
 #include "EquipmentScene.h"
 #include "ValueScene.h"
-#include "ConstructionScene.h"
-#include "CollectionScene.h"
 USING_NS_CC;
 Scene* CollectionScene::createScene(){
 	INIT_SCENE(CollectionScene);
@@ -23,8 +21,11 @@ bool CollectionScene::init(){
 	auto tempText = LabelTTF::create("CollectionScene", "Segoe UI", 36);
 	tempText->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
 	tempText->setPosition(visibleSize.width / 2, visibleSize.height);
-	this->addChild(tempText);
+	this->addChild(tempText, Z_UI);
 
+	auto sceneButtons = new MenuButton();
+	auto menus = sceneButtons->create(visibleSize.width / 2, 50);//temporaray position, needs to be changed
+	this->addChild(menus, Z_UI);
 
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("iconspritesheet.plist");
 	
@@ -45,6 +46,7 @@ bool CollectionScene::init(){
 	this->addChild(platonic, Z_UI);
 
 	ADD_RETURN_BUTTON();
+
 	return true;
 }
 bool CollectionScene::onTouchBegan(Touch* touch, Event* event){

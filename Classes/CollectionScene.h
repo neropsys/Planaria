@@ -3,6 +3,7 @@
 #include "TechTreeSceneTemplate.h"
 #include "Area.h"
 #include "Planaria.h"
+#include "SceneChangeButtons.h"
 #pragma once
 #define MAXNUMBER 40
 #define EXT_AQUARIUM_VALUE 100

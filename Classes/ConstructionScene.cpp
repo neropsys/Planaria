@@ -1,9 +1,6 @@
 #include "ConstructionScene.h"
 #include "HelloWorldScene.h"
 #include "TechTreeSceneTemplate.h"
-#include "CollectionScene.h"
-#include "EquipmentScene.h"
-#include "ValueScene.h"
 USING_NS_CC;
 Scene* ConstructionScene::createScene(){
 	INIT_SCENE(ConstructionScene);
@@ -13,15 +10,8 @@ bool ConstructionScene::init(){
 		return false;
 	}
 	auto visibleSize = Director::getInstance()->getVisibleSize();
-
-	auto bgimage = Sprite::create("background/dimension.png");
-	bgimage->setPosition(visibleSize / 2);
-	bgimage->setScale(1.3f);
-	this->addChild(bgimage);
-
 	auto tempText = LabelTTF::create("ConstructionScene", "Segoe UI", 36);
-	tempText->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
-	tempText->setPosition(visibleSize.width / 2, visibleSize.height);
+	tempText->setPosition(visibleSize.width / 2, visibleSize.height / 2);
 	this->addChild(tempText);
 
 	ADD_RETURN_BUTTON();
@@ -31,7 +21,10 @@ bool ConstructionScene::onTouchBegan(Touch* touch, Event* event){
 	Mouse::onTouchBegan(touch, event);
 
 	auto touchPt = touch->getLocation();
-	ADD_RETURN_LISTENER(touchPt);
+	auto bTouch = b2Aquarium->getBoundingBox().containsPoint(touchPt);//does not work with Mouse::getPoint
+	if (bTouch){
+		Director::getInstance()->popScene();
+	}
 	return true;
 }
 void ConstructionScene::onEnter(){

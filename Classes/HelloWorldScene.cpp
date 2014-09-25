@@ -1,4 +1,5 @@
 #include "HelloWorldScene.h"
+#include "ResultScene.h"
 #include "Mouse.h"
 USING_NS_CC;
 
@@ -23,6 +24,8 @@ float HelloWorld::getNext() {
 
 void HelloWorld::Mainloop(float f) {
     UIBase::Mainloop();
+
+    Size visibleSize = Director::getInstance()->getVisibleSize();
 
     statStamina->setProfileImgRate(Area::stamina / 100);
 
@@ -60,6 +63,12 @@ void HelloWorld::Mainloop(float f) {
 
     if (Area::ppm >= 100) {
         ppmImg->setColor(Color3B(100, 255, 100));
+
+        if (t % 150 == 0) {
+            auto pos = Poison::create(200 + getNext() * 200, 50 + getNext() * 50);
+
+            pos->setPosition(visibleSize.width / 2 + 400 - getNext() * 800, visibleSize.height / 2 + 300 - getNext() * 600);
+        }
     }
     else {
         ppmImg->setColor(Color3B(255, 255, 255));
@@ -73,6 +82,12 @@ void HelloWorld::Mainloop(float f) {
 
     auto statLb = statStamina->getLabel();
     statLb->setString(to_string((int)Area::stamina) + " / 100");
+    
+    if (Planaria::Plas.size() <= 0) {
+        Director::getInstance()->pushScene(ResultScene::createScene());
+    }
+
+    t++;
 }
 
 void HelloWorld::onEnter() {
@@ -102,8 +117,6 @@ void HelloWorld::onExit() {
 
 bool HelloWorld::onTouchBegan(Touch* touch, Event* event) {
     Mouse::onTouchBegan(touch, event);
-	shopButton->gotoScene();
-	skillSceneButton->gotoScene();
     return true;
 }
 
@@ -128,7 +141,7 @@ bool HelloWorld::init()
 		return false;
 	}
 
-	visibleSize = Director::getInstance()->getVisibleSize();
+	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("sprite.plist");
@@ -146,21 +159,13 @@ bool HelloWorld::init()
 	// create a Waved3D action
 	ActionInterval* waves = Waves3D::create(60, Size(32, 32), 18, 15);
 
-	ActionInterval* ripple = Ripple3D::create(60, Size(32, 32), visibleSize / 2, 800, 100, 100);
+	ActionInterval* ripple = Ripple3D::create(60, Size(32, 32), visibleSize / 2, 800, 30, 15);
 
 	auto nodeGrid = NodeGrid::create();
 	nodeGrid->runAction(RepeatForever::create((Sequence*)Sequence::create(ripple, lens, NULL)));
 	nodeGrid->addChild(bgimage);
 
 	this->addChild(nodeGrid);
-	for (int i = 0; i < 5; i++) {
-		NormalPlanaria *pl2 = NormalPlanaria::create();
-		ExtendedPlanaria *pl3 = ExtendedPlanaria::create();
-		pl2->setMove(getNext() * 360, 0.5);
-		pl2->setPosition(visibleSize.width * getNext(), visibleSize.height * getNext());
-		pl3->setMove(getNext() * 360, 0.5);
-		pl3->setPosition(visibleSize.width * getNext(), visibleSize.height * getNext());
-	}
 
 
 	auto systemUI = AreaUI::create();
@@ -171,12 +176,10 @@ bool HelloWorld::init()
 	auto skillGroup = systemUI->getSkillGroup();
 
 	skillSceneButton = new SkillSceneBtn();
-	this->addChild(skillSceneButton);
+	this->addChild(skillSceneButton, Z_UI);
 
 	shopButton = new ShopButton();
-	this->addChild(shopButton);
-
-
+	this->addChild(shopButton, Z_UI);
 	skillGroup->addChild(skill1);
 	skillGroup->addChild(skill2);
 	skillGroup->addChild(skill3);
@@ -213,9 +216,33 @@ bool HelloWorld::init()
 
 	statGroup->alignItems();
 
+    Initialize();
+
 	this->schedule(schedule_selector(HelloWorld::Mainloop));
 	this->schedule(schedule_selector(HelloWorld::addNewPlanaria), 1.f);
-	return true;
+}
+
+void HelloWorld::Initialize() {
+
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+
+    UnitBase::removeAll();
+
+    for (int i = 0; i < 5; i++) {
+        NormalPlanaria *pl2 = NormalPlanaria::create();
+        ExtendedPlanaria *pl3 = ExtendedPlanaria::create();
+        pl2->setMove((float)rand() / RAND_MAX * 360, 0.5);
+        pl2->setPosition(visibleSize.width * (float)rand() / RAND_MAX, visibleSize.height * (float)rand() / RAND_MAX);
+        pl3->setMove((float)rand() / RAND_MAX * 360, 0.5);
+        pl3->setPosition(visibleSize.width * (float)rand() / RAND_MAX, visibleSize.height * (float)rand() / RAND_MAX);
+    }
+
+    Area::humanCoin = 0;
+    Area::ppm = 0;
+    Area::stamina = 100.f;
+    Area::isAmid = false;
+    Area::cutPlas = 0;
+    Area::deadPlas = 0;
 }
 void HelloWorld::addNewPlanaria(float){
 	if (Area::isNewPlanaria == false) return;

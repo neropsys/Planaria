@@ -9,6 +9,7 @@
 	this->addChild(b2Aquarium);
 #define INIT_LISTENER(__SCENE_NAME__)\
 	Layer::onEnter();\
+    Mouse::Initialize();\
 	auto listener = EventListenerTouchOneByOne::create();\
 	listener->setSwallowTouches(true);\
 	listener->onTouchBegan = CC_CALLBACK_2(__SCENE_NAME__::onTouchBegan, this);\
@@ -22,8 +23,5 @@
 	auto layer = __SCENE_NAME__::create();\
 	scene->addChild(layer);\
 	return scene;
-#define ADD_RETURN_LISTENER(_TOUCHPT_)\
-	auto bTouch = b2Aquarium->getBoundingBox().containsPoint(_TOUCHPT_);\
-	if(bTouch) Director::getInstance()->popScene();
 
 //Additional function used on tech tree skill scenes may be added here in the future

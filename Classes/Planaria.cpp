@@ -11,6 +11,8 @@ Planaria::Planaria() {
 
 Planaria::~Planaria() {
     plTail.clear();
+
+    Area::deadPlas += 1;
 }
 
 bool Planaria::onTouchBegan(Touch* touch, Event* event) {
@@ -87,6 +89,8 @@ void Planaria::Finalize() {
 
 // each object's method
 void Planaria::Init() {
+    Plas.pushBack(this);
+
     Size screen = Director::getInstance()->getVisibleSize();
     float baseMargin = 128.f;
 
@@ -117,8 +121,6 @@ void Planaria::Init() {
         //log("%f, %f", velocity.x, velocity.y);
     }
 
-    Plas.pushBack(this);
-
     Render();
 }
 
@@ -134,13 +136,17 @@ void Planaria::Run() {
 
     Area::ppm += PPM_RATE;//I think this should be controlled at the scene file(HelloWorldScene.cpp)
 
-    if (Area::ppm > DEATH_THRESHOLD) {
+    /*if (Area::ppm > DEATH_THRESHOLD) {
         explosion();
-    }
+    }*/
 
     Recovery();
 
     moveBody();
+
+    if (bodyLength < bodyMaxLength / 3) {
+        Die();
+    }
 
     Render();
 
@@ -149,7 +155,7 @@ void Planaria::Run() {
 
 void Planaria::Recovery() {
     if (bodyLength < bodyMaxLength) {
-        bodyLength += 0.8f;
+        bodyLength += Area::plaResSpeed;
     }
 
     if (bodyLength > bodyMaxLength) {
@@ -246,16 +252,10 @@ void Planaria::calulateTail() {
         rotatedVec.setLength(-sinf((tailEx + i * 2) / 300) * 0.05);
 
         pt += lastVel.getNormalized() * pieceLength + rotatedVec;
-        //pt += lastVel.getNormalized() * pieceLength;
-
-        //pt += lastVel.getNormalized() * 5;
 
         lastVel = oVector;
 
         segment->setPoint(pt.x, pt.y);
-
-        //log("%f %f", segment->x, segment->y);
-        //log("%f %f", pt.x, pt.y);
 
         i++;
     }
@@ -459,24 +459,17 @@ void Planaria::cutBody(const Vec2 &pos) {
     Vec2 *crashedPos = plTail[crashedSegment];
     float dividedLength = crashedSegment * getSegmentLength();
 
-    if (dividedLength > bodyMaxLength / 3) {
-        auto pl2 = Planaria::create();
-        pl2->setPosition(crashedPos->x, crashedPos->y);
-        pl2->bodyLength = bodyLength - dividedLength;
-        pl2->angle = angle - 20 + getNext() * 40;
+    auto pl2 = Planaria::create();
+    pl2->setPosition(crashedPos->x, crashedPos->y);
+    pl2->bodyLength = bodyLength - dividedLength;
+    pl2->angle = angle - 20 + getNext() * 40;
 
-        //pl->isHurted = true;
-        pl2->isHurted = true;
-    }
+    pl2->isHurted = true;
 
     this->bodyLength = dividedLength;
     this->isHurted = true;
 
-    isHurted = true;
-
-    if (bodyLength < bodyMaxLength / 3) {
-        Die();
-    }
+    Area::cutPlas += 1;
 }
 
 void Planaria::becomeCoin() {
@@ -502,19 +495,6 @@ void Planaria::becomeCoin() {
 }
 
 void Planaria::explosion() {
-    auto particle = ParticleExplosion::create();
-    auto texture = Director::getInstance()->getTextureCache()->addImage("stars.png");
-    particle->setTexture(texture);
-
-    if (particle != NULL) {
-        particle->setScale(0.4f);
-        particle->setPosition(this->getPosition());
-
-        particle->setDuration(1.2f);
-
-        UnitBase::layer->addChild(particle);
-    }
-    
     Die();
 }
 

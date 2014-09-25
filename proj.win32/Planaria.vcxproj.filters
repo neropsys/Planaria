@@ -2,21 +2,43 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
-    <ClCompile Include="..\Classes\Area.cpp" />
-    <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
+    <ClCompile Include="..\Classes\Mouse.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="..\Classes\ShopScene.cpp" />
-    <ClCompile Include="..\Classes\Planaria.cpp">
-      <Filter>Planaria</Filter>
+    <ClCompile Include="..\Classes\CollectionScene.cpp">
+      <Filter>SkillScene</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\PlanariaUnits.cpp">
-      <Filter>Planaria</Filter>
+    <ClCompile Include="..\Classes\ConstructionScene.cpp">
+      <Filter>SkillScene</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\unit.cpp">
-      <Filter>Planaria</Filter>
+    <ClCompile Include="..\Classes\EquipmentScene.cpp">
+      <Filter>SkillScene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SceneChangeButtons.cpp">
+      <Filter>SkillScene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ValueScene.cpp">
+      <Filter>SkillScene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Area.cpp">
+      <Filter>Area</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
+      <Filter>Area</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ShopScene.cpp">
+      <Filter>Area</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\UnitBase.cpp">
-      <Filter>Planaria</Filter>
+      <Filter>Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Poison.cpp">
+      <Filter>Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Planaria.cpp">
+      <Filter>Units\Planaria</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PlanariaUnits.cpp">
+      <Filter>Units\Planaria</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\UI.cpp">
       <Filter>UI</Filter>
@@ -24,42 +46,55 @@
     <ClCompile Include="..\Classes\PlayerSkill.cpp">
       <Filter>UI</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\CollectionScene.cpp">
-      <Filter>TechTreeScene</Filter>
+    <ClCompile Include="..\Classes\ResultScene.cpp">
+      <Filter>Area</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\ConstructionScene.cpp">
-      <Filter>TechTreeScene</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\EquipmentScene.cpp">
-      <Filter>TechTreeScene</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\ValueScene.cpp">
-      <Filter>TechTreeScene</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Mouse.cpp">
-      <Filter>UI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\SceneChangeButtons.cpp">
-      <Filter>TechTreeScene</Filter>
+    <ClCompile Include="..\Classes\unit.cpp">
+      <Filter>Units</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
-    <ClInclude Include="..\Classes\Area.h" />
-    <ClInclude Include="..\Classes\HelloWorldScene.h" />
+    <ClInclude Include="..\Classes\Mouse.h" />
     <ClInclude Include="main.h" />
-    <ClInclude Include="..\Classes\ShopScene.h" />
-    <ClInclude Include="..\Classes\Planaria.h">
-      <Filter>Planaria</Filter>
+    <ClInclude Include="..\Classes\CollectionScene.h">
+      <Filter>SkillScene</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\PlanariaUnits.h">
-      <Filter>Planaria</Filter>
+    <ClInclude Include="..\Classes\ConstructionScene.h">
+      <Filter>SkillScene</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\unit.h">
-      <Filter>Planaria</Filter>
+    <ClInclude Include="..\Classes\EquipmentScene.h">
+      <Filter>SkillScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TechTreeSceneTemplate.h">
+      <Filter>SkillScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SceneChangeButtons.h">
+      <Filter>SkillScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ValueScene.h">
+      <Filter>SkillScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Area.h">
+      <Filter>Area</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HelloWorldScene.h">
+      <Filter>Area</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ShopScene.h">
+      <Filter>Area</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\UnitBase.h">
-      <Filter>Planaria</Filter>
+      <Filter>Units</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Poison.h">
+      <Filter>Units</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Planaria.h">
+      <Filter>Units\Planaria</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PlanariaUnits.h">
+      <Filter>Units\Planaria</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\UI.h">
       <Filter>UI</Filter>
@@ -67,43 +102,34 @@
     <ClInclude Include="..\Classes\PlayerSkill.h">
       <Filter>UI</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\CollectionScene.h">
-      <Filter>TechTreeScene</Filter>
+    <ClInclude Include="..\Classes\ResultScene.h">
+      <Filter>Area</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\ConstructionScene.h">
-      <Filter>TechTreeScene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\EquipmentScene.h">
-      <Filter>TechTreeScene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\ValueScene.h">
-      <Filter>TechTreeScene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Mouse.h">
-      <Filter>UI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\TechTreeSceneTemplate.h">
-      <Filter>TechTreeScene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\SceneChangeButtons.h">
-      <Filter>TechTreeScene</Filter>
+    <ClInclude Include="..\Classes\unit.h">
+      <Filter>Units</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="Planaria">
-      <UniqueIdentifier>{8c473e22-99d6-4241-973d-cde2a9eef42a}</UniqueIdentifier>
+    <Filter Include="SkillScene">
+      <UniqueIdentifier>{eec765f2-a333-4a69-aa13-f1bfb7f3eccd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Area">
+      <UniqueIdentifier>{92faa9a5-4096-4842-8e38-f16624105be5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Units">
+      <UniqueIdentifier>{741afab9-b963-4a7b-9f06-73f7f1e6f527}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Units\Planaria">
+      <UniqueIdentifier>{05bfa636-3c6a-4ab5-9f3f-05f8513aad20}</UniqueIdentifier>
     </Filter>
     <Filter Include="UI">
-      <UniqueIdentifier>{15ae1df0-731b-4b61-9ebe-87ff1dfdb50d}</UniqueIdentifier>
+      <UniqueIdentifier>{bc17f5cf-569b-489c-97f7-4a70cb96e258}</UniqueIdentifier>
     </Filter>
-    <Filter Include="TechTreeScene">
-      <UniqueIdentifier>{083c9cb1-602c-4f1e-9eed-387ead1b96b4}</UniqueIdentifier>
-    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

@@ -67,7 +67,10 @@ void UnitBase::Final() {
 }
 
 void UnitBase::Die() {
-    deadUnit.pushBack(this);
+    if (!isDead) {
+        isDead = true;
+        deadUnit.pushBack(this);
+    }
 }
 
 int UnitBase::getCurrentPlNumber(){ return crtUnit.size(); }

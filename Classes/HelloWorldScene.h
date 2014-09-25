@@ -1,6 +1,7 @@
 #include "cocos2d.h"
 #include "PlanariaUnits.h"
 #include "PlayerSkill.h"
+#include "Poison.h"
 #include "Area.h"
 #pragma once
 #define _WEAPON_ 100
@@ -27,15 +28,18 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
 
+    static void Initialize();
+
     void Mainloop(float);
 
     float getNext();
+	
 
 protected:
 	cocos2d::Size visibleSize;
 	SkillSceneBtn* skillSceneButton;
-    Profile *statGold, *statPPM, *statStamina;
 	ShopButton* shopButton;
-    int t = 0;
+    Profile *statGold, *statPPM, *statStamina;
 	void addNewPlanaria(float);
+    int t = 0;
 };

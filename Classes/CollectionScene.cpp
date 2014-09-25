@@ -1,8 +1,5 @@
 #include "CollectionScene.h"
 #include "HelloWorldScene.h"
-#include "ConstructionScene.h"
-#include "EquipmentScene.h"
-#include "ValueScene.h"
 USING_NS_CC;
 Scene* CollectionScene::createScene(){
 	INIT_SCENE(CollectionScene);
@@ -11,9 +8,11 @@ bool CollectionScene::init(){
 	if (!Layer::init()){
 		return false;
 	}
-	visibleSize = Director::getInstance()->getVisibleSize();
+	auto visibleSize = Director::getInstance()->getVisibleSize();
 
 	auto bgimage = Sprite::create("background/dimension.png");
+
+
 	bgimage->setPosition(visibleSize / 2);
 	bgimage->setScale(1.3f);
 	this->addChild(bgimage);
@@ -41,6 +40,7 @@ bool CollectionScene::init(){
 	fishTank->setPosition(visibleSize.width * 3.5 / 13, visibleSize.height * 7.3 / 9);
 	this->addChild(fishTank, Z_UI);
 
+
 	platonic = Sprite::createWithSpriteFrameName("platonic.png");
 	platonic->setPosition(visibleSize.width * 4.5 / 13, visibleSize.height * 4.3 / 9);
 	this->addChild(platonic, Z_UI);
@@ -53,8 +53,11 @@ bool CollectionScene::onTouchBegan(Touch* touch, Event* event){
 	Mouse::onTouchBegan(touch, event);
 
 	auto touchPt = touch->getLocation();
-	ADD_RETURN_LISTENER(touchPt);
-
+	auto bTouch = b2Aquarium->getBoundingBox().containsPoint(touchPt);//does not work with Mouse::getPoint
+	if (b2Aquarium->getBoundingBox().containsPoint(touchPt)){
+		Director::getInstance()->popScene();
+		return true;
+	}
 	if (nova->getBoundingBox().containsPoint(touchPt)){
 		log("nova touched");
 		//do something that nova does

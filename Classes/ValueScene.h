@@ -12,5 +12,4 @@ public:
 	CREATE_FUNC(ValueScene);
 private:
 	cocos2d::Sprite* b2Aquarium;
-	cocos2d::Size visibleSize;
 };

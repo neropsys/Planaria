@@ -1,5 +1,6 @@
 #include "PlayerSkill.h"
 #include "CollectionScene.h"
+#include "HelloWorldScene.h"
 #include "ShopScene.h"
 USING_NS_CC;
 
@@ -102,16 +103,43 @@ void ScoopPot::Render() {
     skillIcon->setColor(dispColor);
 }
 
+void BackToIntro::Init() {
+    skillName = "Back to Intro";
+
+    SkillSlot::Init("eye.png");
+}
+
+
+void BackToIntro::activeSkill() {
+    if (!Mouse::isDown()) return;
+
+    Director::getInstance()->replaceScene(HelloWorld::createScene());
+}
+
+void BackToIntro::Render() {
+    SkillSlot::Render();
+
+    skillIcon->setColor(dispColor);
+}
+
 void Decontaminant::Init(){
 	skillName = "Nova";
 	SkillSlot::Init("nova.png");
 }
 
 void Decontaminant::activeSkill(){
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+
     this->turnOff();
 	if (Area::humanCoin < DECONTAMINANT_VALUE) return;
 	Area::humanCoin -= DECONTAMINANT_VALUE;
 	Area::ppm = 0;
+    for (auto child : Poison::group) {
+        child->setOver();
+    }
+
+    auto f = PoisonExEffect::create(10, 600);
+    f->setPosition(visibleSize / 2);
 }
 
 void Decontaminant::Render(){
@@ -123,18 +151,17 @@ SkillSceneBtn::SkillSceneBtn(){
 	skillButtonSprite = Sprite::create("skillbutton.png");
 	skillButtonSprite->setAnchorPoint(Vec2::ANCHOR_BOTTOM_RIGHT);
 	skillButtonSprite->setPosition(visibleSize.width, 0);
-	layer->addChild(skillButtonSprite, Z_UI);
+	layer->addChild(skillButtonSprite, 101);
 }
+SkillSceneBtn::~SkillSceneBtn(){
 
-SkillSceneBtn::~SkillSceneBtn(){}
-
+}
 void SkillSceneBtn::gotoScene(){
 	if (skillButtonSprite->getBoundingBox().containsPoint(Mouse::getPoint())){
 		auto skillScene = CollectionScene::createScene();
 		Director::getInstance()->pushScene(skillScene);
 	}
 }
-
 ShopButton::ShopButton(){
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	shopButtonSprite = Sprite::create("shopbutton.png");

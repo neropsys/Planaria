@@ -12,7 +12,7 @@ bool ShopScene::init(){
 	if (!Layer::init()) return false;
 	visibleSize = Director::getInstance()->getVisibleSize();
 
-	auto textLabel = LabelTTF::create("buy more planaria", "Segoe UI", 36);
+	auto textLabel = LabelTTF::create("buy more planaria(5 coin)", "Segoe UI", 36);
 	textLabel->setPosition(visibleSize.width / 2, visibleSize.height * 3 / 4);
 	this->addChild(textLabel);
 

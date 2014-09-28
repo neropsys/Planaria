@@ -117,6 +117,8 @@ void HelloWorld::onExit() {
 
 bool HelloWorld::onTouchBegan(Touch* touch, Event* event) {
     Mouse::onTouchBegan(touch, event);
+	skillSceneButton->gotoScene();
+	shopButton->gotoScene();
     return true;
 }
 
@@ -167,7 +169,6 @@ bool HelloWorld::init()
 
 	this->addChild(nodeGrid);
 
-
 	auto systemUI = AreaUI::create();
 
 	auto skill1 = RoseKnife::create();
@@ -175,16 +176,15 @@ bool HelloWorld::init()
 	auto skill3 = Decontaminant::create();
 	auto skillGroup = systemUI->getSkillGroup();
 
-	skillSceneButton = new SkillSceneBtn();
-	this->addChild(skillSceneButton, Z_UI);
-
-	shopButton = new ShopButton();
-	this->addChild(shopButton, Z_UI);
 	skillGroup->addChild(skill1);
 	skillGroup->addChild(skill2);
 	skillGroup->addChild(skill3);
 	skillGroup->alignItems();
 	skill1->turnOn();
+
+	skillSceneButton = new SkillSceneBtn();
+
+	shopButton = new ShopButton();
 
 	auto statGroup = systemUI->getStatGroup();
 

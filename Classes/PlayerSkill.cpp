@@ -151,7 +151,7 @@ SkillSceneBtn::SkillSceneBtn(){
 	skillButtonSprite = Sprite::create("skillbutton.png");
 	skillButtonSprite->setAnchorPoint(Vec2::ANCHOR_BOTTOM_RIGHT);
 	skillButtonSprite->setPosition(visibleSize.width, 0);
-	layer->addChild(skillButtonSprite, 101);
+	layer->addChild(skillButtonSprite, Z_UI);
 }
 SkillSceneBtn::~SkillSceneBtn(){
 
